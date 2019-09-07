@@ -1,0 +1,14 @@
+.addition {
+    position: absolute;
+    display: flex;
+    width: max-content;
+    align-items: center;
+    margin-top: 0;
+}
+
+.symbol {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: green;
+    border-radius: 50%;
+}

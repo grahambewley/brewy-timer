@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Timeline from './Timeline/Timeline';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    totalTime: 60,
+    additions: [
+      [60, 'hops', '1oz', 'Centennial'],
+      [30, 'hops', '1oz', 'Centennial'],
+      [5, 'hops', '2oz', 'Centennial']
+    ]
+  }
+
+  render () {
+
+    return (
+      <div className='container'>
+        <Timeline additions={this.state.additions}/>
+        
+      </div>
+    );
+  }
 }
 
 export default App;
