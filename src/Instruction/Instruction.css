@@ -1,0 +1,23 @@
+.instructionHeader {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    color: #444;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.instruction {
+    font-family: 'Open Sans', sans-serif;
+    color: #444;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.instructionButton {
+    outline: none;
+    border: none;
+    padding: 1rem 3rem;
+    background-color: #666;
+    color: white;
+    border-radius: 5000px;
+}
