@@ -3,8 +3,7 @@ import '../Addition/Addition.css';
 
 const addition = (props) => {
 
-    let percentage = ((props.totalTime - props.time) / props.totalTime) * 100 + '%';
-    console.log("Ingredient " + props.amount + " " + props.name + " going to " + percentage);
+    let percentage = ((props.boilTime - props.time) / props.boilTime) * 100 + '%';
 
     const topPositioning = {
         top: percentage
