@@ -6,7 +6,7 @@ const Timeline = (props) => {
     console.log(props);
 
     const additionComponents = props.additions.map(add => {
-        return(<Addition time={add[0]} amount={add[2]} name={add[3]}/>);
+        return(<Addition totalTime={props.totalTime} time={add[0]} amount={add[2]} name={add[3]}/>);
     })
 
     return (

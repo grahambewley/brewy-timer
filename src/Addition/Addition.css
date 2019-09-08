@@ -3,7 +3,8 @@
     display: flex;
     width: max-content;
     align-items: center;
-    margin-top: 0;
+    transform: translateY(-.75rem) translateX(calc(-.75rem + 3px));
+
 }
 
 .symbol {

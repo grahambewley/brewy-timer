@@ -16,8 +16,7 @@ class App extends Component {
 
     return (
       <div className='container'>
-        <Timeline additions={this.state.additions}/>
-        
+        <Timeline totalTime={this.state.totalTime} additions={this.state.additions}/>
       </div>
     );
   }

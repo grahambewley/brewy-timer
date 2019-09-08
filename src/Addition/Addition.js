@@ -3,14 +3,15 @@ import '../Addition/Addition.css';
 
 const addition = (props) => {
 
-    const marTop = props.time*5 + 'px';
+    let percentage = ((props.totalTime - props.time) / props.totalTime) * 100 + '%';
+    console.log("Ingredient " + props.amount + " " + props.name + " going to " + percentage);
 
-    const styleMarginTop = {
-        marginTop: marTop
+    const topPositioning = {
+        top: percentage
     }
 
     return (
-        <div className='addition' style={styleMarginTop}>
+        <div style={topPositioning} className='addition'>
             <div className='symbol'></div>
             <p>{props.amount} {props.name}</p>
         </div>

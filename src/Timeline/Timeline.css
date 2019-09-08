@@ -1,5 +1,6 @@
 .timeline {
-    height: 60vh;
+    position: relative;
+    height: 75vh;
     width: 6px;
     border-radius: 50px;
     background-color: #dedede;
