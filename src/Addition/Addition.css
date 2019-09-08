@@ -8,19 +8,24 @@
     color: #444;
     font-size: 1.3rem;
     font-weight: 600;
+
+    transition: opacity .5s;
 }
 
 .symbol {
     height: 1.5rem;
     width: 1.5rem;
-    background-color: green;
+    background-color: #288B64;
     border-radius: 50%;
     margin-right: .5rem;
+    transition: background-color .5s;
 }
 
 .details {
     display: flex;
     align-items: center;
+
+    transition: opacity .5s;
 }
 
 .time {

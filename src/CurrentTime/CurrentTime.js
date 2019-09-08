@@ -7,7 +7,6 @@ const timer = (props) => {
     var seconds = props.elapsedSeconds - minutes * 60;
 
     let percentage = 100 - ((props.totalSeconds - props.elapsedSeconds) / props.totalSeconds) * 100 + '%';
-    console.log("Timer percentage is " + percentage);
 
     const topPositioning = {
         top: percentage

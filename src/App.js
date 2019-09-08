@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import Timeline from './Timeline/Timeline';
-import Adder from './Adder/Adder';
+import Instruction from './Instruction/Instruction';
 import './App.css';
 
 class App extends Component {
   state = {
-    boilTime: 60,
-    startTime: '',
+    boilMinutes: 60,
+    startTime: 0,
     elapsedSeconds: 0,
+    play: true,
     additions: [
-      [60, 'hops', '1oz', 'CENTENNIAL'],
-      [30, 'hops', '1oz', 'CENTENNIAL'],
-      [5, 'hops', '2oz', 'CENTENNIAL'],
-      [15, 'hops', '1oz', 'CITRA']
+      // TIME (minutes), TYPE, AMOUNT, NAME, DONE
+      [60, 'hops', '1oz', 'CENTENNIAL', false],
+      [57, 'hops', '1oz', 'AMARILLO', false],
+      [30, 'hops', '1oz', 'CENTENNIAL', false],
+      [5, 'hops', '2oz', 'CENTENNIAL', false],
+      [15, 'hops', '1oz', 'CITRA', false]
     ]
   }
 
@@ -23,35 +26,22 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 1000);
+    if(this.state.play) {
+      this.interval = setInterval(() => this.tick(), 1000);
+    }
   }
-
   componentWillUnmount() {
     clearInterval(this.interval);
-  }
-
-
-  addToAdditions() {
-    alert("Hey there");
-  }
-
-  startTimer = () =>{
-    const d = new Date().getTime / 1000;
-    console.log('Start time is ' + d);
-    this.setState({
-      startTime: d
-    })
   }
 
   render () {
 
     return (
       <div className='container'>
-        <Timeline boilTime={this.state.boilTime} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds}/>
-        <Adder submitFunction={this.addToAdditions}/>
-        <button onClick={this.startTimer}>Start</button>
+        <Timeline boilMinutes={this.state.boilMinutes} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds}/>
+        <Instruction boilMinutes={this.state.boilMinutes} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds} />
       </div>
-    );
+    );  
   }
 }
 
