@@ -1,6 +1,7 @@
 import React from 'react';
 import './Timeline.css';
 import Addition from '../Addition/Addition';
+import CurrentTime from '../CurrentTime/CurrentTime';
 
 const Timeline = (props) => {
     console.log(props);
@@ -11,6 +12,7 @@ const Timeline = (props) => {
 
     return (
         <div className='timeline'>
+            <CurrentTime />
             {additionComponents}
         </div>
     )

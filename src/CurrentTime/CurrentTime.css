@@ -1,0 +1,10 @@
+.timer {
+    display: flex;
+}
+
+.timerDash {
+    display: absolute;
+    height: 2px;
+    width: 2rem;
+    background-color: #999;
+}

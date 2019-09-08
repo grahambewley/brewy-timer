@@ -4,7 +4,10 @@
     width: max-content;
     align-items: center;
     transform: translateY(-.75rem) translateX(calc(-.75rem + 3px));
-
+    font-family: 'Open Sans', sans-serif;
+    color: #444;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
 .symbol {
@@ -12,4 +15,16 @@
     width: 1.5rem;
     background-color: green;
     border-radius: 50%;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+}
+
+.time {
+    margin-left: .5rem;
+    color: #555;
+    font-size: 1rem;
+    font-weight: 400;
 }

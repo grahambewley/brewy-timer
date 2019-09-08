@@ -13,7 +13,7 @@ const addition = (props) => {
     return (
         <div style={topPositioning} className='addition'>
             <div className='symbol'></div>
-            <p>{props.amount} {props.name}</p>
+            <p className='details'>{props.amount} {props.name} <span className='time'>@ {props.time} MIN</span></p>
         </div>
     )
 }
