@@ -18,21 +18,35 @@ const Instruction = (props) => {
     let nextInstruction = props.additions[props.currentAdditionIndex][2] + " of " + props.additions[props.currentAdditionIndex][3];
     let instructionContainerStyle = {};
 
+    // If secondsUntil is positive, this addition hasn't happened yet -- style based on the type of addition incoming
+    if(secondsUntil >= 0) {
+        const additionType = props.additions[props.currentAdditionIndex][1];
+
+        switch(additionType) {
+            case 'hops':
+                instructionContainerStyle = { backgroundColor: '#a9d1c1'};
+                break;
+            default:
+                instructionContainerStyle = { backgroundColor: 'white'};
+                break;
+
+        }
+    }
     // If secondsUntil is negative, this addition time has passed, style appropriately
     if(secondsUntil < 0) {
         instructionContainerStyle = {
-            backgroundColor:'#f2cd99'
+            backgroundColor:'#ff9898'   // light red
         }
     } 
 
     return (
         <div style={instructionContainerStyle} className='instructionContainer'>
-            <p className='nextAddition'>Next Addition:</p>
-            <p className='instruction'>{nextInstruction}</p>
-            <div className='instructionAction'>
-                <p className='instructionTimer'>{displayMinutes}:{displaySeconds}</p>
+            <div className='instrucitonDetails'>
+                <p className='nextAddition'>Next Addition:</p>
+                <p className='instruction'>{nextInstruction}</p>
                 <button onClick={props.done} className='instructionButton'>DONE</button>
             </div>
+            <p className='instructionTimer'>{displayMinutes}:{displaySeconds}</p>
         </div>
     )
 

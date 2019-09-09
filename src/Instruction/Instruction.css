@@ -1,18 +1,23 @@
 .instructionContainer {
-    padding: 2rem;
-    margin: 1rem;
-    border-radius: .75rem;
-    background-color: #BDC3C7;
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 1.5rem);
+    padding: 1rem;
+    margin: .75rem;
+    border-radius: .5rem;
+    background-color: #72e5e5;
     position: absolute;
     bottom: 0;
     height: 20vh;
+    box-shadow: 0 4rem 5rem rgba(#000, .6);
 }
 
 .nextAddition {
     font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
     color: #444;
     font-size: 1.4rem;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .instruction {
@@ -20,28 +25,31 @@
     color: #444;
     font-size: 2.2rem;
     font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 .instructionAction {
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-items:flex-start;
 }
 
 .instructionTimer {
     font-family: 'Roboto Mono', monospace;
-    font-size: 1.4rem;
+    font-size: 2.2rem;
     display: inline-block;
-    padding: .75rem;
+    padding: .6rem;
     background-color: #eee;
+    color: #444;
     border-radius: 2px;
+    align-self: flex-start;
 }
 
 .instructionButton {
     outline: none;
     border: none;
     padding: 1rem 3rem;
-    background-color: #666;
+    background-color: #444;
     color: #eee;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.6rem;

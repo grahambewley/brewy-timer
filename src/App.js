@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Options from './Options/Options';
 import Timeline from './Timeline/Timeline';
 import Instruction from './Instruction/Instruction';
 import './App.css';
@@ -36,16 +37,18 @@ class App extends Component {
   }
 
   instructionDoneButtonHandler = () => {
-
+    this.setState(prevState => ({
+      currentAdditionIndex: prevState.currentAdditionIndex + 1
+    }))
   }
 
   render () {
 
     return (
       <div className='container'>
+        <Options />
         <Timeline boilMinutes={this.state.boilMinutes} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds}/>
         <Instruction done={this.instructionDoneButtonHandler} currentAdditionIndex={this.state.currentAdditionIndex} boilMinutes={this.state.boilMinutes} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds} />
-      
       </div>
     );  
   }

@@ -9,9 +9,11 @@ const Timeline = (props) => {
     })
 
     return (
-        <div className='timeline'>
-            <CurrentTime elapsedSeconds={props.elapsedSeconds} totalSeconds={props.boilMinutes*60}/>
-            {additionComponents}
+        <div className='timelineContainer'>
+            <div className='timeline'>
+                <CurrentTime elapsedSeconds={props.elapsedSeconds} totalSeconds={props.boilMinutes*60}/>
+                {additionComponents}
+            </div>
         </div>
     )
 }
