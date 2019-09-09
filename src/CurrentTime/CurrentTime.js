@@ -13,7 +13,7 @@ const timer = (props) => {
     }
 
     return (
-        <div style={topPositioning} className= 'timer'>
+        <div style={topPositioning} className= 'timer' id='timer'>
             <div className='timerDash'></div> 
             <p>{minutes} <span className='timerLabel'>min</span> {seconds} <span className='timerLabel'>sec</span></p>
         </div>

@@ -11,7 +11,8 @@ const addition = (props) => {
 
     let additionTextStyle = {};
     let additionSymbolStyle = {};
-    
+
+    // TODO: Switch to using .offsetTop property of the DOM elements -- timer vs Addition
     // Get the amount of seconds elapsed for this addition
     let additionSeconds = props.boilMinutes*60 - props.time*60;
     

@@ -1,10 +1,11 @@
 .timeline {
     position: relative;
     height: 70vh;
-    width: 6px;
+    width: 4px;
     border-radius: 50px;
     background-color: #ebebeb;
     margin-top: 4rem;
     margin-left: 4rem;
+    margin-bottom: 2rem;
 }
 

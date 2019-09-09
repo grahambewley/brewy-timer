@@ -6,7 +6,6 @@ const Instruction = (props) => {
     let nextInstruction = '';
 
     const sortedAdditions = props.additions.sort((b,a) => a[0] - b[0]);
-    console.log(sortedAdditions);
 
     for(let i=0; i < sortedAdditions.length; i++) {
         if(sortedAdditions[i][4] === false) {
@@ -21,10 +20,10 @@ const Instruction = (props) => {
     }
 
     return (
-        <div>
+        <div className='instructionContainer'>
             <p className='instructionHeader'>Next Instruction:</p>
             <p className='instruction'>{nextInstruction}</p>
-            <button className='instructionButton'>Did it</button>
+            <button className='instructionButton'>DONE</button>
         </div>
     )
 

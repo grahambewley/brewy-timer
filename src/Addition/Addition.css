@@ -3,21 +3,21 @@
     display: flex;
     width: max-content;
     align-items: center;
-    transform: translateY(-.75rem) translateX(calc(-.75rem + 3px));
+    transform: translateY(-.6rem) translateX(calc(-.6rem + 2px));
     font-family: 'Open Sans', sans-serif;
     color: #444;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     font-weight: 600;
 
     transition: opacity .5s;
 }
 
 .symbol {
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1.2rem;
+    width: 1.2rem;
     background-color: #288B64;
     border-radius: 50%;
-    margin-right: .5rem;
+    margin-right: .7rem;
     transition: background-color .5s;
 }
 
@@ -31,6 +31,6 @@
 .time {
     margin-left: .5rem;
     color: #555;
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
