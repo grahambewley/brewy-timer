@@ -14,3 +14,8 @@ html {
 body {
   background-color: #ddd;
 }
+
+.container {
+  display: grid;
+  grid-template-rows: 70vh, 1fr;
+}

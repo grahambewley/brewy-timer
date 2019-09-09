@@ -9,13 +9,14 @@ class App extends Component {
     startTime: 0,
     elapsedSeconds: 0,
     play: true,
+    currentAdditionIndex: 0,
     additions: [
       // TIME (minutes), TYPE, AMOUNT, NAME, DONE
-      [60, 'hops', '1oz', 'CENTENNIAL', false],
-      [57, 'hops', '1oz', 'AMARILLO', false],
-      [30, 'hops', '1oz', 'CENTENNIAL', false],
-      [5, 'hops', '2oz', 'CENTENNIAL', false],
-      [15, 'hops', '1oz', 'CITRA', false]
+      [60, 'hops', '1oz', 'Centennial', false],
+      [57, 'hops', '1oz', 'Amarillo', false],
+      [30, 'hops', '1oz', 'Centennial', false],
+      [15, 'hops', '1oz', 'Citra', false],
+      [5, 'hops', '2oz', 'Centennial', false]      
     ]
   }
 
@@ -34,12 +35,17 @@ class App extends Component {
     clearInterval(this.interval);
   }
 
+  instructionDoneButtonHandler = () => {
+
+  }
+
   render () {
 
     return (
       <div className='container'>
         <Timeline boilMinutes={this.state.boilMinutes} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds}/>
-        <Instruction boilMinutes={this.state.boilMinutes} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds} />
+        <Instruction done={this.instructionDoneButtonHandler} currentAdditionIndex={this.state.currentAdditionIndex} boilMinutes={this.state.boilMinutes} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds} />
+      
       </div>
     );  
   }
