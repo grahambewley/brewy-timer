@@ -4,7 +4,7 @@
 
 .timeline {
     position: relative;
-    height: 70vh;
+    height: 100%;
     width: 4px;
     border-radius: 50px;
     background-color: #eee;
