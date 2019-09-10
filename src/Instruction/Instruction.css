@@ -5,7 +5,7 @@
 
 .instructionBox {
     height: 100%;
-    padding: 2rem;
+    padding: 1.5rem;
     display: flex;
     justify-content: space-between;
     border-radius: .5rem;
@@ -25,7 +25,7 @@
 .instructionDetailsContainer {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .instruction {
@@ -34,12 +34,6 @@
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 1rem;
-}
-
-.instructionAction {
-    display: flex;
-    justify-content: space-between;
-    align-items:flex-start;
 }
 
 .instructionTimerContainer {
@@ -55,6 +49,7 @@
     padding: .6rem;
     background-color: #eee;
     color: #444;
+    border: 1px solid #ddd;
     border-radius: 2px;
 }
 
@@ -68,16 +63,22 @@
     border: none;
 }
 
+.instructionRewind:focus {
+    outline: none;
+}
+
 .instructionButton {
+    align-self: flex-start;
     justify-self: flex-end;
     outline: none;
     border: none;
+    border-radius: 5000px;
     padding: 1rem 3rem;
-    background-color: #444;
-    color: #eee;
+    background-color: #eee;
+    color: #444;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.6rem;
     letter-spacing: .1rem;
     font-weight: 600;
-    border-radius: 5000px;
+
 }

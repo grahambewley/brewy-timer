@@ -74,9 +74,11 @@ const Instruction = (props) => {
     return (
         <div className='instructionContainer'>
             <div style={instructionBoxStyle} className='instructionBox'>
-                <div className='instrucitonDetailsContainer'>
-                    <p className='nextAddition'>Next Addition:</p>
-                    <p className='instruction'>{nextInstruction}</p>
+                <div className='instructionDetailsContainer'>
+                    <div className='instructionDetails'>
+                        <p className='nextAddition'>Next Addition:</p>
+                        <p className='instruction'>{nextInstruction}</p>
+                    </div>
                     <button onClick={props.done} className='instructionButton'>DONE</button>
                 </div>
                 <div className='instructionTimerContainer'>
