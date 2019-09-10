@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import Options from './Options/Options';
+import Options from './Options/Options';
 import Timeline from './Timeline/Timeline';
 import Instruction from './Instruction/Instruction';
 import './App.css';
@@ -37,6 +37,10 @@ class App extends Component {
     clearInterval(this.interval);
   }
 
+  fullscreenButtonHandler = () => {
+    document.body.requestFullscreen();
+  }
+  
   instructionDoneButtonHandler = () => {
     if(this.state.currentAdditionIndex < this.state.additions.length) {
       this.setState(prevState => ({
@@ -59,6 +63,7 @@ class App extends Component {
 
     return (
       <div className='container'>
+        <Options full={this.fullscreenButtonHandler}/>
         <Timeline boilMinutes={this.state.boilMinutes} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds}/>
         <Instruction done={this.instructionDoneButtonHandler} rewind={this.rewindButtonHandler} currentAdditionIndex={this.state.currentAdditionIndex} boilMinutes={this.state.boilMinutes} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds} />
       </div>

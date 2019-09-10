@@ -6,7 +6,7 @@ const option = (props) => {
     return (
         <div className='optionsContainer'>
             <button className='option-button'><i className="fas fa-undo option-icon"></i></button>
-            <button className='option-button'><i className="fas fa-pause option-icon"></i></button>
+            <button onClick={props.full} className='option-button'><i class="far fa-window-maximize"></i></button>
             <button className='option-button'><i className="fas fa-bars option-icon"></i></button>
         </div>
     )
