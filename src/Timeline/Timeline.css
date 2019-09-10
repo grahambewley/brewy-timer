@@ -1,15 +1,12 @@
 .timelineContainer {
-    width: max-content;
+    padding: 2rem 4rem;
 }
 
 .timeline {
-    position: relative;
     height: 100%;
+    position: relative;
     width: 4px;
     border-radius: 50px;
     background-color: #eee;
-    margin-top: 4rem;
-    margin-left: 4rem;
-    margin-bottom: 2rem;
 }
 

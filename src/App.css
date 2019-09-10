@@ -16,6 +16,8 @@ body {
 }
 
 .container {
+  height: 100vh;
   display: grid;
-  grid-template-rows: 70vh, 1fr;
+/*  grid-template-rows: 80vh 1fr; */
+  grid-template-rows: 1fr minmax(20vh, min-content);
 }

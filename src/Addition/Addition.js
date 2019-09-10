@@ -20,11 +20,18 @@ const addition = (props) => {
         additionTextStyle = {
             opacity: 0.3
         }
-
-        additionSymbolStyle = {
-            backgroundColor: '#8DD96B'
-        }
     } 
+
+    switch(props.type) {
+        case 'hops':
+            additionSymbolStyle = { backgroundColor: '#288B64' };
+            break;
+        case 'malt':
+            additionSymbolStyle = { backgroundColor: '#862201' };
+            break;
+        default :
+            additionSymbolStyle = { backgroundColor: 'salmon'};
+    }
 
     return (
         <div style={additionStyle} className='addition'>
