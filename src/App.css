@@ -16,6 +16,7 @@ body {
 }
 
 .container {
+  background-color: #ddd;
   height: 100vh;
   display: grid;
 /*  grid-template-rows: 80vh 1fr; */
