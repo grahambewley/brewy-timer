@@ -1,5 +1,6 @@
 .timelineContainer {
-    padding: 2rem 4rem;
+    grid-column: 2 / span 1;
+    padding: 2rem 0;
 }
 
 .timeline {

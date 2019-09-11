@@ -1,5 +1,6 @@
 .instructionContainer {
-    grid-column: 2 / -1;
+    grid-row: 2 / -1;
+    grid-column: 1 / -1;
     padding: 0 1rem 1rem 1rem;    
 }
 
