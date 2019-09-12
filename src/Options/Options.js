@@ -13,8 +13,8 @@ const option = (props) => {
  
     return (
         <div className='optionsContainer'>
-            <button className='option-button'><i className="fas fa-undo"></i></button>
             <button onClick={props.fullscreenClick} className='option-button'><i className={fullscreenIcon}></i></button>
+            <button onClick={props.restartClick} className='option-button'><i className="fas fa-undo"></i></button>
             <button className='option-button'><i className="fas fa-bars"></i></button>
         </div>
     )

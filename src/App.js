@@ -59,6 +59,8 @@ class App extends Component {
     ]
   }
 
+  // CLOCK TICK HANDLERS
+
   tick() {
     this.setState(prevState => ({
       elapsedSeconds: prevState.elapsedSeconds + 1
@@ -73,6 +75,8 @@ class App extends Component {
   componentWillUnmount() {
     clearInterval(this.interval);
   }
+
+  // OPTION BUTTON HANDLERS
 
   fullscreenButtonHandler = () => {
     if(this.state.fullscreen === false) {
@@ -98,7 +102,24 @@ class App extends Component {
     }
       
   }
+
+  restartButtonHandler = () => {
+    // Get a copy of Additions from state
+    const additionsCopy = [...this.state.additions];
+    // Set the "done" property of each addition to false
+    additionsCopy.forEach((element) => {
+      element.done = false;
+    });
+
+    this.setState({
+      currentAdditionIndex: 0,
+      elapsedSeconds: 0,
+      additions: additionsCopy
+    });
+  }
   
+  // INSTRUCTION BUTTON HANDLERS
+
   instructionDoneButtonHandler = () => {
     if(this.state.currentAdditionIndex < this.state.additions.length) {
       // Get a copy of the current additions array in state
