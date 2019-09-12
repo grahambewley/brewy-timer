@@ -7,6 +7,7 @@ import './App.css';
 
 class App extends Component {
   state = {
+    fullscreen: false,
     boilMinutes: 60,
     startTime: 0,
     elapsedSeconds: 0,
@@ -74,7 +75,28 @@ class App extends Component {
   }
 
   fullscreenButtonHandler = () => {
-    document.body.requestFullscreen();
+    if(this.state.fullscreen === false) {
+      this.setState({
+        fullscreen: true
+      });
+      document.body.requestFullscreen();
+    }
+
+    else {
+      this.setState({
+        fullscreen: false
+      });
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+      }
+    }
+      
   }
   
   instructionDoneButtonHandler = () => {
@@ -111,7 +133,10 @@ class App extends Component {
     return (
       <div className='container'>
         <Options 
-          full={this.fullscreenButtonHandler} />
+          fullscreenClick={this.fullscreenButtonHandler} 
+          restartClick={this.restartButtonHandler}
+          menuClick={this.menuButtonHandler} 
+          full={this.state.fullscreen} />
         <CurrentTime 
           elapsedSeconds={this.state.elapsedSeconds}
           totalSeconds={this.state.boilMinutes*60}/>
