@@ -95,8 +95,12 @@ class App extends Component {
   }
 
   rewindButtonHandler = () => {
-    if(this.state.currentAdditionIndex > 0)
-    {
+    if(this.state.currentAdditionIndex > 0) {
+      // Get a copy of the current additions array in state
+      let additionsCopy = this.state.additions;
+      // Set the addition at index: currentAdditionIndex to DONE -- used in Addition component for strikethrough
+      additionsCopy[this.state.currentAdditionIndex-1].done = false;
+
       this.setState(prevState => ({
         currentAdditionIndex: prevState.currentAdditionIndex - 1
       }))
