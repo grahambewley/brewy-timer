@@ -5,7 +5,15 @@ import Addition from '../Addition/Addition';
 
 const Timeline = (props) => {
     const additionComponents = props.additions.map(add => {
-        return(<Addition elapsedSeconds={props.elapsedSeconds} boilMinutes={props.boilMinutes} time={add[0]} type={add[1]} amount={add[2]} name={add[3]}/>);
+        return (
+            <Addition 
+                elapsedSeconds={props.elapsedSeconds} 
+                boilMinutes={props.boilMinutes} 
+                time={add.time} 
+                type={add.type} 
+                amount={add.amount} 
+                name={add.name}/>
+        );
     })
 
     return (

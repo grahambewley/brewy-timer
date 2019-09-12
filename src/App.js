@@ -13,13 +13,48 @@ class App extends Component {
     play: true,
     currentAdditionIndex: 0,
     additions: [
-      // TIME (minutes), TYPE, AMOUNT, NAME, DONE
-      [60, 'hops', '1 oz', 'Centennial'],
-      [57, 'hops', '1 oz', 'Amarillo'],
-      [30, 'hops', '1 oz', 'Centennial'],
-      [20, 'malt', '3 lbs', 'Maris Otter LME'],
-      [15, 'hops', '1 oz', 'Citra'],
-      [5, 'hops', '2 oz', 'Centennial']      
+      {
+        time: 60,
+        type: 'hops',
+        amount: '1 oz',
+        name: 'Centennial',
+        done: false
+      },
+      {
+        time: 57,
+        type: 'hops',
+        amount: '1 oz',
+        name: 'Amarillo',
+        done: false
+      },
+      {
+        time: 30,
+        type: 'hops',
+        amount: '1 oz',
+        name: 'Centennial',
+        done: false
+      },
+      {
+        time: 20,
+        type: 'malt',
+        amount: '3 lbs',
+        name: 'Maris Otter LME',
+        done: false
+      },
+      {
+        time: 15,
+        type: 'hops',
+        amount: '1 oz',
+        name: 'Citra',
+        done: false
+      },
+      {
+        time: 5,
+        type: 'hops',
+        amount: '2 oz',
+        name: 'Centennial',
+        done: false
+      }
     ]
   }
 
@@ -46,6 +81,7 @@ class App extends Component {
     if(this.state.currentAdditionIndex < this.state.additions.length) {
       this.setState(prevState => ({
         currentAdditionIndex: prevState.currentAdditionIndex + 1
+        
       }))
     }
     
@@ -61,13 +97,24 @@ class App extends Component {
   }
 
   render () {
-
     return (
       <div className='container'>
-        <Options full={this.fullscreenButtonHandler}/>
-        <CurrentTime elapsedSeconds={this.state.elapsedSeconds} totalSeconds={this.state.boilMinutes*60}/>
-        <Timeline boilMinutes={this.state.boilMinutes} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds}/>
-        <Instruction done={this.instructionDoneButtonHandler} rewind={this.rewindButtonHandler} currentAdditionIndex={this.state.currentAdditionIndex} boilMinutes={this.state.boilMinutes} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds} />
+        <Options 
+          full={this.fullscreenButtonHandler} />
+        <CurrentTime 
+          elapsedSeconds={this.state.elapsedSeconds}
+          totalSeconds={this.state.boilMinutes*60}/>
+        <Timeline 
+          boilMinutes={this.state.boilMinutes} 
+          additions={this.state.additions} 
+          elapsedSeconds={this.state.elapsedSeconds} />
+        <Instruction 
+          done={this.instructionDoneButtonHandler} 
+          rewind={this.rewindButtonHandler} 
+          currentAdditionIndex={this.state.currentAdditionIndex} 
+          boilMinutes={this.state.boilMinutes} 
+          additions={this.state.additions} 
+          elapsedSeconds={this.state.elapsedSeconds} />
       </div>
     );  
   }

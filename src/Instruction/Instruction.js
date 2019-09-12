@@ -34,7 +34,7 @@ const Instruction = (props) => {
     // Otherwise, display the next instruction and the timer
     else {
         // Get the amount of seconds that the next addition is required at    
-        let additionSeconds = props.boilMinutes*60 - props.additions[props.currentAdditionIndex][0]*60;
+        let additionSeconds = props.boilMinutes*60 - props.additions[props.currentAdditionIndex].time*60;
         // Find the amount of seconds until that next addition -- could be positive or negative
         let secondsUntil = additionSeconds - props.elapsedSeconds;
         
@@ -45,11 +45,11 @@ const Instruction = (props) => {
         displaySeconds = absoluteSecondsUntil - displayMinutes * 60;
         displaySeconds = ('0' + displaySeconds).slice(-2);
 
-        nextInstruction = props.additions[props.currentAdditionIndex][2] + " of " + props.additions[props.currentAdditionIndex][3];
+        nextInstruction = props.additions[props.currentAdditionIndex].amount + " of " + props.additions[props.currentAdditionIndex].name;
 
         // If secondsUntil is positive, this addition hasn't happened yet -- style based on the type of addition incoming
         if(secondsUntil >= 0) {
-            const additionType = props.additions[props.currentAdditionIndex][1];
+            const additionType = props.additions[props.currentAdditionIndex].type;
 
             switch(additionType) {
                 case 'hops':

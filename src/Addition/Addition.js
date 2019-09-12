@@ -3,8 +3,9 @@ import '../Addition/Addition.css';
 
 const addition = (props) => {
 
+    // Get a percentage based on this Addition's time vs. total boil minutes...
     let percentage = ((props.boilMinutes - props.time) / props.boilMinutes) * 100 + '%';
-    
+    // Position this Addition accordingly
     let additionStyle = {
         top: percentage
     }
