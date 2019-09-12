@@ -14,6 +14,13 @@ const addition = (props) => {
     let additionTextStyle = {};
     let additionSymbolStyle = {};
 
+    if(props.done === true) {
+        additionTextStyle = {
+            textDecoration: 'line-through',
+            opacity: '0.5'
+        }
+    }
+
     switch(props.type) {
         case 'hops':
             additionSymbolStyle = { backgroundColor: '#288B64' };

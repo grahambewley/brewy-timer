@@ -12,7 +12,8 @@ const Timeline = (props) => {
                 time={add.time} 
                 type={add.type} 
                 amount={add.amount} 
-                name={add.name}/>
+                name={add.name}
+                done={add.done} />
         );
     })
 

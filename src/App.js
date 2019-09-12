@@ -79,9 +79,16 @@ class App extends Component {
   
   instructionDoneButtonHandler = () => {
     if(this.state.currentAdditionIndex < this.state.additions.length) {
+      // Get a copy of the current additions array in state
+      let additionsCopy = this.state.additions;
+      // Set the addition at index: currentAdditionIndex to DONE -- used in Addition component for strikethrough
+      additionsCopy[this.state.currentAdditionIndex].done = true;
+      
       this.setState(prevState => ({
+        // Set additions to the modified copy we made
+        additions: additionsCopy,
+        // Move the currentAdditionIndex up 1 -- used for the Instruction component
         currentAdditionIndex: prevState.currentAdditionIndex + 1
-        
       }))
     }
     
