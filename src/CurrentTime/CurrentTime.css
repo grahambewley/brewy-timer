@@ -1,18 +1,18 @@
-
 .timerLine {
+    position: relative;
     margin: 2rem 0;
     grid-column: 1 / span 1;
-    height: 100%;
-    position: relative;
+    grid-row: 1 / span 1;
 }
+
 .timerContainer {
+    transform: translateY(-1.2rem);
+    margin-right: .5rem;
     position: absolute;
     right: 0;
     display: flex;
     align-items: center;
     z-index: 10;
-    transform: translateY(-.7rem);
-    margin-right: .5rem;
 }
 
 .timer {
@@ -21,14 +21,14 @@
     color: #222;
     padding: .4rem;
     background-color: #eee;
-    border: 1px solid #ff9898;
+    border: 2px solid #a9d1c1;
 }
 
 .timerDash {
     display: absolute;
-    height: 1px;
-    width: .6rem;
-    background-color: #ff9898;
+    height: 2px;
+    width: .4rem;
+    background-color: #a9d1c1;
 }
 
 .timerLabel {

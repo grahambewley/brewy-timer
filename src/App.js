@@ -21,7 +21,7 @@ class App extends Component {
         done: false
       },
       {
-        time: 57,
+        time: 45,
         type: 'hops',
         amount: '1 oz',
         name: 'Amarillo',
@@ -49,7 +49,7 @@ class App extends Component {
         done: false
       },
       {
-        time: 5,
+        time: 0,
         type: 'hops',
         amount: '2 oz',
         name: 'Centennial',

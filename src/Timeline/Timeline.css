@@ -1,6 +1,6 @@
 .timelineContainer {
     grid-column: 2 / span 1;
-    padding: 2rem 0;
+    margin: 2rem 0;
 }
 
 .timeline {
@@ -8,6 +8,5 @@
     position: relative;
     width: 4px;
     border-radius: 50px;
-    background-color: #eee;
 }
 
