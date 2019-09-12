@@ -21,7 +21,7 @@ class App extends Component {
         done: false
       },
       {
-        time: 45,
+        time: 56,
         type: 'hops',
         amount: '1 oz',
         name: 'Amarillo',

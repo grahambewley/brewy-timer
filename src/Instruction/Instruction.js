@@ -63,6 +63,7 @@ const Instruction = (props) => {
                     break;
             }
         }
+
         // If secondsUntil is negative, this addition time has passed, style appropriately
         if(secondsUntil < 0) {
             instructionBoxStyle = {
@@ -79,7 +80,7 @@ const Instruction = (props) => {
                         <p className='nextAddition'>Next Addition:</p>
                         <p className='instruction'>{nextInstruction}</p>
                     </div>
-                    <button onClick={props.done} className='instructionButton'>DONE</button>
+                    <button onClick={props.done} className='instructionButton' id='instructionButton'>Done</button>
                 </div>
                 <div className='instructionTimerContainer'>
                     <p className='instructionTimer'>{displayMinutes}:{displaySeconds}</p>
