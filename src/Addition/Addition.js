@@ -9,18 +9,9 @@ const addition = (props) => {
         top: percentage
     }
 
+    // TODO: Use this to add strikethrough to additions that have been used already
     let additionTextStyle = {};
     let additionSymbolStyle = {};
-
-    // TODO: Switch to using .offsetTop property of the DOM elements -- timer vs Addition
-    // Get the amount of seconds elapsed for this addition
-    let additionSeconds = props.boilMinutes*60 - props.time*60;
-    
-    if (Math.abs(additionSeconds - props.elapsedSeconds) <= 75) {
-        additionTextStyle = {
-            opacity: 0.3
-        }
-    } 
 
     switch(props.type) {
         case 'hops':

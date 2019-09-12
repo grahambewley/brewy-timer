@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Options from './Options/Options';
+import CurrentTime from './CurrentTime/CurrentTime';
 import Timeline from './Timeline/Timeline';
 import Instruction from './Instruction/Instruction';
 import './App.css';
@@ -64,6 +65,7 @@ class App extends Component {
     return (
       <div className='container'>
         <Options full={this.fullscreenButtonHandler}/>
+        <CurrentTime elapsedSeconds={this.state.elapsedSeconds} totalSeconds={this.state.boilMinutes*60}/>
         <Timeline boilMinutes={this.state.boilMinutes} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds}/>
         <Instruction done={this.instructionDoneButtonHandler} rewind={this.rewindButtonHandler} currentAdditionIndex={this.state.currentAdditionIndex} boilMinutes={this.state.boilMinutes} additions={this.state.additions} elapsedSeconds={this.state.elapsedSeconds} />
       </div>
