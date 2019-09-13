@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Options.css';
 
 const option = (props) => {
@@ -15,7 +16,7 @@ const option = (props) => {
         <div className='optionsContainer'>
             <button onClick={props.fullscreenClick} className='option-button'><i className={fullscreenIcon}></i></button>
             <button onClick={props.restartClick} className='option-button'><i className="fas fa-undo"></i></button>
-            <a href='#' className='option-button'><i className="fas fa-bars"></i></a>
+            <Link to='/start' className='option-button'><i className="fas fa-bars"></i></Link>
         </div>
     )
 }
