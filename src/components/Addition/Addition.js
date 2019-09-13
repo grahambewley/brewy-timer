@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Addition/Addition.css';
+import './Addition.css';
 
 const addition = (props) => {
 

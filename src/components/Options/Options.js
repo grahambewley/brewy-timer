@@ -15,7 +15,7 @@ const option = (props) => {
         <div className='optionsContainer'>
             <button onClick={props.fullscreenClick} className='option-button'><i className={fullscreenIcon}></i></button>
             <button onClick={props.restartClick} className='option-button'><i className="fas fa-undo"></i></button>
-            <button className='option-button'><i className="fas fa-bars"></i></button>
+            <a href='#' className='option-button'><i className="fas fa-bars"></i></a>
         </div>
     )
 }
