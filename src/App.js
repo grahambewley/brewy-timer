@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import Brew from './containers/Brew/Brew';
 import Start from './containers/Start/Start';
+import BoilInput from './containers/BoilInput/BoilInput';
+import Ready from './containers/Ready/Ready';
+import AdditionInput from './containers/AdditionInput/AdditionInput';
+
 import { BrowserRouter, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -11,7 +15,7 @@ class App extends Component {
     boilMinutes: 60,
     startTime: 0,
     elapsedSeconds: 0,
-    play: true,
+    play: false,
     currentAdditionIndex: 0,
     additions: [
       {
@@ -154,6 +158,15 @@ class App extends Component {
     }
   }
 
+  // STARTUP FLOW HANDLERS
+  boilMinutesInputHandler = (event) => {
+    this.setState({
+      boilMinutes: event.target.value
+    })
+  }
+
+
+
   render () {
     return (
       <BrowserRouter>
@@ -175,7 +188,37 @@ class App extends Component {
 
           />}
         />
-        <Route path='/start' component={Start} />
+        
+        <Route 
+          path='/start' 
+          component={() => <Start
+            additions={this.state.additions}
+          />}
+        />
+
+        <Route
+          path='/boil'
+          component={() => <BoilInput
+            boilMinutes={this.state.boilMinutes}
+            boilChange={this.boilMinutesInputHandler}
+          />}
+        />
+
+        <Route
+          path='/additions'
+          component={() => <AdditionInput
+            additions={this.state.additions}
+
+          />}
+        />
+
+        <Route
+          path='/ready'
+          component={() => <Ready
+            boilMinutes={this.state.boilMinutes}
+            additions={this.state.additions}
+          />}
+        />
       </BrowserRouter>
         
     );  
