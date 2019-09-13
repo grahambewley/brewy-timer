@@ -4,9 +4,11 @@ import './AdditionTable.css';
 const AdditionTable = (props) => {
     
     const additionComponents = props.additions.map(add => {
+        const typeClass = add.type + 'Symbol';
+
         return (
             <tr>
-                <td>{add.type}</td>
+                <td><div className={typeClass}></div></td>
                 <td>{add.name}</td>
                 <td>{add.amount}</td>
                 <td>{add.time}</td>
@@ -15,13 +17,18 @@ const AdditionTable = (props) => {
     });
     return (
         <table className='additionTable'>
-            <tr>
-                <th>Type</th>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Time</th>
-            </tr>
-            { additionComponents }
+
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                { additionComponents }
+            </tbody>
         </table>
     );
 }

@@ -1,5 +1,30 @@
 .additionTable {
+    background-color: #eee;
+    width: 100%;
     font-family: 'Open Sans', sans-serif;
     color: #444;
     font-size: 1.6rem;
+}
+
+.additionTable th {
+    text-align: left;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #bbb;
+}
+
+.hopsSymbol {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background-color: #288B64;
+    margin-right: .3rem;
+}
+
+.maltSymbol {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background-color: #862201;
+    margin-right: .3rem;
 }

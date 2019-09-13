@@ -80,11 +80,11 @@ const Instruction = (props) => {
                         <p className='nextAddition'>Next Addition:</p>
                         <p className='instruction'>{nextInstruction}</p>
                     </div>
-                    <button onClick={props.done} className='instructionButton' id='instructionButton'>Done</button>
+                    <button onClick={props.instructDone} className='instructionButton' id='instructionButton'>Done</button>
                 </div>
                 <div className='instructionTimerContainer'>
                     <p className='instructionTimer'>{displayMinutes}:{displaySeconds}</p>
-                    <button className='instructionRewind' onClick={props.rewind}><i className="fas fa-undo option-icon"></i></button>
+                    <button className='instructionRewind' onClick={props.instructRewind}><i className="fas fa-undo option-icon"></i></button>
                 </div>
             </div>
         </div>

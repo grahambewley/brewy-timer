@@ -3,8 +3,8 @@ import AdditionTable from '../../components/AdditionTable/AdditionTable';
 
 const AdditionInput = (props) => {
     return (
-        <div>
-            <h1>Additions for your brew</h1>
+        <div className='wizardContainer'>
+            <h1 className='wizardHeader'>Brew Additions</h1>
             <AdditionTable additions={props.additions}/>
         </div>
     );

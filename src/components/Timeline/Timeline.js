@@ -29,6 +29,7 @@ const Timeline = (props) => {
             <div style={timelineStyle} className='timeline'>
                 {additionComponents}
             </div>
+            {props.play ? null : <button onClick={props.timerStart} className="timelineStart">Start Timer</button>}
         </div>
     )
 }

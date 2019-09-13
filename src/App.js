@@ -158,14 +158,21 @@ class App extends Component {
     }
   }
 
-  // STARTUP FLOW HANDLERS
-  boilMinutesInputHandler = (event) => {
+  startTimerHandler = () => {
+    this.interval = setInterval(() => this.tick(), 1000);
     this.setState({
-      boilMinutes: event.target.value
+      play: true
     })
   }
 
+  // STARTUP FLOW HANDLERS
+  boilMinutesInputHandler = (event) => {
+    const newBoilMinutes = event.target.value;
 
+    this.setState({
+      boilMinutes: newBoilMinutes
+    })
+  }
 
   render () {
     return (
@@ -174,10 +181,10 @@ class App extends Component {
           exact path='/' 
           component={() => <Brew 
             fullscreen={this.state.fullscreen}
+            play={this.state.play}
             boilMinutes={this.state.boilMinutes}
             startTime={this.state.startTime}
             elapsedSeconds={this.state.elapsedSeconds}
-            play={this.state.play}
             currentAdditionIndex={this.state.currentAdditionIndex}
             additions={this.state.additions}
 
@@ -185,6 +192,7 @@ class App extends Component {
             instructRewind={this.rewindButtonHandler}
             optFullscreen={this.fullscreenButtonHandler}
             optRestart={this.restartButtonHandler}
+            timerStart={this.startTimerHandler}
 
           />}
         />
@@ -200,7 +208,7 @@ class App extends Component {
           path='/boil'
           component={() => <BoilInput
             boilMinutes={this.state.boilMinutes}
-            boilChange={this.boilMinutesInputHandler}
+            
           />}
         />
 

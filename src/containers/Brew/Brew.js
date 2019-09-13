@@ -13,9 +13,8 @@ class Brew extends Component {
         return (
             <div className='container'>
                 <Options 
-                    fullscreenClick={this.props.optFullscreen} 
-                    restartClick={this.props.optRestart}
-                    menuClick={this.menuButtonHandler} 
+                    optFullscreen={this.props.optFullscreen} 
+                    optRestart={this.props.optRestart}
                     full={this.props.fullscreen} />
                 <CurrentTime 
                     elapsedSeconds={this.props.elapsedSeconds}
@@ -23,10 +22,12 @@ class Brew extends Component {
                 <Timeline 
                     boilMinutes={this.props.boilMinutes} 
                     additions={this.props.additions} 
-                    elapsedSeconds={this.props.elapsedSeconds} />
+                    elapsedSeconds={this.props.elapsedSeconds}
+                    play={this.props.play}
+                    timerStart={this.props.timerStart} />
                 <Instruction 
-                    done={this.props.instructDone} 
-                    rewind={this.props.instructRewind} 
+                    instructDone={this.props.instructDone} 
+                    instructRewind={this.props.instructRewind} 
                     currentAdditionIndex={this.props.currentAdditionIndex} 
                     boilMinutes={this.props.boilMinutes} 
                     additions={this.props.additions} 
