@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Brew from './containers/Brew/Brew';
-import Start from './containers/Start/Start';
-import BoilInput from './containers/BoilInput/BoilInput';
-import Ready from './containers/Ready/Ready';
-import AdditionInput from './containers/AdditionInput/AdditionInput';
+import Recipe from './containers/Recipe/Recipe';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -88,6 +85,7 @@ class App extends Component {
   // OPTION BUTTON HANDLERS
 
   fullscreenButtonHandler = () => {
+    console.log('Clicked fullscreen');
     if(this.state.fullscreen === false) {
       this.setState({
         fullscreen: true
@@ -193,42 +191,15 @@ class App extends Component {
             optFullscreen={this.fullscreenButtonHandler}
             optRestart={this.restartButtonHandler}
             timerStart={this.startTimerHandler}
-
-          />}
-        />
-        
-        <Route 
-          path='/start' 
-          component={() => <Start
-            additions={this.state.additions}
           />}
         />
 
         <Route
-          path='/boil'
-          component={() => <BoilInput
-            boilMinutes={this.state.boilMinutes}
-            
-          />}
+          path='/recipe'
+          component={() => <Recipe/>}
         />
+        </BrowserRouter>
 
-        <Route
-          path='/additions'
-          component={() => <AdditionInput
-            additions={this.state.additions}
-
-          />}
-        />
-
-        <Route
-          path='/ready'
-          component={() => <Ready
-            boilMinutes={this.state.boilMinutes}
-            additions={this.state.additions}
-          />}
-        />
-      </BrowserRouter>
-        
     );  
   }
 }

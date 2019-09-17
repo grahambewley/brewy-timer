@@ -7,15 +7,13 @@ import './Brew.css';
 
 class Brew extends Component {
 
-  
+    testFunction = () => {
+        console.log('TESTING FUNCTION THING!');
+    }
     
     render() {
         return (
             <div className='container'>
-                <Options 
-                    optFullscreen={this.props.optFullscreen} 
-                    optRestart={this.props.optRestart}
-                    full={this.props.fullscreen} />
                 <CurrentTime 
                     elapsedSeconds={this.props.elapsedSeconds}
                     totalSeconds={this.props.boilMinutes*60} />
@@ -32,6 +30,10 @@ class Brew extends Component {
                     boilMinutes={this.props.boilMinutes} 
                     additions={this.props.additions} 
                     elapsedSeconds={this.props.elapsedSeconds} />
+                <Options 
+                    optFullscreen={this.props.optFullscreen} 
+                    optRestart={this.props.optRestart}
+                    full={this.props.fullscreen} />
              </div>
         );
     };
