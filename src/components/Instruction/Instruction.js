@@ -77,10 +77,15 @@ const Instruction = (props) => {
             <div style={instructionBoxStyle} className='instructionBox'>
                 <div className='instructionDetailsContainer'>
                     <div className='instructionDetails'>
-                        <p className='nextAddition'>Next Addition:</p>
+                        {props.play ? 
+                            <p className='nextAddition'>Next Addition:</p> :
+                            <p className='nextAddition'>First Addition:</p> }
                         <p className='instruction'>{nextInstruction}</p>
                     </div>
-                    <button onClick={props.instructDone} className='instructionButton' id='instructionButton'>Done</button>
+                    {/* If recipe is 'playing' then display the DONE button, otherwise display the START button */}
+                    {props.play ? 
+                        <button onClick={props.instructDone} className='instructionButton' id='instructionButton'>Done</button> :
+                        <button onClick={props.timerStart} className="instructionButton">Start Boil</button>}
                 </div>
                 <div className='instructionTimerContainer'>
                     <p className='instructionTimer'>{displayMinutes}:{displaySeconds}</p>

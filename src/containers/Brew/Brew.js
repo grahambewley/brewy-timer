@@ -20,12 +20,12 @@ class Brew extends Component {
                 <Timeline 
                     boilMinutes={this.props.boilMinutes} 
                     additions={this.props.additions} 
-                    elapsedSeconds={this.props.elapsedSeconds}
-                    play={this.props.play}
-                    timerStart={this.props.timerStart} />
+                    elapsedSeconds={this.props.elapsedSeconds} />
                 <Instruction 
                     instructDone={this.props.instructDone} 
-                    instructRewind={this.props.instructRewind} 
+                    instructRewind={this.props.instructRewind}
+                    timerStart={this.props.timerStart}
+                    play={this.props.play} 
                     currentAdditionIndex={this.props.currentAdditionIndex} 
                     boilMinutes={this.props.boilMinutes} 
                     additions={this.props.additions} 
