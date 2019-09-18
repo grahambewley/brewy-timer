@@ -69,9 +69,14 @@ const Instruction = (props) => {
         } 
 
         //If secondsUntil next instruction equals 30 then vibrate
-        if(secondsUntil === 30){
-            window.navigator.vibrate(200);
+        if(secondsUntil === 120){
+            window.navigator.vibrate(800);
+        } else if(secondsUntil === 30) { 
+            window.navigator.vibrate(400,200,400);
+        } else if (secondsUntil === 15) {
+            window.navigator.vibrate(200,200,200,200,200);
         }
+
     }
 
     return (
