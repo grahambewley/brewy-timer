@@ -11,9 +11,10 @@ const Timeline = (props) => {
         background: linearGradientString
     }
 
-    const additionComponents = props.additions.map(add => {
+    const additionComponents = props.additions.map((add, index) => {
         return (
             <Addition 
+                key={index}
                 elapsedSeconds={props.elapsedSeconds} 
                 boilMinutes={props.boilMinutes} 
                 time={add.time} 

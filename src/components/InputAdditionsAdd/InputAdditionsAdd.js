@@ -5,7 +5,7 @@ import classes from './InputAdditionsAdd.module.css'
 class InputAdditionsAdd extends Component {
     state = {
         name: null,
-        type: null,
+        type: 'hops',
         amount: null,
         time: null,
     }
@@ -18,6 +18,7 @@ class InputAdditionsAdd extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        document.getElementById('additionAddForm').reset();
         this.props.additionAdd(this.state);
     }
 
@@ -25,15 +26,15 @@ class InputAdditionsAdd extends Component {
         return (
             <Aux>
                 <h2 className={classes.header}>Insert Addition</h2>
-                <form className={classes.form} onSubmit={this.handleSubmit}>
+                <form id='additionAddForm' className={classes.form} onSubmit={this.handleSubmit}>
                     <label htmlFor='name'>Name:</label>
                     <input className={classes.input} type='text' id='name' onChange={this.handleChange} required></input>
                     
                     <label htmlFor='type'>Type:</label>
                     <select className={classes.input} id='type' onChange={this.handleChange}>
-                        <option value='hops'>Hops</option>
-                        <option value='hops'>Malt</option>
-                        <option value='hops'>Misc</option>
+                        <option default value='hops'>Hops</option>
+                        <option value='malt'>Malt</option>
+                        <option value='misc'>Misc</option>
                     </select>
                     
                     <label htmlFor='amount'>Amount:</label>

@@ -8,7 +8,9 @@ const InputAdditions = (props) => {
     return (
         <Aux>
             <InputAdditionsTable 
-                additions={props.additions} />
+                additions={props.additions} 
+                additionDelete={props.additionDelete}
+                />
             <InputAdditionsAdd 
                 additionAdd={props.additionAdd}
             />

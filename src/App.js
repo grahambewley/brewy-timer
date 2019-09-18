@@ -15,6 +15,7 @@ class App extends Component {
     play: false,
     currentAdditionIndex: 0,
     additions: [
+      /*  STATIC DATA FOR TESTING
       {
         time: 60,
         type: 'hops',
@@ -57,6 +58,7 @@ class App extends Component {
         name: 'Centennial',
         done: false
       }
+      */
     ]
   }
 
@@ -130,7 +132,7 @@ class App extends Component {
   instructionDoneButtonHandler = () => {
     if(this.state.currentAdditionIndex < this.state.additions.length) {
       // Get a copy of the current additions array in state
-      let additionsCopy = this.state.additions;
+      let additionsCopy = [...this.state.additions];
       // Set the addition at index: currentAdditionIndex to DONE -- used in Addition component for strikethrough
       additionsCopy[this.state.currentAdditionIndex].done = true;
       
@@ -146,7 +148,7 @@ class App extends Component {
   rewindButtonHandler = () => {
     if(this.state.currentAdditionIndex > 0) {
       // Get a copy of the current additions array in state
-      let additionsCopy = this.state.additions;
+      let additionsCopy = [...this.state.additions];
       // Set the addition at index: currentAdditionIndex to DONE -- used in Addition component for strikethrough
       additionsCopy[this.state.currentAdditionIndex-1].done = false;
 
@@ -183,8 +185,36 @@ class App extends Component {
   }
 
   additionAddHandler = (newAddition) => {
+    const additionToAdd = {
+      time: parseInt(newAddition.time),
+      type: newAddition.type,
+      amount: newAddition.amount,
+      name: newAddition.name,
+      done: false
+    }
     console.log('submitted addition');
-    console.log(newAddition);
+    console.log(additionToAdd);
+
+    let additionsCopy = [...this.state.additions];
+
+    additionsCopy.push(additionToAdd);
+    additionsCopy.sort(function(obj1, obj2) {
+      return obj2.time - obj1.time;
+    });
+
+    this.setState({
+      additions: additionsCopy
+    })
+  }
+
+  additionDeleteHandler = (index) => {
+    console.log('Addition index to delete: ' + index);
+    let additionsCopy = [...this.state.additions];
+    additionsCopy.splice(index);
+
+    this.setState({
+      additions: additionsCopy
+    })
   }
 
   render () {
@@ -211,12 +241,12 @@ class App extends Component {
 
         <Route
           path='/recipe'
-          component={() => <Recipe
+          render={() => <Recipe
             boilMinutes={this.state.boilMinutes} 
             boilMinus={this.boilMinutesMinusHandler}
             boilPlus={this.boilMinutesPlusHandler}
             additionAdd={this.additionAddHandler}
-
+            additionDelete={this.additionDeleteHandler}
             additions={this.state.additions}
 
           />}

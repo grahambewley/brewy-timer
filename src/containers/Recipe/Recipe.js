@@ -6,11 +6,12 @@ import InputAdditions from '../../components/InputAdditions/InputAdditions';
 import classes from './Recipe.module.css';
 
 const Recipe = (props) => {
+
     return ( 
         <div className={classes.container}>
             <div className={classes.header}>
                 <Link to='/'>
-                    <button className={classes.button}><i class="fas fa-chevron-left"></i></button>
+                    <button className={classes.button}><i className="fas fa-chevron-left"></i></button>
                 </Link>
                 <h1 className={classes.headerText}>Your Brew</h1>
             </div>
@@ -22,10 +23,12 @@ const Recipe = (props) => {
 
             <InputAdditions
                 additionAdd={props.additionAdd}
+                additionDelete={props.additionDelete}
                 additions={props.additions}
             />
         </div>
     );
+    
 }
 
 export default Recipe;

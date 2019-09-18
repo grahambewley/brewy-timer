@@ -104,4 +104,22 @@
     color: #444;
     outline: none;
     border: none;
+    transition: all .3s;
+}
+
+.noAdditions {
+    background-color: #eee;
+    padding: 1rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0, 0.2);
+    border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.noAdditionsHeader {
+    font-size: 2rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    color: #555;
 }
