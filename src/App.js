@@ -163,13 +163,27 @@ class App extends Component {
     })
   }
 
-  // STARTUP FLOW HANDLERS
-  boilMinutesInputHandler = (event) => {
-    const newBoilMinutes = event.target.value;
+  // RECIPE EDITOR HANDLERS
+  boilMinutesMinusHandler = () => {
+    let mins = this.state.boilMinutes;
+    mins -= 10;
 
     this.setState({
-      boilMinutes: newBoilMinutes
-    })
+      boilMinutes: mins
+    });
+  }
+
+  boilMinutesPlusHandler = () => {
+    let mins = this.state.boilMinutes;
+    mins += 10;
+
+    this.setState({
+      boilMinutes: mins
+    });
+  }
+
+  additionAddHandler = () => {
+
   }
 
   render () {
@@ -196,7 +210,15 @@ class App extends Component {
 
         <Route
           path='/recipe'
-          component={() => <Recipe/>}
+          component={() => <Recipe
+            boilMinutes={this.state.boilMinutes} 
+            boilMinus={this.boilMinutesMinusHandler}
+            boilPlus={this.boilMinutesPlusHandler}
+            additionAdd={this.additionAddHandler}
+
+            additions={this.state.additions}
+
+          />}
         />
         </BrowserRouter>
 

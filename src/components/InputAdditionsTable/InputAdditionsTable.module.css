@@ -1,0 +1,107 @@
+.container {
+    margin-bottom: 4rem;
+}
+
+.additionsHeader {
+    font-size: 1.4rem;
+    padding-left: 1rem;
+    font-family: 'Roboto Mono', monospace;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: .6rem;
+}
+
+.addition {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    background-color: #eee;
+    padding: 1rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0, 0.2);
+}
+
+.addition:first-of-type {
+    border-top-right-radius: .5rem;
+    border-top-left-radius: .5rem;
+}
+
+.addition:not(:last-child) {
+    border-bottom: 2px solid #ddd;
+}
+
+.addition:last-of-type {
+    border-bottom-right-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+}
+
+.actionButton {
+    grid-column: 2 / span 1;
+    grid-row: 1 / -1;
+    margin: 0 1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #ff9898;
+    font-size: 1.8rem;
+    color: #eee;
+    outline: none;
+    border: none;
+}
+
+.additionDetails {
+    grid-column: 1 / -1;
+}
+
+.additionName {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: .5rem;
+}
+
+.additionDataTop {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    font-family: 'Roboto Mono', monospace;
+    color: #444;
+    margin-bottom: .5rem;
+}
+
+.additionDataBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    font-family: 'Roboto Mono', monospace;
+    color: #444;
+}
+
+.additionInputAmount {
+    font-size: 1.6rem;
+    font-family: 'Roboto Mono', monospace;
+    color: #444;
+    padding: .5rem .5rem;
+    width: 12rem;
+}
+
+.additionInputTime {
+    font-size: 1.6rem;
+    font-family: 'Roboto Mono', monospace;
+    color: #444;
+    padding: .5rem .5rem;
+    width: 4rem;
+}
+
+.button {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: #eee;
+    font-size: 1.8rem;
+    color: #444;
+    outline: none;
+    border: none;
+}
