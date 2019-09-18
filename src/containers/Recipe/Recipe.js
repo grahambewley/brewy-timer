@@ -20,7 +20,6 @@ const Recipe = (props) => {
                 boilMinus={props.boilMinus}
                 boilPlus={props.boilPlus}
             />
-
             <InputAdditions
                 additionAdd={props.additionAdd}
                 additionDelete={props.additionDelete}

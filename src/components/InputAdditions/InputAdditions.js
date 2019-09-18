@@ -7,13 +7,14 @@ const InputAdditions = (props) => {
 
     return (
         <Aux>
+            <InputAdditionsAdd 
+                additionAdd={props.additionAdd}
+            />
             <InputAdditionsTable 
                 additions={props.additions} 
                 additionDelete={props.additionDelete}
                 />
-            <InputAdditionsAdd 
-                additionAdd={props.additionAdd}
-            />
+
         </Aux>
     );
 
