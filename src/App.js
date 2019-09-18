@@ -14,52 +14,7 @@ class App extends Component {
     elapsedSeconds: 0,
     play: false,
     currentAdditionIndex: 0,
-    additions: [
-      /*  STATIC DATA FOR TESTING
-      {
-        time: 60,
-        type: 'hops',
-        amount: '1 oz',
-        name: 'Centennial',
-        done: false
-      },
-      {
-        time: 56,
-        type: 'hops',
-        amount: '1 oz',
-        name: 'Amarillo',
-        done: false
-      },
-      {
-        time: 30,
-        type: 'hops',
-        amount: '1 oz',
-        name: 'Centennial',
-        done: false
-      },
-      {
-        time: 20,
-        type: 'malt',
-        amount: '3 lbs',
-        name: 'Maris Otter LME',
-        done: false
-      },
-      {
-        time: 15,
-        type: 'hops',
-        amount: '1 oz',
-        name: 'Citra',
-        done: false
-      },
-      {
-        time: 0,
-        type: 'hops',
-        amount: '2 oz',
-        name: 'Centennial',
-        done: false
-      }
-      */
-    ]
+    additions: []
   }
 
   // CLOCK TICK HANDLERS

@@ -62,14 +62,16 @@ const Instruction = (props) => {
                     instructionBoxStyle = { backgroundColor: 'white'};
                     break;
             }
-        }
-
-        // If secondsUntil is negative, this addition time has passed, style appropriately
-        if(secondsUntil < 0) {
+        } else {
             instructionBoxStyle = {
                 backgroundColor:'#ff9898'   // light red
             }
         } 
+
+        //If secondsUntil next instruction equals 30 then vibrate
+        if(secondsUntil === 30){
+            window.navigator.vibrate(200);
+        }
     }
 
     return (
