@@ -41,7 +41,7 @@ class Brew extends Component {
 
                 <div className={classes.startContainer}>
                     <h1 className={classes.startHeader}>Welcome to Brewy</h1>
-                    <img className={classes.startImage} src={require('./cheersglasses.png')} alt='cheers'></img>
+                    <img className={classes.startImage} src={require('../../images/cheers.png')} alt='cheers'></img>
                     <Link to='/recipe'>
                         <button className={classes.startButton}>Get Started</button>
                     </Link>

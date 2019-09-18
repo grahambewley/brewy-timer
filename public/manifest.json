@@ -2,7 +2,11 @@
   "short_name": "Brewy",
   "name": "Brewy - Brew Day Timer",
   "icons": [
-       
+    {
+      "src": "/src/images/cheers.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
   ],
   "start_url": ".",
   "display": "standalone",
