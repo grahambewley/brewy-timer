@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 1.5rem 0 1.5rem;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center; 
+    background-color: #ddd;
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 4rem;
+    padding: 1rem 0;
+}
+
+.headerText {
+    justify-self: center;
+    color: #444;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.button {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: #eee;
+    font-size: 2.2rem;
+    text-align: center;
+    color: #444;
+    outline: none;
+    border: none;
+    margin-right: 2rem;
+}
