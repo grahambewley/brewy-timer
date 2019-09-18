@@ -182,8 +182,9 @@ class App extends Component {
     });
   }
 
-  additionAddHandler = () => {
-
+  additionAddHandler = (newAddition) => {
+    console.log('submitted addition');
+    console.log(newAddition);
   }
 
   render () {
