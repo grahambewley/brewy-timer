@@ -1,5 +1,5 @@
 import React from 'react';
-import './Instruction.css';
+import './Instruction.scss';
 
 const Instruction = (props) => {
 

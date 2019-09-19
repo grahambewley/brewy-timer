@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import InputBoilMinutes from '../../components/InputBoilMinutes/InputBoilMinutes';
 import InputAdditions from '../../components/InputAdditions/InputAdditions';
 
-import classes from './Recipe.module.css';
+import classes from './Recipe.module.scss';
 
 const Recipe = (props) => {
 

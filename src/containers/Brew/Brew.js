@@ -4,7 +4,7 @@ import Options from '../../components/Options/Options';
 import CurrentTime from '../../components/CurrentTime/CurrentTime';
 import Timeline from '../../components/Timeline/Timeline';
 import Instruction from '../../components/Instruction/Instruction';
-import classes from './Brew.module.css';
+import classes from './Brew.module.scss';
 
 class Brew extends Component {
 

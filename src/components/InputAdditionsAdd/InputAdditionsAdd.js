@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Auxi from '../../hoc/Auxi';
-import classes from './InputAdditionsAdd.module.css'
+import classes from './InputAdditionsAdd.module.scss'
 
 class InputAdditionsAdd extends Component {
     state = {

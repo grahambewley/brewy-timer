@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Options.css';
+import './Options.scss';
 
 const option = (props) => {
 

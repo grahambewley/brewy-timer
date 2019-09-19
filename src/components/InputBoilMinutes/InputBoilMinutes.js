@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './InputBoilMinutes.module.css';
+import classes from './InputBoilMinutes.module.scss';
 
 const InputBoilMinutes = (props) => {
 

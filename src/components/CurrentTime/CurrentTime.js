@@ -1,5 +1,5 @@
 import React from 'react';
-import './CurrentTime.css';
+import './CurrentTime.scss';
 
 const timer = (props) => {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './InputAdditionsTable.module.css';
+import classes from './InputAdditionsTable.module.scss';
 
 const ImportAdditionsTable = (props) => {
 
