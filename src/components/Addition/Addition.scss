@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .addition {
     position: absolute;
     display: flex;
@@ -5,7 +7,7 @@
     align-items: center;
     transform: translateY(-1rem) translateX(calc(-.6rem + 2px));
     font-family: 'Open Sans', sans-serif;
-    color: #444;
+    color: $color-font-dark;
     font-size: 1.3rem;
     font-weight: 600;
 
@@ -15,7 +17,7 @@
 .symbol {
     height: 1.2rem;
     width: 1.2rem;
-    background-color: #288B64;
+    background-color: $color-hops-green;
     border-radius: 50%;
     margin-right: .7rem;
     transition: background-color .5s;
@@ -30,7 +32,7 @@
 
 .time {
     margin-left: .5rem;
-    color: #555;
+    color: $color-font-dark-1;
     font-size: 1rem;
     font-weight: 400;
 }

@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .container {
     margin-bottom: 5rem;
 }
@@ -7,14 +9,14 @@
     padding-left: 1rem;
     font-family: 'Roboto Mono', monospace;
     text-transform: uppercase;
-    color: #555;
+    color: $color-font-dark-1;
     margin-bottom: .6rem;
 }
 
 .addition {
     display: grid;
     grid-template-columns: 1fr min-content;
-    background-color: #eee;
+    background-color: $color-background-white;
     padding: 1rem;
     box-shadow: 0 .5rem 1rem rgba(0,0,0, 0.2);
 }
@@ -25,7 +27,7 @@
 }
 
 .addition:not(:last-child) {
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid $color-background-grey;
 }
 
 .addition:last-of-type {
@@ -40,9 +42,9 @@
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
-    background-color: #ff9898;
+    background-color: $color-delete-red;
     font-size: 1.8rem;
-    color: #eee;
+    color: $color-font-light;
     outline: none;
     border: none;
 }
@@ -55,7 +57,7 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 2rem;
     font-weight: 700;
-    color: #444;
+    color: $color-font-dark;
     margin-bottom: .5rem;
 }
 
@@ -66,7 +68,7 @@
     justify-content: space-between;
     font-size: 1.6rem;
     font-family: 'Roboto Mono', monospace;
-    color: #444;
+    color: $color-font-dark;
     margin-bottom: .5rem;
 }
 
@@ -76,13 +78,13 @@
     justify-content: space-between;
     font-size: 1.6rem;
     font-family: 'Roboto Mono', monospace;
-    color: #444;
+    color: $color-font-dark;
 }
 
 .additionInputAmount {
     font-size: 1.6rem;
     font-family: 'Roboto Mono', monospace;
-    color: #444;
+    color: $color-font-dark;
     padding: .5rem .5rem;
     width: 12rem;
 }
@@ -90,7 +92,7 @@
 .additionInputTime {
     font-size: 1.6rem;
     font-family: 'Roboto Mono', monospace;
-    color: #444;
+    color: $color-font-dark;
     padding: .5rem .5rem;
     width: 4rem;
 }
@@ -99,16 +101,16 @@
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    background-color: #eee;
+    background-color: $color-background-white;
     font-size: 1.8rem;
-    color: #444;
+    color: $color-font-dark;
     outline: none;
     border: none;
     transition: all .3s;
 }
 
 .noAdditions {
-    background-color: #eee;
+    background-color: $color-background-white;
     padding: 1rem;
     box-shadow: 0 .5rem 1rem rgba(0,0,0, 0.2);
     border-radius: .5rem;
@@ -121,5 +123,5 @@
     font-size: 2rem;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    color: #555;
+    color: $color-font-dark-1;
 }

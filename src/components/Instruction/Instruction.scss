@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .instructionContainer {
     grid-row: 2 / -1;
     grid-column: 1 / -1;
@@ -10,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     border-radius: .5rem;
-    background-color: #72e5e5;
+    background-color: $color-background-white;
     box-shadow: 0 4rem 5rem rgba(#000, .6);
     transition: all .2s;
 }
@@ -18,7 +20,7 @@
 .nextAddition {
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
-    color: #444;
+    color: $color-font-dark;
     font-size: 1.4rem;
     font-weight: 400;
 }
@@ -31,7 +33,7 @@
 
 .instruction {
     font-family: 'Open Sans', sans-serif;
-    color: #444;
+    color: $color-font-dark;
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -48,8 +50,8 @@
     font-size: 2.2rem;
     display: inline-block;
     padding: .6rem;
-    background-color: #eee;
-    color: #444;
+    background-color: $color-background-white;
+    color: $color-font-dark;
     border: 1px solid #ddd;
     border-radius: 2px;
 }
@@ -58,9 +60,9 @@
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
-    background-color: #eee;
+    background-color: $color-background-white;
     font-size: 1.2rem;
-    color: #444;
+    color: $color-font-dark;
     border: none;
 }
 
@@ -75,8 +77,8 @@
     border: none;
     border-radius: 5000px;
     padding: 1rem 3rem;
-    background-color: #eee;
-    color: #444;
+    background-color: $color-background-white;
+    color: $color-font-dark;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.6rem;
     text-transform: uppercase;
