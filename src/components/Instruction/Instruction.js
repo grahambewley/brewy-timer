@@ -9,8 +9,30 @@ const Instruction = (props) => {
     let instructionBoxStyle = {};
 
 
+    if(props.additions.length === 0) {
+        // Find the amount of seconds until brew ends
+        let secondsUntil = props.boilMinutes*60 - props.elapsedSeconds;
+        
+        // Split the secondsUntil into minutes and seconds -- for the timer
+        let absoluteSecondsUntil = Math.abs(secondsUntil);
+        displayMinutes = Math.floor(absoluteSecondsUntil / 60);
+        displayMinutes = ('0' + displayMinutes).slice(-2);
+        displaySeconds = absoluteSecondsUntil - displayMinutes * 60;
+        displaySeconds = ('0' + displaySeconds).slice(-2);
+        
+        // If secondsUntil is positive, this addition hasn't happened yet -- style based on the type of addition incoming
+        if(secondsUntil >= 0) {
+            nextInstruction = "Nothing added to this brew yet, add some additions!";
+            instructionBoxStyle = { backgroundColor: '#e09f7d' } //beer color
+        }
+        // If secondsUntil is negative, this addition time has passed, style appropriately
+        if(secondsUntil < 0) {
+            nextInstruction = "Boil time has expired";
+            instructionBoxStyle = { backgroundColor: '#ff9898' } //light red
+        } 
+    }
     // If the currentAdditionIndex exceeds the amount of additions, then we're done!
-    if(props.currentAdditionIndex >= props.additions.length) {
+    else if(props.currentAdditionIndex >= props.additions.length) {
         // Find the amount of seconds until brew ends
         let secondsUntil = props.boilMinutes*60 - props.elapsedSeconds;
         
