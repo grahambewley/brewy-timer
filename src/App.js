@@ -14,7 +14,8 @@ class App extends Component {
     elapsedSeconds: 0,
     play: false,
     currentAdditionIndex: 0,
-    additions: []
+    additions: [],
+    isControlSliderOpen: false
   }
 
   // CLOCK TICK HANDLERS
@@ -172,6 +173,20 @@ class App extends Component {
     })
   }
 
+  openControlsHandler = () => {
+    console.log('opening controls');
+    this.setState({
+      isControlSliderOpen: true
+    })
+  }
+
+  closeControlsHandler = () => {
+    console.log('closing controls');
+    this.setState({
+      isControlSliderOpen: false
+    })
+  }
+
   render () {
     return (
       <BrowserRouter>
@@ -185,7 +200,10 @@ class App extends Component {
             elapsedSeconds={this.state.elapsedSeconds}
             currentAdditionIndex={this.state.currentAdditionIndex}
             additions={this.state.additions}
+            ctrlOpen={this.state.isControlSliderOpen}
 
+            openControls={this.openControlsHandler}
+            closeControls={this.closeControlsHandler}
             instructDone={this.instructionDoneButtonHandler}
             instructRewind={this.rewindButtonHandler}
             optFullscreen={this.fullscreenButtonHandler}

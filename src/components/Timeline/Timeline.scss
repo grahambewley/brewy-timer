@@ -1,7 +1,8 @@
 .timelineContainer {
-    position: relative;
     grid-column: 2 / span 1;
-    margin: 3rem 0;
+    grid-row: 1 / span 2;
+    position: relative;
+    margin: 2rem 0;
 }
 
 .timeline {

@@ -1,10 +1,10 @@
 @import '../../variables.scss';
 
 .timerLine {
-    position: relative;
-    margin: 3rem 0;
     grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
+    grid-row: 1 / span 2;
+    position: relative;
+    margin: 2rem 0;
 }
 
 .timerContainer {

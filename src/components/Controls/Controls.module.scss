@@ -1,0 +1,39 @@
+@import '../../variables.scss';
+
+.container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    z-index: 100;
+    grid-row: 2 / span 1;
+    grid-column: 2 / -1;
+    justify-self: end;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+}
+
+.controlGreen {
+    outline: none;
+    border: none;
+    height: 4rem;
+    width: 4rem;
+    background-color: $color-hops-green-light;
+    border-radius: 50%;
+
+    color: $color-font-dark;
+    font-size: 2rem;
+}
+
+.controlRed {
+    outline: none;
+    border: none;
+    height: 4rem;
+    width: 4rem;
+    background-color: $color-delete-red;
+    border-radius: 50%;
+
+    color: $color-font-dark;
+    font-size: 2rem;
+
+    margin-right: 1rem;
+}

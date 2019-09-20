@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .instructionContainer {
-    grid-row: 2 / -1;
+    grid-row: 3 / -1;
     grid-column: 1 / -1;
     padding: 0 1rem 1rem 1rem;    
 }
@@ -13,7 +13,7 @@
     justify-content: space-between;
     border-radius: .5rem;
     background-color: $color-background-white;
-    box-shadow: 0 4rem 5rem rgba(#000, .6);
+    box-shadow: 0 .5rem 1rem rgba(#000, .2);
     transition: all .2s;
 }
 

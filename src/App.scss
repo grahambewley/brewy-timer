@@ -22,5 +22,5 @@ body {
   height: 100vh;
   display: grid;
   grid-template-columns: 6rem 1fr;
-  grid-template-rows: 1fr minmax(20vh, min-content);
+  grid-template-rows: 1fr min-content minmax(20vh, min-content);
 }
