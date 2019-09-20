@@ -8,6 +8,7 @@ const Instruction = (props) => {
     let displayMinutes;
     let instructionBoxStyle = {};
 
+
     // If the currentAdditionIndex exceeds the amount of additions, then we're done!
     if(props.currentAdditionIndex >= props.additions.length) {
         // Find the amount of seconds until brew ends
@@ -72,7 +73,7 @@ const Instruction = (props) => {
         if(secondsUntil === 120){
             window.navigator.vibrate(800);
         } else if(secondsUntil === 30) { 
-            window.navigator.vibrate([400,200,400]);
+            window.navigator.vibrate([400,200,400]);            
         } else if (secondsUntil === 15) {
             window.navigator.vibrate([200,200,200,200,200]);
         }
