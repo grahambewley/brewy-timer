@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Options from '../../components/Options/Options';
 import CurrentTime from '../../components/CurrentTime/CurrentTime';
 import Timeline from '../../components/Timeline/Timeline';
-import Instruction from '../../components/Instruction/Instruction';
+import ActionBox from '../../components/ActionBox/ActionBox';
 import Controls from '../../components/Controls/Controls';
-import classes from './Brew.module.scss';
 
 class Brew extends Component {
 
@@ -22,7 +20,8 @@ class Brew extends Component {
                         boilMinutes={this.props.boilMinutes} 
                         additions={this.props.additions} 
                         elapsedSeconds={this.props.elapsedSeconds} />
-                    <Instruction 
+                    <ActionBox 
+                        additionCtrlOpen={this.props.additionCtrlOpen}
                         instructDone={this.props.instructDone} 
                         instructRewind={this.props.instructRewind}
                         timerStart={this.props.timerStart}
@@ -30,15 +29,21 @@ class Brew extends Component {
                         currentAdditionIndex={this.props.currentAdditionIndex} 
                         boilMinutes={this.props.boilMinutes} 
                         additions={this.props.additions} 
-                        elapsedSeconds={this.props.elapsedSeconds} />
+                        elapsedSeconds={this.props.elapsedSeconds} 
+                        
+                        newAddition={this.props.newAddition}
+                        newAdditionUpdate={this.props.newAdditionUpdate}
+                        additionAdd={this.props.additionAdd}
+                        additionDelete={this.props.additionDelete}/>
                     <Options 
                         optFullscreen={this.props.optFullscreen} 
                         optRestart={this.props.optRestart}
                         full={this.props.fullscreen} />
                     <Controls 
-                        ctrlOpen={this.props.ctrlOpen}
-                        openControls={this.props.openControls}
-                        closeControls={this.props.closeControls}/>
+                        additionCtrlOpen={this.props.additionCtrlOpen}
+                        openAdditionControls={this.props.openAdditionControls}
+                        closeAdditionControls={this.props.closeAdditionControls}
+                        addNewAddition={this.props.addNewAddition}/>
                     
                 </div> // :
 

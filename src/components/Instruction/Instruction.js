@@ -80,29 +80,25 @@ const Instruction = (props) => {
     }
 
     return (
-        <div className='instructionContainer'>
-            <div style={instructionBoxStyle} className='instructionBox'>
-                <div className='instructionDetailsContainer'>
-                    <div className='instructionDetails'>
-                        {props.play ? 
-                            <p className='nextAddition'>Next Addition:</p> :
-                            <p className='nextAddition'>First Addition:</p> }
-                        <p className='instruction'>{nextInstruction}</p>
-                    </div>
-                    {/* If recipe is 'playing' then display the DONE button, otherwise display the START button */}
+        <div style={instructionBoxStyle} className='instructionBox'>
+            <div className='instructionDetailsContainer'>
+                <div className='instructionDetails'>
                     {props.play ? 
-                        <button onClick={props.instructDone} className='instructionButton' id='instructionButton'>Done</button> :
-                        <button onClick={props.timerStart} className="instructionButton">Start Boil</button>}
+                        <p className='nextAddition'>Next Addition:</p> :
+                        <p className='nextAddition'>First Addition:</p> }
+                    <p className='instruction'>{nextInstruction}</p>
                 </div>
-                <div className='instructionTimerContainer'>
-                    <p className='instructionTimer'>{displayMinutes}:{displaySeconds}</p>
-                    <button className='instructionRewind' onClick={props.instructRewind}><i className="fas fa-undo option-icon"></i></button>
-                </div>
+                {/* If recipe is 'playing' then display the DONE button, otherwise display the START button */}
+                {props.play ? 
+                    <button onClick={props.instructDone} className='instructionButton' id='instructionButton'>Done</button> :
+                    <button onClick={props.timerStart} className="instructionButton">Start Boil</button>}
+            </div>
+            <div className='instructionTimerContainer'>
+                <p className='instructionTimer'>{displayMinutes}:{displaySeconds}</p>
+                <button className='instructionRewind' onClick={props.instructRewind}><i className="fas fa-undo option-icon"></i></button>
             </div>
         </div>
     )
-
-
 }
 
 export default Instruction; 

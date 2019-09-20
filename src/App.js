@@ -15,7 +15,14 @@ class App extends Component {
     play: false,
     currentAdditionIndex: 0,
     additions: [],
-    isControlSliderOpen: false
+    newAddition: {
+      name: null,
+      type: null,
+      amount: null,
+      time: null
+    },
+    isAdditionControlOpen: false,
+    isBoilControlOpen: false
   }
 
   // CLOCK TICK HANDLERS
@@ -140,27 +147,17 @@ class App extends Component {
     });
   }
 
-  additionAddHandler = (newAddition) => {
-    const additionToAdd = {
-      time: parseInt(newAddition.time),
-      type: newAddition.type,
-      amount: newAddition.amount,
-      name: newAddition.name,
-      done: false
-    }
-    console.log('submitted addition');
-    console.log(additionToAdd);
-
-    let additionsCopy = [...this.state.additions];
-
-    additionsCopy.push(additionToAdd);
-    additionsCopy.sort(function(obj1, obj2) {
-      return obj2.time - obj1.time;
+  newAdditionUpdateHandler = (newAddition) => {
+    this.setState({
+      newAddition: {
+        name: newAddition.name,
+        type: newAddition.type,
+        amount: newAddition.amount,
+        time: parseInt(newAddition.time)
+      }
     });
 
-    this.setState({
-      additions: additionsCopy
-    })
+    console.log('new addition is: ' + this.state.newAddition);
   }
 
   additionDeleteHandler = (index) => {
@@ -173,17 +170,38 @@ class App extends Component {
     })
   }
 
-  openControlsHandler = () => {
-    console.log('opening controls');
+  openAdditionControlHandler = () => {
     this.setState({
-      isControlSliderOpen: true
+      isAdditionControlOpen: true,
     })
   }
 
-  closeControlsHandler = () => {
-    console.log('closing controls');
+  closeAdditionControlHandler = () => {
     this.setState({
-      isControlSliderOpen: false
+      isAdditionControlOpen: false,
+      newAddition: {
+        name: null,
+        type: null,
+        amount: null,
+        time: null
+      }
+    })
+  }
+
+  addNewAdditionHandler = () => {
+
+    this.closeAdditionControlHandler();
+
+    const add = this.state.newAddition;
+    let additionsCopy = [...this.state.additions];
+
+    additionsCopy.push(add);
+    additionsCopy.sort(function(obj1, obj2) {
+      return obj2.time - obj1.time;
+    });
+
+    this.setState({
+      additions: additionsCopy
     })
   }
 
@@ -192,22 +210,39 @@ class App extends Component {
       <BrowserRouter>
         <Route 
           exact path='/' 
-          component={() => <Brew 
+          render={() => <Brew 
+            // Options Related            
             fullscreen={this.state.fullscreen}
             play={this.state.play}
+
+            optFullscreen={this.fullscreenButtonHandler}
+            optRestart={this.restartButtonHandler}
+            
+            // Control-related
+            newAddition={this.state.newAddition}
+            additionCtrlOpen={this.state.isAdditionControlOpen}
+            boilCtrlOpen={this.state.isBoilControlOpen}
+            newAdditionUpdate={this.newAdditionUpdateHandler}
+            
+            openAdditionControls={this.openAdditionControlHandler}
+            closeAdditionControls={this.closeAdditionControlHandler}
+            addNewAddition={this.addNewAdditionHandler}
+
+            // Boil-related
             boilMinutes={this.state.boilMinutes}
             startTime={this.state.startTime}
             elapsedSeconds={this.state.elapsedSeconds}
             currentAdditionIndex={this.state.currentAdditionIndex}
             additions={this.state.additions}
-            ctrlOpen={this.state.isControlSliderOpen}
+            
+            // (Deprecated) Functions
 
-            openControls={this.openControlsHandler}
-            closeControls={this.closeControlsHandler}
+            additionAdd={this.additionAddHandler}
+            additionDelete={this.additionDeleteHandler}
+
+            // Instruction-related
             instructDone={this.instructionDoneButtonHandler}
             instructRewind={this.rewindButtonHandler}
-            optFullscreen={this.fullscreenButtonHandler}
-            optRestart={this.restartButtonHandler}
             timerStart={this.startTimerHandler}
           />}
         />
