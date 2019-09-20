@@ -1,7 +1,7 @@
 import React from 'react';
-import classes from './InputBoilMinutes.module.scss';
+import classes from './ChangeBoilControl.module.scss';
 
-const InputBoilMinutes = (props) => {
+const ChangeBoilControl = (props) => {
 
     return (
         <div className={classes.boilMinsContainer}>
@@ -15,4 +15,4 @@ const InputBoilMinutes = (props) => {
     );
 }
 
-export default InputBoilMinutes;
+export default ChangeBoilControl;

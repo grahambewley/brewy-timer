@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
 import Brew from './containers/Brew/Brew';
-import Recipe from './containers/Recipe/Recipe';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -147,19 +146,6 @@ class App extends Component {
     });
   }
 
-  newAdditionUpdateHandler = (newAddition) => {
-    this.setState({
-      newAddition: {
-        name: newAddition.name,
-        type: newAddition.type,
-        amount: newAddition.amount,
-        time: parseInt(newAddition.time)
-      }
-    });
-
-    console.log('new addition is: ' + this.state.newAddition);
-  }
-
   additionDeleteHandler = (index) => {
     console.log('Addition index to delete: ' + index);
     let additionsCopy = [...this.state.additions];
@@ -188,6 +174,17 @@ class App extends Component {
     })
   }
 
+  newAdditionUpdateHandler = (newAddition) => {
+    this.setState({
+      newAddition: {
+        name: newAddition.name,
+        type: newAddition.type,
+        amount: newAddition.amount,
+        time: parseInt(newAddition.time)
+      }
+    });
+  }
+
   addNewAdditionHandler = () => {
 
     this.closeAdditionControlHandler();
@@ -205,6 +202,18 @@ class App extends Component {
     })
   }
 
+  openBoilControlHandler = () => {
+    this.setState({
+      isBoilControlOpen: true
+    });
+  }
+
+  closeBoilControlHandler = () => {
+    this.setState({
+      isBoilControlOpen: false
+    });
+  }
+
   render () {
     return (
       <BrowserRouter>
@@ -219,14 +228,19 @@ class App extends Component {
             optRestart={this.restartButtonHandler}
             
             // Control-related
-            newAddition={this.state.newAddition}
-            additionCtrlOpen={this.state.isAdditionControlOpen}
-            boilCtrlOpen={this.state.isBoilControlOpen}
-            newAdditionUpdate={this.newAdditionUpdateHandler}
             
-            openAdditionControls={this.openAdditionControlHandler}
-            closeAdditionControls={this.closeAdditionControlHandler}
+            additionCtrlOpen={this.state.isAdditionControlOpen}
+            openAdditionControl={this.openAdditionControlHandler}
+            closeAdditionControl={this.closeAdditionControlHandler}
+            newAddition={this.state.newAddition}
+            newAdditionUpdate={this.newAdditionUpdateHandler}
             addNewAddition={this.addNewAdditionHandler}
+            
+            boilCtrlOpen={this.state.isBoilControlOpen}
+            openBoilControl={this.openBoilControlHandler}
+            closeBoilControl={this.closeBoilControlHandler}
+            boilMinus={this.boilMinutesMinusHandler}
+            boilPlus={this.boilMinutesPlusHandler}
 
             // Boil-related
             boilMinutes={this.state.boilMinutes}
@@ -247,18 +261,7 @@ class App extends Component {
           />}
         />
 
-        <Route
-          path='/recipe'
-          render={() => <Recipe
-            boilMinutes={this.state.boilMinutes} 
-            boilMinus={this.boilMinutesMinusHandler}
-            boilPlus={this.boilMinutesPlusHandler}
-            additionAdd={this.additionAddHandler}
-            additionDelete={this.additionDeleteHandler}
-            additions={this.state.additions}
-
-          />}
-        />
+        
         </BrowserRouter>
 
     );  

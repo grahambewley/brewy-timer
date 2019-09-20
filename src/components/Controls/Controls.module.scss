@@ -2,7 +2,6 @@
 
 .container {
     display: flex;
-    flex-direction: row-reverse;
     align-items: flex-end;
     z-index: 100;
     grid-row: 2 / span 1;
@@ -21,7 +20,8 @@
     border-radius: 50%;
 
     color: $color-font-dark;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    margin-left: 1.5rem;
 }
 
 .controlRed {
@@ -33,7 +33,19 @@
     border-radius: 50%;
 
     color: $color-font-dark;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    margin-left: 1.5rem;
+}
 
-    margin-right: 1.5rem;
+.controlWhite {
+    outline: none;
+    border: none;
+    height: 4.5rem;
+    width: 4.5rem;
+    background-color: $color-background-white;
+    border-radius: 50%;
+
+    color: $color-font-dark;
+    font-size: 2.2rem;
+    margin-left: 1.5rem;
 }

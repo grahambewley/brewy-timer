@@ -21,7 +21,6 @@ class Brew extends Component {
                         additions={this.props.additions} 
                         elapsedSeconds={this.props.elapsedSeconds} />
                     <ActionBox 
-                        additionCtrlOpen={this.props.additionCtrlOpen}
                         instructDone={this.props.instructDone} 
                         instructRewind={this.props.instructRewind}
                         timerStart={this.props.timerStart}
@@ -31,19 +30,27 @@ class Brew extends Component {
                         additions={this.props.additions} 
                         elapsedSeconds={this.props.elapsedSeconds} 
                         
+                        additionCtrlOpen={this.props.additionCtrlOpen}
                         newAddition={this.props.newAddition}
                         newAdditionUpdate={this.props.newAdditionUpdate}
-                        additionAdd={this.props.additionAdd}
-                        additionDelete={this.props.additionDelete}/>
+                        
+                        boilCtrlOpen={this.props.boilCtrlOpen}
+                        boilMinus={this.props.boilMinus}
+                        boilPlus={this.props.boilPlus}
+                        />
                     <Options 
                         optFullscreen={this.props.optFullscreen} 
                         optRestart={this.props.optRestart}
                         full={this.props.fullscreen} />
                     <Controls 
                         additionCtrlOpen={this.props.additionCtrlOpen}
-                        openAdditionControls={this.props.openAdditionControls}
-                        closeAdditionControls={this.props.closeAdditionControls}
-                        addNewAddition={this.props.addNewAddition}/>
+                        openAdditionControl={this.props.openAdditionControl}
+                        closeAdditionControl={this.props.closeAdditionControl}
+                        addNewAddition={this.props.addNewAddition}
+                        boilCtrlOpen={this.props.boilCtrlOpen}
+                        openBoilControl={this.props.openBoilControl}
+                        closeBoilControl={this.props.closeBoilControl}
+                        />
                     
                 </div> // :
 

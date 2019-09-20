@@ -1,6 +1,7 @@
 import React from 'react';
 import Instruction from '../Instruction/Instruction';
 import AddAdditionControl from '../AddAdditionControl/AddAdditionControl';
+import ChangeBoilControl from '../ChangeBoilControl/ChangeBoilControl';
 import './ActionBox.scss';
 
 const ActionBox = (props) => {
@@ -16,7 +17,14 @@ const ActionBox = (props) => {
                 additionDelete={props.additionDelete} /> 
         )
     } 
-
+    else if(props.boilCtrlOpen) {
+        component = (
+            <ChangeBoilControl 
+                boilMins={props.boilMinutes}
+                boilMinus={props.boilMinus}
+                boilPlus={props.boilPlus}/>
+        )
+    }
     else {
         component = (
             <Instruction 

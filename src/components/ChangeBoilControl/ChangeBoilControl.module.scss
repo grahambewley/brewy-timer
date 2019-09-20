@@ -4,27 +4,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 6rem;
+    justify-content: center;
+    height: 100%;
+    padding: 1.5rem;
+    border-radius: .5rem;
+    background-color: $color-background-white;
+    box-shadow: 0 .5rem 1rem rgba(#000, .2);
+    transition: all .2s;
 }
 
 .label {
     font-size: 1.4rem;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
     color: $color-font-dark-1;
     margin-bottom: .6rem;
 }
 
 .iconButton {
-    width: 4rem;
-    height: 4rem;
+    width: 4.5rem;
+    height: 4.5rem;
     border-radius: 50%;
-    background-color: $color-background-white;
+    background-color: $color-background-grey;
     font-size: 1.8rem;
     color: $color-font-dark;
     outline: none;
     border: none;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0, 0.2);
 }
 
 .boilMinsAdjustContainer {
@@ -34,12 +39,11 @@
 
 .boilMinsCurrent {
     font-family: 'Roboto Mono', monospace;
-    background-color: $color-background-white;
+    background-color: $color-background-grey;
     color: $color-font-dark;
-    font-size: 2rem;
+    font-size: 3rem;
     padding: 1rem 2rem;
     border: 1px solid #ddd;
     border-radius: .5rem;
     margin: 0 3rem;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0, 0.2);
 }
