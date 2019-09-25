@@ -21,6 +21,10 @@ body {
   background-color: $color-background-grey;
   height: 100vh;
   display: grid;
-  grid-template-columns: 6rem 1fr;
+  grid-template-columns: [app-start timeline-start] 6rem [timeline-end] 1fr [app-end];
   grid-template-rows: 1fr min-content minmax(20vh, min-content);
+
+  @media only screen and (min-width: $bp-tablet) {
+    grid-template-columns: 1fr [app-start timeline-start] 6rem [timeline-end] 70rem [app-end] 1fr;
+  }
 }
