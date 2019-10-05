@@ -22,20 +22,20 @@ class AddAdditionControl extends Component {
             <div className={classes.box}>
                 <h2 className={classes.header}>Insert Addition</h2>                
 
-                <label htmlFor='name'>Name:</label>
+                <label className={classes.label} htmlFor='name'>Name:</label>
                 <input className={classes.input} type='text' id='name' onChange={this.handleChange}></input>
                 
-                <label htmlFor='type'>Type:</label>
+                <label className={classes.label} htmlFor='type'>Type:</label>
                 <select className={classes.input} id='type' onChange={this.handleChange}>
                     <option default value='hops'>Hops</option>
                     <option value='malt'>Malt</option>
                     <option value='misc'>Misc</option>
                 </select>
                 
-                <label htmlFor='amount'>Amount:</label>
+                <label className={classes.label} htmlFor='amount'>Amount:</label>
                 <input className={classes.input} type='text' id='amount' onChange={this.handleChange}></input>
 
-                <label htmlFor='time'>Time:</label>
+                <label className={classes.label} htmlFor='time'>Time:</label>
                 <input className={classes.input} type='number' id='time' onChange={this.handleChange}></input>
             </div>
         )

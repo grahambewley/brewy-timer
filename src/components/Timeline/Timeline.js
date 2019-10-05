@@ -12,6 +12,7 @@ const Timeline = (props) => {
     }
 
     const additionComponents = props.additions.map((add, index) => {
+        
         return (
             <Addition 
                 key={index}

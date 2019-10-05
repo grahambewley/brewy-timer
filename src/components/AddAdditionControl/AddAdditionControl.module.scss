@@ -33,13 +33,20 @@
     color: $color-font-dark;
 }
 
+.label {
+    font-size: 1.4rem;
+    color: $color-font-dark-2;
+    text-transform: uppercase;
+}
+
 .input {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.4rem;
+    font-size: 2.2rem;
     color: $color-font-dark;
     padding: .5rem;
     border: none;
     border-radius: .5rem; 
+    margin-bottom: .5rem;
 }
 
 .submit {
