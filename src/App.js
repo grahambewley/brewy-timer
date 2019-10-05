@@ -13,7 +13,15 @@ class App extends Component {
     elapsedSeconds: 0,
     play: false,
     currentAdditionIndex: 0,
-    additions: [],
+    additions: {
+      50: [
+        {name: 'Citra', type: 'hops', amount: '2 oz', time: 50, done: false}
+      ],
+      30: [
+        {name: 'Centennial', type: 'hops', amount: '1 oz', time: 30, done: false}
+      ],
+
+    },
     newAddition: {
       name: null,
       type: null,
@@ -49,7 +57,6 @@ class App extends Component {
   // OPTION BUTTON HANDLERS
 
   fullscreenButtonHandler = () => {
-    console.log('Clicked fullscreen');
     if(this.state.fullscreen === false) {
       this.setState({
         fullscreen: true
@@ -76,10 +83,14 @@ class App extends Component {
 
   restartButtonHandler = () => {
     // Get a copy of Additions from state
-    const additionsCopy = [...this.state.additions];
-    // Set the "done" property of each addition to false
-    additionsCopy.forEach((element) => {
-      element.done = false;
+    const additionsCopy = {...this.state.additions};
+    // For each of the 'time' indexes within additions...
+    Object.keys(additionsCopy).forEach((additionTime) => {
+      // For each addition within that 'time'...
+      additionTime.forEach((addition) => {
+        // Set this addition to "not done"
+        addition.done = false;
+      });
     });
 
     this.setState({
@@ -92,11 +103,16 @@ class App extends Component {
   // INSTRUCTION BUTTON HANDLERS
 
   instructionDoneButtonHandler = () => {
-    if(this.state.currentAdditionIndex < this.state.additions.length) {
-      // Get a copy of the current additions array in state
-      let additionsCopy = [...this.state.additions];
-      // Set the addition at index: currentAdditionIndex to DONE -- used in Addition component for strikethrough
-      additionsCopy[this.state.currentAdditionIndex].done = true;
+    // Make sure we're not at the last addition...
+    if(this.state.currentAdditionIndex < Object.keys(this.state.additions).length) {
+      // Get a copy of the current additions object in state
+      let additionsCopy = {...this.state.additions};
+      // Select the array of additions at the time matching the currentAdditionIndex
+      // e.g. additionsCopy[30].forEach(...)
+      additionsCopy[Object.keys(additionsCopy)[this.state.currentAdditionIndex]].forEach((addition) => {
+        addition.done = true;
+      });
+      
       
       this.setState(prevState => ({
         // Set additions to the modified copy we made
@@ -109,12 +125,16 @@ class App extends Component {
 
   rewindButtonHandler = () => {
     if(this.state.currentAdditionIndex > 0) {
-      // Get a copy of the current additions array in state
-      let additionsCopy = [...this.state.additions];
+      // Get a copy of the current additions object in state
+      let additionsCopy = {...this.state.additions};
       // Set the addition at index: currentAdditionIndex to DONE -- used in Addition component for strikethrough
-      additionsCopy[this.state.currentAdditionIndex-1].done = false;
+      additionsCopy[Object.keys(additionsCopy)[this.state.currentAdditionIndex-1]].forEach((addition) => {
+        addition.done = false;
+      });
 
       this.setState(prevState => ({
+        // Set additions to the modified copy we made
+        additions: additionsCopy,
         currentAdditionIndex: prevState.currentAdditionIndex - 1
       }))
     }
@@ -146,15 +166,15 @@ class App extends Component {
     });
   }
 
-  additionDeleteHandler = (index) => {
-    console.log('Addition index to delete: ' + index);
-    let additionsCopy = [...this.state.additions];
-    additionsCopy.splice(index);
+  // additionDeleteHandler = (index) => {
+  //   console.log('Addition index to delete: ' + index);
+  //   let additionsCopy = [...this.state.additions];
+  //   additionsCopy.splice(index);
 
-    this.setState({
-      additions: additionsCopy
-    })
-  }
+  //   this.setState({
+  //     additions: additionsCopy
+  //   })
+  // }
 
   openAdditionControlHandler = () => {
     this.setState({
@@ -180,7 +200,7 @@ class App extends Component {
         name: newAddition.name,
         type: newAddition.type,
         amount: newAddition.amount,
-        time: parseInt(newAddition.time)
+        time: parseInt(newAddition.time),
       }
     });
   }
@@ -190,12 +210,14 @@ class App extends Component {
     this.closeAdditionControlHandler();
 
     const add = this.state.newAddition;
-    let additionsCopy = [...this.state.additions];
+    let additionsCopy = {...this.state.additions};
 
-    additionsCopy.push(add);
-    additionsCopy.sort(function(obj1, obj2) {
-      return obj2.time - obj1.time;
-    });
+    if(additionsCopy[add.time] !== undefined) {
+      additionsCopy[add.time].push(add);
+    } else {
+      additionsCopy[add.time] = [];
+      additionsCopy[add.time].push(add);
+    }
 
     this.setState({
       additions: additionsCopy
@@ -228,7 +250,6 @@ class App extends Component {
             optRestart={this.restartButtonHandler}
             
             // Control-related
-            
             additionCtrlOpen={this.state.isAdditionControlOpen}
             openAdditionControl={this.openAdditionControlHandler}
             closeAdditionControl={this.closeAdditionControlHandler}
