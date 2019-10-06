@@ -10,10 +10,10 @@ class App extends Component {
     fullscreen: false,
     boilMinutes: 60,
     startTime: 0,
+    startEpoch: null,
     elapsedSeconds: 0,
     play: false,
     currentAdditionIndex: 0,
-    doneThroughMinutes: 0,
     additions: {},
     newAddition: {
       name: null,
@@ -31,15 +31,21 @@ class App extends Component {
     if(this.state.elapsedSeconds === this.state.boilMinutes*60) {
       clearInterval(this.interval);
     } else {
-      this.setState(prevState => ({
-        elapsedSeconds: prevState.elapsedSeconds + 1
-      }));
+      const startEpoch = this.state.startEpoch;
+      let currentEpoch = new Date() / 1000;
+      currentEpoch = currentEpoch.toFixed(0);
+
+      console.log("StartEpoch = " + startEpoch);
+      console.log("CurrentEpoch = " + currentEpoch);
+      this.setState({
+        elapsedSeconds: currentEpoch - startEpoch
+      });
     }
   }
 
   componentDidMount() {
     if(this.state.play) {
-      this.interval = setInterval(() => this.tick(), 1000);
+      this.interval = setInterval(() => this.tick(), 100);
     }
   }
   
@@ -88,7 +94,7 @@ class App extends Component {
 
     this.setState({
       currentAdditionIndex: 0,
-      doneThroughMinutes: 0,
+      play: false,
       elapsedSeconds: 0,
       additions: additionsCopy
     });
@@ -98,11 +104,6 @@ class App extends Component {
 
   instructionDoneButtonHandler = () => {
     // Make sure we're not at the last addition...
-    const additionsInOrder = Object.keys(this.state.additions).sort((a,b) => {return b-a});
-    if(this.state.doneThroughMinutes < additionsInOrder[0]) {
-      
-    }
-
     if(this.state.currentAdditionIndex < Object.keys(this.state.additions).length) {
       // Get a copy of the current additions object in state
       let additionsCopy = {...this.state.additions};
@@ -140,8 +141,12 @@ class App extends Component {
   }
 
   startTimerHandler = () => {
-    this.interval = setInterval(() => this.tick(), 1000);
+    // Get current epoch seconds
+    const seconds = new Date() / 1000;
+    console.log(seconds);
+    this.interval = setInterval(() => this.tick(), 100);
     this.setState({
+      startEpoch: seconds.toFixed(0),
       play: true
     })
   }
