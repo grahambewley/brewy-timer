@@ -8,8 +8,12 @@ const Instruction = (props) => {
     let displayMinutes;
     let instructionBoxStyle = {};
 
+    const totalAdditionCount = Object.keys(props.additions).length;
+    const additionsInOrder = Object.keys(props.additions).sort((a,b) => { return b-a });
+    
+    const currentAdditionTime = additionsInOrder[props.currentAdditionIndex];
 
-    if(props.additions.length === 0) {
+    if(totalAdditionCount === 0) {
         // Find the amount of seconds until brew ends
         let secondsUntil = props.boilMinutes*60 - props.elapsedSeconds;
         
@@ -32,7 +36,7 @@ const Instruction = (props) => {
         } 
     }
     // If the currentAdditionIndex exceeds the amount of additions, then we're done!
-    else if(props.currentAdditionIndex >= props.additions.length) {
+    else if(props.currentAdditionIndex >= totalAdditionCount) {
         // Find the amount of seconds until brew ends
         let secondsUntil = props.boilMinutes*60 - props.elapsedSeconds;
         
@@ -57,7 +61,7 @@ const Instruction = (props) => {
     // Otherwise, display the next instruction and the timer
     else {
         // Get the amount of seconds that the next addition is required at    
-        let additionSeconds = props.boilMinutes*60 - props.additions[props.currentAdditionIndex].time*60;
+        let additionSeconds = props.boilMinutes*60 - currentAdditionTime*60;
         // Find the amount of seconds until that next addition -- could be positive or negative
         let secondsUntil = additionSeconds - props.elapsedSeconds;
         
@@ -68,11 +72,16 @@ const Instruction = (props) => {
         displaySeconds = absoluteSecondsUntil - displayMinutes * 60;
         displaySeconds = ('0' + displaySeconds).slice(-2);
 
-        nextInstruction = props.additions[props.currentAdditionIndex].amount + " of " + props.additions[props.currentAdditionIndex].name;
+        nextInstruction += 'Add '
+        props.additions[currentAdditionTime].forEach((addition) => {
+            nextInstruction += addition.amount + ' of ' + addition.name + ', ';
+        });
+        nextInstruction = nextInstruction.substr(0, nextInstruction.length-2);
 
         // If secondsUntil is positive, this addition hasn't happened yet -- style based on the type of addition incoming
         if(secondsUntil >= 0) {
-            const additionType = props.additions[props.currentAdditionIndex].type;
+            // Use the first instruction in this addition to style the thing
+            const additionType = props.additions[Object.keys(props.additions)[props.currentAdditionIndex]][0].type;
 
             switch(additionType) {
                 case 'hops':

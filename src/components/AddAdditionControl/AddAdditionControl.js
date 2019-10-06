@@ -13,15 +13,13 @@ class AddAdditionControl extends Component {
     handleChange = (e) => {
         this.setState(
             {[e.target.id]: e.target.value}, 
-            ()=> this.props.newAdditionUpdate(this.state)
+            () => this.props.newAdditionUpdate(this.state)
         );
     }
 
     render() {
         return (
             <div className={classes.box}>
-                <h2 className={classes.header}>Insert Addition</h2>                
-
                 <label className={classes.label} htmlFor='name'>Name:</label>
                 <input className={classes.input} type='text' id='name' onChange={this.handleChange}></input>
                 

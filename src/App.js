@@ -13,6 +13,7 @@ class App extends Component {
     elapsedSeconds: 0,
     play: false,
     currentAdditionIndex: 0,
+    doneThroughMinutes: 0,
     additions: {
       50: [
         {name: 'Citra', type: 'hops', amount: '2 oz', time: 50, done: false}
@@ -95,6 +96,7 @@ class App extends Component {
 
     this.setState({
       currentAdditionIndex: 0,
+      doneThroughMinutes: 0,
       elapsedSeconds: 0,
       additions: additionsCopy
     });
@@ -104,6 +106,11 @@ class App extends Component {
 
   instructionDoneButtonHandler = () => {
     // Make sure we're not at the last addition...
+    const additionsInOrder = Object.keys(this.state.additions).sort((a,b) => {return b-a});
+    if(this.state.doneThroughMinutes < additionsInOrder[0]) {
+      
+    }
+
     if(this.state.currentAdditionIndex < Object.keys(this.state.additions).length) {
       // Get a copy of the current additions object in state
       let additionsCopy = {...this.state.additions};

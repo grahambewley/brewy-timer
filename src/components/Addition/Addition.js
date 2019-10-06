@@ -10,7 +10,6 @@ const addition = (props) => {
         top: percentage
     }
 
-    // TODO: Use this to add strikethrough to additions that have been used already
     let additionTextStyle = {};
     let additionSymbolStyle = {};
 
@@ -21,7 +20,8 @@ const addition = (props) => {
         }
     }
 
-    switch(props.type) {
+    // TODO: Instead of styling based on the first item in this addition, allow for mixed-style timeline symbols
+    switch(props.items[0].type) {
         case 'hops':
             additionSymbolStyle = { backgroundColor: '#288B64' };
             break;
@@ -32,10 +32,18 @@ const addition = (props) => {
             additionSymbolStyle = { backgroundColor: 'salmon'};
     }
 
+    const items = props.items.map((item) => {
+        return <p style={additionTextStyle} className='details'>{item.amount} {item.name}</p>
+    });
+
     return (
         <div style={additionStyle} className='addition'>
             <div style={additionSymbolStyle} className='symbol'></div>
+            <div className='items'>
+                {items}
+            </div>
             <p style={additionTextStyle} className='details'>{props.amount} {props.name} <span className='time'>@ {props.time} MIN</span></p>
+
         </div>
     )
 }

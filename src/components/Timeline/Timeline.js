@@ -10,21 +10,17 @@ const Timeline = (props) => {
     const timelineStyle = {
         background: linearGradientString
     }
-
-    const additionComponents = props.additions.map((add, index) => {
-        
+    
+    const additionComponents = Object.keys(props.additions).map((additionTime, index) => {
         return (
             <Addition 
                 key={index}
                 elapsedSeconds={props.elapsedSeconds} 
-                boilMinutes={props.boilMinutes} 
-                time={add.time} 
-                type={add.type} 
-                amount={add.amount} 
-                name={add.name}
-                done={add.done} />
+                boilMinutes={props.boilMinutes}  
+                time={additionTime}
+                items={props.additions[additionTime]} />
         );
-    })
+    });
 
     return (
         <div className='timelineContainer'>
