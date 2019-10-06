@@ -27,7 +27,7 @@ const Instruction = (props) => {
         // If secondsUntil is positive, this addition hasn't happened yet -- style based on the type of addition incoming
         if(secondsUntil >= 0) {
             nextInstruction = "Nothing added to this brew yet, add some additions!";
-            instructionBoxStyle = { backgroundColor: '#e09f7d' } //beer color
+            instructionBoxStyle = { backgroundColor: '#BFDAEA' } //default accent color
         }
         // If secondsUntil is negative, this addition time has passed, style appropriately
         if(secondsUntil < 0) {
@@ -50,7 +50,7 @@ const Instruction = (props) => {
         // If secondsUntil is positive, this addition hasn't happened yet -- style based on the type of addition incoming
         if(secondsUntil >= 0) {
             nextInstruction = "That's it! Continue to boil until the timer expires";
-            instructionBoxStyle = { backgroundColor: '#e09f7d' } //beer color
+            instructionBoxStyle = { backgroundColor: '#BFDAEA' } //default accent color
         }
         // If secondsUntil is negative, this addition time has passed, style appropriately
         if(secondsUntil < 0) {
@@ -91,7 +91,7 @@ const Instruction = (props) => {
                     instructionBoxStyle = { backgroundColor: '#dcaa99'};
                     break;
                 default:
-                    instructionBoxStyle = { backgroundColor: 'white'};
+                    instructionBoxStyle = { backgroundColor: '#BFDAEA'};
                     break;
             }
         } else {
