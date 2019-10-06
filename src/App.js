@@ -14,15 +14,7 @@ class App extends Component {
     play: false,
     currentAdditionIndex: 0,
     doneThroughMinutes: 0,
-    additions: {
-      50: [
-        {name: 'Citra', type: 'hops', amount: '2 oz', time: 50, done: false}
-      ],
-      30: [
-        {name: 'Centennial', type: 'hops', amount: '1 oz', time: 30, done: false}
-      ],
-
-    },
+    additions: {},
     newAddition: {
       name: null,
       type: null,
