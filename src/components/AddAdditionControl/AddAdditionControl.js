@@ -21,7 +21,7 @@ class AddAdditionControl extends Component {
         return (
             <div className={classes.box}>
                 <label className={classes.label} htmlFor='name'>Name:</label>
-                <input className={classes.input} type='text' id='name' onChange={this.handleChange} autocomplete="off"></input>
+                <input className={classes.input} type='text' id='name' onChange={this.handleChange} autoComplete="off"></input>
                 
                 <label className={classes.label} htmlFor='type'>Type:</label>
                 <select className={classes.input} id='type' onChange={this.handleChange}>
@@ -31,10 +31,10 @@ class AddAdditionControl extends Component {
                 </select>
                 
                 <label className={classes.label} htmlFor='amount'>Amount:</label>
-                <input className={classes.input} type='text' id='amount' onChange={this.handleChange} autocomplete="off"></input>
+                <input className={classes.input} type='text' id='amount' onChange={this.handleChange} autoComplete="off"></input>
 
                 <label className={classes.label} htmlFor='time'>Time:</label>
-                <input className={classes.input} type='number' id='time' onChange={this.handleChange} autocomplete="off"></input>
+                <input className={classes.input} type='number' id='time' onChange={this.handleChange} autoComplete="off"></input>
             </div>
         )
     }

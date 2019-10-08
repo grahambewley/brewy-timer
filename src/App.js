@@ -9,7 +9,6 @@ class App extends Component {
   state = {
     fullscreen: false,
     boilMinutes: 60,
-    startTime: 0,
     startEpoch: null,
     elapsedSeconds: 0,
     play: false,
@@ -28,15 +27,13 @@ class App extends Component {
   // CLOCK TICK HANDLERS
 
   tick() {
-    if(this.state.elapsedSeconds === this.state.boilMinutes*60) {
+    if(this.state.play && this.state.elapsedSeconds === this.state.boilMinutes*60) {
       clearInterval(this.interval);
     } else {
       const startEpoch = this.state.startEpoch;
       let currentEpoch = new Date() / 1000;
       currentEpoch = currentEpoch.toFixed(0);
 
-      console.log("StartEpoch = " + startEpoch);
-      console.log("CurrentEpoch = " + currentEpoch);
       this.setState({
         elapsedSeconds: currentEpoch - startEpoch
       });
@@ -44,10 +41,57 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log('[App] componentDidMount');
+    let startEpoch = localStorage.getItem('startEpoch');
 
-    console.log("[App] componentDidMount ran!");
+    // Check startEpoch as a test that there is data in localStorage at all
+    if(startEpoch !== null) {
+      // 'null' is starting value of startEpoch
+      // If not null, then brew has been started
+      if(startEpoch !== 'null') {
+        // Get the stored boilMinutes
+        const boilMinutes = localStorage.getItem('boilMinutes');
+        // Get current epoch date in seconds
+        let currentEpoch = new Date() / 1000;
+        currentEpoch = currentEpoch.toFixed(0);
 
-    if(this.state.play) {
+        //Check if this brew is in progress currently
+        if((currentEpoch - startEpoch) < boilMinutes*60) {
+          // If so, restore this brew to it's appropriate state
+          // TODO: Set state: additions, startEpoch, play, boilMinutes, currentAdditionIndex
+          // ...don't worry about elapsedSeconds, that will be handled by the tick() that's triggered by play being set to true
+          alert("It looks like you're returning to a brew in progress");
+          const additions = JSON.parse(localStorage.getItem('additions'));
+          this.setState({
+            additions: additions,
+            startEpoch: +startEpoch,
+            play: localStorage.getItem('play') === 'true',
+            boilMinutes: +boilMinutes,
+            currentAdditionIndex: +localStorage.getItem('currentAdditionIndex')
+          });
+        } else {
+          // Otherwise, clear the decks for a new brew
+          localStorage.clear();
+        }
+      
+      } else {
+        console.log("Brew has not started but we're going to restore stuff anyway!");
+
+        const additions = JSON.parse(localStorage.getItem('additions'));
+        const boilMinutes = +localStorage.getItem('boilMinutes');
+
+        this.setState({
+          additions: additions,
+          boilMinutes: boilMinutes
+        });
+      }
+      
+    
+    }
+
+    console.log("Finished with localStorage state setters... time to play");
+    console.log(this.state.play);
+    if(this.state.play || localStorage.getItem('play') === 'true') {
       this.interval = setInterval(() => this.tick(), 100);
     }
   }
@@ -95,22 +139,24 @@ class App extends Component {
   }
 
   restartButtonHandler = () => {
-    // Get a copy of Additions from state
-    const additionsCopy = {...this.state.additions};
-    // For each of the 'time' indexes within additions...
-    Object.keys(additionsCopy).forEach((additionTime) => {
-      // For each addition within that 'time'...
-      additionTime.forEach((addition) => {
-        // Set this addition to "not done"
-        addition.done = false;
-      });
-    });
+    localStorage.clear();
 
     this.setState({
-      currentAdditionIndex: 0,
-      play: false,
+      fullscreen: false,
+      boilMinutes: 60,
+      startEpoch: null,
       elapsedSeconds: 0,
-      additions: additionsCopy
+      play: false,
+      currentAdditionIndex: 0,
+      additions: {},
+      newAddition: {
+        name: null,
+        type: null,
+        amount: null,
+        time: null
+      },
+      isAdditionControlOpen: false,
+      isBoilControlOpen: false
     });
   }
 
@@ -160,7 +206,7 @@ class App extends Component {
     console.log(seconds);
     this.interval = setInterval(() => this.tick(), 100);
     this.setState({
-      startEpoch: seconds.toFixed(0),
+      startEpoch: +seconds.toFixed(0),
       play: true
     })
   }
@@ -283,7 +329,6 @@ class App extends Component {
 
             // Boil-related
             boilMinutes={this.state.boilMinutes}
-            startTime={this.state.startTime}
             elapsedSeconds={this.state.elapsedSeconds}
             currentAdditionIndex={this.state.currentAdditionIndex}
             additions={this.state.additions}

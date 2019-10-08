@@ -33,7 +33,7 @@ const addition = (props) => {
     }
 
     const items = props.items.map((item) => {
-        return <p style={additionTextStyle} className='details'>{item.amount} {item.name}</p>
+        return <p key={item.name} style={additionTextStyle} className='details'>{item.amount} {item.name}</p>
     });
 
     return (
