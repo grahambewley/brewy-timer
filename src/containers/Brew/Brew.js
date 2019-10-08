@@ -4,6 +4,7 @@ import CurrentTime from '../../components/Timeline/CurrentTime/CurrentTime';
 import Timeline from '../../components/Timeline/Timeline';
 import ActionBox from '../../components/ActionBox/ActionBox';
 import Controls from '../../components/Controls/Controls';
+import Modal from '../../components/Modal/Modal';
 
 class Brew extends Component {
 
@@ -13,6 +14,7 @@ class Brew extends Component {
             //this.props.additions.length > 0 ? 
 
                 <div className='container'>
+                    {this.props.showModal ? <Modal ></Modal> : null}
                     <CurrentTime 
                         elapsedSeconds={this.props.elapsedSeconds}
                         totalSeconds={this.props.boilMinutes*60} />

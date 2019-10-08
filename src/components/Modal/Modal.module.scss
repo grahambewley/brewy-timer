@@ -1,0 +1,38 @@
+@import '../../variables.scss';
+
+.Modal {
+    z-index: 150;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5rem;
+    background-color: $color-background-white;
+    padding: 2rem;
+    border-radius: .5rem;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__header {
+        grid-column: 1 / -1;
+        font-size: 1.8rem;
+    }
+
+    &__content {
+        grid-column: 1 / -1;
+        font-size: 1.4rem;
+    }
+
+    &__affirmative {
+        padding: 1.5rem;
+        grid-column: 1 / span 1;
+        background-color: $color-hops-green-light;
+    }
+
+    &__negative {
+        padding: 1.5rem;
+        grid-column: 2 / span 1;
+        background-color: $color-delete-red;
+    }
+}

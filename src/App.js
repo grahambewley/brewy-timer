@@ -7,6 +7,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 class App extends Component {
   
   state = {
+    showModal: false,
     fullscreen: false,
     boilMinutes: 60,
     startEpoch: null,
@@ -134,6 +135,31 @@ class App extends Component {
   }
 
   restartButtonHandler = () => {
+
+    this.modalConfirm = this.restartConfirmHandler;
+    this.setState({showModal: true});
+    localStorage.clear();
+
+    this.setState({
+      fullscreen: false,
+      boilMinutes: 60,
+      startEpoch: null,
+      elapsedSeconds: 0,
+      play: false,
+      currentAdditionIndex: 0,
+      additions: {},
+      newAddition: {
+        name: null,
+        type: null,
+        amount: null,
+        time: null
+      },
+      isAdditionControlOpen: false,
+      isBoilControlOpen: false
+    });
+  }
+
+  restartConfirmHandler = () => {
     localStorage.clear();
 
     this.setState({
@@ -301,6 +327,9 @@ class App extends Component {
         <Route 
           exact path='/' 
           render={() => <Brew 
+            showModal={this.state.showModal}
+            modalConfirm={this.modalConfirm}
+
             // Options Related            
             fullscreen={this.state.fullscreen}
             play={this.state.play}
