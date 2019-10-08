@@ -27,7 +27,7 @@ class App extends Component {
   // CLOCK TICK HANDLERS
 
   tick() {
-    if(this.state.elapsedSeconds === this.state.boilMinutes*60) {
+    if(this.state.elapsedSeconds >= this.state.boilMinutes*60) {
       clearInterval(this.interval);
     } else if(this.state.play){
       const startEpoch = this.state.startEpoch;

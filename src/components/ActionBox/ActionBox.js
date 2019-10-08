@@ -1,7 +1,7 @@
 import React from 'react';
-import Instruction from '../Instruction/Instruction';
-import AddAdditionControl from '../AddAdditionControl/AddAdditionControl';
-import ChangeBoilControl from '../ChangeBoilControl/ChangeBoilControl';
+import Instruction from './Instruction/Instruction';
+import AddAdditionControl from './AddAdditionControl/AddAdditionControl';
+import ChangeBoilControl from './ChangeBoilControl/ChangeBoilControl';
 import './ActionBox.scss';
 
 const ActionBox = (props) => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Options from '../../components/Options/Options';
-import CurrentTime from '../../components/CurrentTime/CurrentTime';
+import CurrentTime from '../../components/Timeline/CurrentTime/CurrentTime';
 import Timeline from '../../components/Timeline/Timeline';
 import ActionBox from '../../components/ActionBox/ActionBox';
 import Controls from '../../components/Controls/Controls';

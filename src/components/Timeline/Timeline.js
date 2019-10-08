@@ -1,6 +1,6 @@
 import React from 'react';
 import './Timeline.scss';
-import Addition from '../Addition/Addition';
+import Addition from './Addition/Addition';
 
 const Timeline = (props) => {
 
