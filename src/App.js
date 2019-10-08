@@ -27,9 +27,9 @@ class App extends Component {
   // CLOCK TICK HANDLERS
 
   tick() {
-    if(this.state.play && this.state.elapsedSeconds === this.state.boilMinutes*60) {
+    if(this.state.elapsedSeconds === this.state.boilMinutes*60) {
       clearInterval(this.interval);
-    } else {
+    } else if(this.state.play){
       const startEpoch = this.state.startEpoch;
       let currentEpoch = new Date() / 1000;
       currentEpoch = currentEpoch.toFixed(0);
@@ -41,7 +41,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log('[App] componentDidMount');
     let startEpoch = localStorage.getItem('startEpoch');
 
     // Check startEpoch as a test that there is data in localStorage at all
@@ -58,8 +57,6 @@ class App extends Component {
         //Check if this brew is in progress currently
         if((currentEpoch - startEpoch) < boilMinutes*60) {
           // If so, restore this brew to it's appropriate state
-          // TODO: Set state: additions, startEpoch, play, boilMinutes, currentAdditionIndex
-          // ...don't worry about elapsedSeconds, that will be handled by the tick() that's triggered by play being set to true
           alert("It looks like you're returning to a brew in progress");
           const additions = JSON.parse(localStorage.getItem('additions'));
           this.setState({
@@ -89,8 +86,6 @@ class App extends Component {
     
     }
 
-    console.log("Finished with localStorage state setters... time to play");
-    console.log(this.state.play);
     if(this.state.play || localStorage.getItem('play') === 'true') {
       this.interval = setInterval(() => this.tick(), 100);
     }
