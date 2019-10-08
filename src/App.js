@@ -44,7 +44,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    
+
+    console.log("[App] componentDidMount ran!");
+
     if(this.state.play) {
       this.interval = setInterval(() => this.tick(), 100);
     }
