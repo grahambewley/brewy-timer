@@ -44,9 +44,17 @@ class App extends Component {
   }
 
   componentDidMount() {
+    
     if(this.state.play) {
       this.interval = setInterval(() => this.tick(), 100);
     }
+  }
+
+  componentDidUpdate() {
+    // Store all of state in localStorage
+    Object.keys(this.state).map((key) => {
+      return localStorage.setItem(key, JSON.stringify(this.state[key]));
+    });
   }
   
   componentWillUnmount() {
@@ -56,7 +64,8 @@ class App extends Component {
   // OPTION BUTTON HANDLERS
 
   fullscreenButtonHandler = () => {
-    if(this.state.fullscreen === false) {
+    const currentFullscreen = this.state.fullscreen;
+    if(currentFullscreen === false) {
       this.setState({
         fullscreen: true
       });
@@ -67,6 +76,8 @@ class App extends Component {
       this.setState({
         fullscreen: false
       });
+      
+      
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.msExitFullscreen) {
@@ -77,7 +88,8 @@ class App extends Component {
           document.webkitExitFullscreen();
       }
     }
-      
+
+    localStorage.setItem('fullscreen', !currentFullscreen);
   }
 
   restartButtonHandler = () => {
