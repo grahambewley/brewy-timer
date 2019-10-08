@@ -136,8 +136,11 @@ class App extends Component {
 
   restartButtonHandler = () => {
 
+    // Bring up modal, set the affirmative and negative actions for this modal
     this.modalConfirm = this.restartConfirmHandler;
     this.setState({showModal: true});
+
+    //TODO: Remove this -- It's done in the restartConfirmHandler below
     localStorage.clear();
 
     this.setState({
