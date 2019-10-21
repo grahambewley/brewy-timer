@@ -8,10 +8,10 @@ const modal = (props) => {
         <Aux>
             <Backdrop show />
             <div className={classes.Modal} style={{}}>
-                <h1 className={classes.Modal__header}>Modal header</h1>
-                <p className={classes.Modal__content}>Modal text modal text modal text modal text</p>
-                <button className={classes.Modal__affirmative}>OK</button>
-                <button className={classes.Modal__negative}>Cancel</button>
+                <h1 className={classes.Modal__header}>{ props.modalHeader }</h1>
+                <p className={classes.Modal__content}>{ props.modalContent }</p>
+                <button className={classes.Modal__affirmative} onClick={props.modalConfirm}>OK</button>
+                <button className={classes.Modal__negative} onClick={props.modalCancel}>Cancel</button>
             </div>
         </Aux>
     );

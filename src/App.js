@@ -103,6 +103,12 @@ class App extends Component {
       clearInterval(this.interval);
   }
 
+  modalCancel = () => {
+    this.setState({
+      showModal: false
+    });
+  }
+
   // OPTION BUTTON HANDLERS
 
   fullscreenButtonHandler = () => {
@@ -138,34 +144,16 @@ class App extends Component {
 
     // Bring up modal, set the affirmative and negative actions for this modal
     this.modalConfirm = this.restartConfirmHandler;
+    this.modalHeader = "Restart Brew?";
+    this.modalContent = "Restarting your brew will remove all ingredients and revert your timer to the beginning.";
     this.setState({showModal: true});
-
-    //TODO: Remove this -- It's done in the restartConfirmHandler below
-    localStorage.clear();
-
-    this.setState({
-      fullscreen: false,
-      boilMinutes: 60,
-      startEpoch: null,
-      elapsedSeconds: 0,
-      play: false,
-      currentAdditionIndex: 0,
-      additions: {},
-      newAddition: {
-        name: null,
-        type: null,
-        amount: null,
-        time: null
-      },
-      isAdditionControlOpen: false,
-      isBoilControlOpen: false
-    });
   }
 
   restartConfirmHandler = () => {
     localStorage.clear();
 
     this.setState({
+      showModal: false,
       fullscreen: false,
       boilMinutes: 60,
       startEpoch: null,
@@ -332,6 +320,9 @@ class App extends Component {
           render={() => <Brew 
             showModal={this.state.showModal}
             modalConfirm={this.modalConfirm}
+            modalCancel={this.modalCancel}
+            modalHeader={this.modalHeader}
+            modalContent={this.modalContent}
 
             // Options Related            
             fullscreen={this.state.fullscreen}

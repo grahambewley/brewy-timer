@@ -14,7 +14,14 @@ class Brew extends Component {
             //this.props.additions.length > 0 ? 
 
                 <div className='container'>
-                    {this.props.showModal ? <Modal ></Modal> : null}
+                    {this.props.showModal ? 
+                        <Modal 
+                            modalConfirm={this.props.modalConfirm} 
+                            modalCancel={this.props.modalCancel}
+                            modalHeader={this.props.modalHeader}
+                            modalContent={this.props.modalContent}>
+                        </Modal> : 
+                    null}
                     <CurrentTime 
                         elapsedSeconds={this.props.elapsedSeconds}
                         totalSeconds={this.props.boilMinutes*60} />
