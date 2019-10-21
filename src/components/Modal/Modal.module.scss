@@ -13,24 +13,30 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: #222;
 
     &__header {
+        font-weight: 600;
         grid-column: 1 / -1;
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     &__content {
         grid-column: 1 / -1;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
 
     &__affirmative {
+        color: #222;
+        font-size: 1.6rem;
         padding: 1.5rem;
         grid-column: 1 / span 1;
         background-color: $color-hops-green-light;
     }
 
     &__negative {
+        color: #222;
+        font-size: 1.6rem;
         padding: 1.5rem;
         grid-column: 2 / span 1;
         background-color: $color-delete-red;
