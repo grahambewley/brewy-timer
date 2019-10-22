@@ -72,10 +72,11 @@ const Instruction = (props) => {
         displaySeconds = absoluteSecondsUntil - displayMinutes * 60;
         displaySeconds = ('0' + displaySeconds).slice(-2);
 
-        nextInstruction += 'Add '
+        nextInstruction += 'Add ';
         props.additions[currentAdditionTime].forEach((addition) => {
             nextInstruction += addition.amount + ' of ' + addition.name + ', ';
         });
+        
         nextInstruction = nextInstruction.substr(0, nextInstruction.length-2);
 
         // If secondsUntil is positive, this addition hasn't happened yet -- style based on the type of addition incoming

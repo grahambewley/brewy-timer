@@ -13,13 +13,6 @@ const addition = (props) => {
     let additionTextStyle = {};
     let additionSymbolStyle = {};
 
-    if(props.done === true) {
-        additionTextStyle = {
-            textDecoration: 'line-through',
-            opacity: '0.5'
-        }
-    }
-
     // TODO: Instead of styling based on the first item in this addition, allow for mixed-style timeline symbols
     switch(props.items[0].type) {
         case 'hops':
@@ -32,6 +25,13 @@ const addition = (props) => {
             additionSymbolStyle = { backgroundColor: 'salmon'};
     }
 
+    if(props.instructionMinutesDone !== null && props.time >= props.instructionMinutesDone) {
+        additionTextStyle = {
+            textDecoration: 'line-through',
+            opacity: '0.5'
+        }
+    }
+
     const items = props.items.map((item) => {
         return <p key={item.name} style={additionTextStyle} className='details'>{item.amount} {item.name}</p>
     });
@@ -42,7 +42,7 @@ const addition = (props) => {
             <div className='items'>
                 {items}
             </div>
-            <p style={additionTextStyle} className='details'>{props.amount} {props.name} <span className='time'>@ {props.time} MIN</span></p>
+            <p className='time'>@ {props.time} MIN</p>
 
         </div>
     )

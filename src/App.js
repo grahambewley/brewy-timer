@@ -12,6 +12,7 @@ class App extends Component {
     boilMinutes: 60,
     startEpoch: null,
     elapsedSeconds: 0,
+    instructionMinutesDone: null,
     play: false,
     currentAdditionIndex: 0,
     additions: {},
@@ -64,6 +65,7 @@ class App extends Component {
             additions: additions,
             startEpoch: +startEpoch,
             play: localStorage.getItem('play') === 'true',
+            instructionMinutesDone: +localStorage.getItem('instructionMinutesDone'),
             boilMinutes: +boilMinutes,
             currentAdditionIndex: +localStorage.getItem('currentAdditionIndex')
           });
@@ -83,8 +85,6 @@ class App extends Component {
           boilMinutes: boilMinutes
         });
       }
-      
-    
     }
 
     if(this.state.play || localStorage.getItem('play') === 'true') {
@@ -152,6 +152,7 @@ class App extends Component {
   restartConfirmHandler = () => {
     localStorage.clear();
 
+    //Set state back to initial state
     this.setState({
       showModal: false,
       fullscreen: false,
@@ -159,6 +160,7 @@ class App extends Component {
       startEpoch: null,
       elapsedSeconds: 0,
       play: false,
+      instructionMinutesDone: null,
       currentAdditionIndex: 0,
       additions: {},
       newAddition: {
@@ -177,37 +179,26 @@ class App extends Component {
   instructionDoneButtonHandler = () => {
     // Make sure we're not at the last addition...
     if(this.state.currentAdditionIndex < Object.keys(this.state.additions).length) {
-      // Get a copy of the current additions object in state
-      let additionsCopy = {...this.state.additions};
-      // Select the array of additions at the time matching the currentAdditionIndex
-      // e.g. additionsCopy[30].forEach(...)
-      additionsCopy[Object.keys(additionsCopy)[this.state.currentAdditionIndex]].forEach((addition) => {
-        addition.done = true;
-      });
-      
-      
       this.setState(prevState => ({
-        // Set additions to the modified copy we made
-        additions: additionsCopy,
         // Move the currentAdditionIndex up 1 -- used for the Instruction component
-        currentAdditionIndex: prevState.currentAdditionIndex + 1
+        currentAdditionIndex: prevState.currentAdditionIndex + 1,
+        instructionMinutesDone: +Object.keys(this.state.additions).reverse()[this.state.currentAdditionIndex]
       }))
     } 
   }
 
   rewindButtonHandler = () => {
     if(this.state.currentAdditionIndex > 0) {
-      // Get a copy of the current additions object in state
-      let additionsCopy = {...this.state.additions};
-      // Set the addition at index: currentAdditionIndex to DONE -- used in Addition component for strikethrough
-      additionsCopy[Object.keys(additionsCopy)[this.state.currentAdditionIndex-1]].forEach((addition) => {
-        addition.done = false;
-      });
 
+      let doneMins;
+      if(this.state.currentAdditionIndex === 1) {
+        doneMins = null;
+      } else {
+        doneMins = +Object.keys(this.state.additions).reverse()[this.state.currentAdditionIndex-2];
+      } 
       this.setState(prevState => ({
-        // Set additions to the modified copy we made
-        additions: additionsCopy,
-        currentAdditionIndex: prevState.currentAdditionIndex - 1
+        currentAdditionIndex: prevState.currentAdditionIndex - 1,
+        instructionMinutesDone: doneMins
       }))
     }
   }
@@ -349,6 +340,7 @@ class App extends Component {
             boilMinutes={this.state.boilMinutes}
             elapsedSeconds={this.state.elapsedSeconds}
             currentAdditionIndex={this.state.currentAdditionIndex}
+            instructionMinutesDone={this.state.instructionMinutesDone}
             additions={this.state.additions}
             
             // (Deprecated) Functions

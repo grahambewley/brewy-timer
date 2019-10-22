@@ -28,7 +28,8 @@ class Brew extends Component {
                     <Timeline 
                         boilMinutes={this.props.boilMinutes} 
                         additions={this.props.additions} 
-                        elapsedSeconds={this.props.elapsedSeconds} />
+                        elapsedSeconds={this.props.elapsedSeconds} 
+                        instructionMinutesDone={this.props.instructionMinutesDone}/>
                     <ActionBox 
                         instructDone={this.props.instructDone} 
                         instructRewind={this.props.instructRewind}

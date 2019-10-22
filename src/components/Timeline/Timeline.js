@@ -18,7 +18,8 @@ const Timeline = (props) => {
                 elapsedSeconds={props.elapsedSeconds} 
                 boilMinutes={props.boilMinutes}  
                 time={additionTime}
-                items={props.additions[additionTime]} />
+                items={props.additions[additionTime]} 
+                instructionMinutesDone={props.instructionMinutesDone}/>
         );
     });
 
