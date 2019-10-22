@@ -59,9 +59,14 @@ class App extends Component {
         //Check if this brew is in progress currently
         if((currentEpoch - startEpoch) < boilMinutes*60) {
           // If so, restore this brew to it's appropriate state
-          alert("It looks like you're returning to a brew in progress");
+          // Bring up modal, set the affirmative and negative actions for this modal
+          this.modalConfirm = this.modalCancel;
+          this.modalHeader = "Brew In Progress";
+          this.modalContent = "Returning you to a brew in progress. If you'd rather start over, tap the restart button in the upper right corner.";
+
           const additions = JSON.parse(localStorage.getItem('additions'));
           this.setState({
+            showModal: true,
             additions: additions,
             startEpoch: +startEpoch,
             play: localStorage.getItem('play') === 'true',
