@@ -17,7 +17,7 @@
 
 .timer {
     font-family: 'Roboto Mono', monospace;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #222;
     padding: .4rem;
     background-color: $color-background-white;
@@ -28,7 +28,7 @@
 .timerDash {
     display: absolute;
     height: 2px;
-    width: .8rem;
+    width: 1rem;
     background-color: $color-hops-green-light;
 }
 

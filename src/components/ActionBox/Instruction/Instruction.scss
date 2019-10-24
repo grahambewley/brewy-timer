@@ -50,32 +50,29 @@
     border-radius: 2px;
 }
 
-.instructionRewind {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background-color: $color-background-white;
-    font-size: 1.2rem;
-    color: $color-font-dark;
-    border: none;
-}
-
-.instructionRewind:focus {
-    outline: none;
+.instructionButtonContainer {
+    display: flex;
+    align-items: flex-end;
 }
 
 .instructionButton {
-    align-self: flex-start;
-    justify-self: flex-end;
-    outline: none;
-    border: none;
-    border-radius: 5000px;
-    padding: 1rem 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
     background-color: $color-background-white;
+    font-size: 1.5rem;
     color: $color-font-dark;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    letter-spacing: .1rem;
-    font-weight: 400;
+    border: none;
+
+    &--main {
+        width: 8rem;
+        height: 8rem;
+        font-size: 3rem;
+        margin-left: 1.5rem;
+    }
+
+}
+
+.instructionButton:focus {
+    outline: none;
 }
