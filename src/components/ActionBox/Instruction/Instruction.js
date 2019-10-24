@@ -72,14 +72,6 @@ const Instruction = (props) => {
         displaySeconds = absoluteSecondsUntil - displayMinutes * 60;
         displaySeconds = ('0' + displaySeconds).slice(-2);
 
-        /*nextInstruction += 'Add ';
-        props.additions[currentAdditionTime].forEach((addition) => {
-            nextInstruction += addition.amount + ' of ' + addition.name + ', ';
-        });
-
-        nextInstruction = nextInstruction.substr(0, nextInstruction.length-2);
-        */
-
         nextInstruction = props.additions[currentAdditionTime].map((item) => {
             return <p key={item.name}>{item.amount} {item.name}</p>;
         })
@@ -132,11 +124,13 @@ const Instruction = (props) => {
             </div>
             <div className='instructionTimerContainer'>
                 <p className='instructionTimer'>{displayMinutes}:{displaySeconds}</p>
-                <button className='instructionRewind' onClick={props.instructRewind}><i className="fas fa-undo option-icon"></i></button>
-                {/* If recipe is 'playing' then display the DONE button, otherwise display the START button */}
-                {props.play ? 
-                    <button onClick={props.instructDone} className='instructionButton' id='instructionButton'>Done</button> :
-                    <button onClick={props.timerStart} className="instructionButton">Start</button>}
+                <div className='instructionButtonContainer'>
+                    <button className='instructionButton' onClick={props.instructRewind}><i className="fas fa-undo option-icon"></i></button>
+                    {/* If recipe is 'playing' then display the DONE button, otherwise display the START button */}
+                    {props.play ? 
+                        <button onClick={props.instructDone} className='instructionButton instructionButton--main' id='instructionButton'><i className="fas fa-check"></i></button> :
+                        <button onClick={props.timerStart} className="instructionButton instructionButton--main"><i className="fas fa-play"></i></button>}
+                </div>
             </div>
         </div>
     )
