@@ -28,6 +28,7 @@ const ActionBox = (props) => {
     else {
         component = (
             <Instruction 
+                openAdditionControl={props.openAdditionControl}
                 instructDone={props.instructDone} 
                 instructRewind={props.instructRewind}
                 timerStart={props.timerStart}

@@ -7,13 +7,20 @@ const Instruction = (props) => {
     let displaySeconds;
     let displayMinutes;
     let instructionBoxStyle = {};
+    let bigButton = null;
+    let smallButton = null;
 
     const totalAdditionCount = Object.keys(props.additions).length;
     const additionsInOrder = Object.keys(props.additions).sort((a,b) => { return b-a });
     
     const currentAdditionTime = additionsInOrder[props.currentAdditionIndex];
 
+    // If nothing has been added to boil yet
     if(totalAdditionCount === 0) {
+        // Big Button should be an addition-add button
+        bigButton = (
+            <button onClick={props.openAdditionControl} className='instructionButton instructionButton--main' ><i className="fas fa-plus"></i></button>
+        )
         // Find the amount of seconds until brew ends
         let secondsUntil = props.boilMinutes*60 - props.elapsedSeconds;
         
@@ -37,6 +44,10 @@ const Instruction = (props) => {
     }
     // If the currentAdditionIndex exceeds the amount of additions, then we're done!
     else if(props.currentAdditionIndex >= totalAdditionCount) {
+        // Big Button should be the "next" button
+        bigButton = (
+            <button className='instructionButton instructionButton--main' onClick={props.instructRewind}><i className="fas fa-undo option-icon"></i></button>
+        )
         // Find the amount of seconds until brew ends
         let secondsUntil = props.boilMinutes*60 - props.elapsedSeconds;
         
@@ -60,6 +71,22 @@ const Instruction = (props) => {
     } 
     // Otherwise, display the next instruction and the timer
     else {
+        if(props.play) {
+            bigButton = (
+                <button onClick={props.instructDone} className='instructionButton instructionButton--main' id='instructionButton'><i className="fas fa-check"></i></button>
+            );
+            if(props.currentAdditionIndex > 0) {
+                smallButton = (
+                    <button className='instructionButton' onClick={props.instructRewind}><i className="fas fa-undo option-icon"></i></button>
+                );
+            }
+            
+        } else {
+            bigButton = (
+                <button onClick={props.timerStart} className="instructionButton instructionButton--main"><i className="fas fa-play"></i></button>
+            )
+        }
+
         // Get the amount of seconds that the next addition is required at    
         let additionSeconds = props.boilMinutes*60 - currentAdditionTime*60;
         // Find the amount of seconds until that next addition -- could be positive or negative
@@ -125,11 +152,15 @@ const Instruction = (props) => {
             <div className='instructionTimerContainer'>
                 <p className='instructionTimer'>{displayMinutes}:{displaySeconds}</p>
                 <div className='instructionButtonContainer'>
-                    <button className='instructionButton' onClick={props.instructRewind}><i className="fas fa-undo option-icon"></i></button>
+                    {/*<button className='instructionButton' onClick={props.instructRewind}><i className="fas fa-undo option-icon"></i></button>*/}
                     {/* If recipe is 'playing' then display the DONE button, otherwise display the START button */}
+                    {/*
                     {props.play ? 
                         <button onClick={props.instructDone} className='instructionButton instructionButton--main' id='instructionButton'><i className="fas fa-check"></i></button> :
                         <button onClick={props.timerStart} className="instructionButton instructionButton--main"><i className="fas fa-play"></i></button>}
+                    */}
+                    {smallButton}
+                    {bigButton}
                 </div>
             </div>
         </div>
