@@ -71,10 +71,12 @@ const Instruction = (props) => {
     } 
     // Otherwise, display the next instruction and the timer
     else {
+        // If this brew is already in progress, display instruction-done button
         if(props.play) {
             bigButton = (
                 <button onClick={props.instructDone} className='instructionButton instructionButton--main' id='instructionButton'><i className="fas fa-check"></i></button>
             );
+            // If this isn't the first addition, display the instruction-rewind button
             if(props.currentAdditionIndex > 0) {
                 smallButton = (
                     <button className='instructionButton' onClick={props.instructRewind}><i className="fas fa-undo option-icon"></i></button>
