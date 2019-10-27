@@ -55,16 +55,18 @@ class Brew extends Component {
                     <Options 
                         optFullscreen={this.props.optFullscreen} 
                         optRestart={this.props.optRestart}
-                        full={this.props.fullscreen} />
+                        full={this.props.fullscreen} 
+                        boilCtrlOpen={this.props.boilCtrlOpen}
+                        openBoilControl={this.props.openBoilControl}
+                        closeBoilControl={this.props.closeBoilControl}/>
                     <Controls 
+                        additions={this.props.additions}
                         additionCtrlOpen={this.props.additionCtrlOpen}
                         openNewAdditionControl={this.props.openNewAdditionControl}
                         closeAdditionControl={this.props.closeAdditionControl}
                         addNewAddition={this.props.addNewAddition}
                         boilCtrlOpen={this.props.boilCtrlOpen}
-                        openBoilControl={this.props.openBoilControl}
-                        closeBoilControl={this.props.closeBoilControl}
-                        />
+                        closeBoilControl={this.props.closeBoilControl}/>
                     
                 </div> // :
 

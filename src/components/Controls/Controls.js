@@ -3,6 +3,9 @@ import classes from './Controls.module.scss';
 
 const Controls = (props) => {
 
+    const totalAdditionCount = Object.keys(props.additions).length;
+    console.log(totalAdditionCount);
+
     let buttons;
     if(props.additionCtrlOpen) {
         buttons = [
@@ -14,10 +17,12 @@ const Controls = (props) => {
         buttons = [
             <button key='clsBoil' onClick={props.closeBoilControl} className={classes.controlGreen}><i className="fas fa-check"></i></button>
         ]
+    } else if(totalAdditionCount === 0) {
+        buttons = null;
     }
     else {
+
         buttons = [
-            <button key='opnBoil' onClick={props.openBoilControl} className={classes.controlWhite}><i className="fas fa-hourglass-half"></i></button>,
             <button key='opnAdd' onClick={props.openNewAdditionControl} className={classes.controlGreen}><i className="fas fa-plus"></i></button>
         ]
     }
