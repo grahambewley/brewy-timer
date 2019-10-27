@@ -34,8 +34,8 @@ class AddAdditionControl extends Component {
                 <input className={classes.input} type='text' id='amount' onChange={this.handleChange} autoComplete="off" placeholder='e.g. "1 oz"'></input>
 
                 <label className={classes.label} htmlFor='time'>Addition Time:</label>
-                <div>
-                    <input className={classes.input} type='number' id='time' onChange={this.handleChange} autoComplete="off"></input>
+                <div className={classes.additionTimeContainer}>
+                    <input className={[classes.input, classes.additionTimeInput].join(' ')} type='number' id='time' onChange={this.handleChange} autoComplete="off"></input>
                     <span className={classes.minutesSpan}>minutes</span>
                 </div>
             </div>
