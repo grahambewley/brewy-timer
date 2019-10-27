@@ -18,7 +18,7 @@ const Controls = (props) => {
     else {
         buttons = [
             <button key='opnBoil' onClick={props.openBoilControl} className={classes.controlWhite}><i className="fas fa-hourglass-half"></i></button>,
-            <button key='opnAdd' onClick={props.openAdditionControl} className={classes.controlGreen}><i className="fas fa-plus"></i></button>
+            <button key='opnAdd' onClick={props.openNewAdditionControl} className={classes.controlGreen}><i className="fas fa-plus"></i></button>
         ]
     }
 

@@ -11,12 +11,14 @@ const option = (props) => {
         fullscreenIcon = 'fas fa-expand'
     }
  
+    /*
     const requestNotification = () => {
         console.log("Requesting Notification permissions");
         Notification.requestPermission(function(status) {
             console.log('Notification permission status: ', status);
         });
     }
+    */
 
     return (
         <div className='optionsContainer'>

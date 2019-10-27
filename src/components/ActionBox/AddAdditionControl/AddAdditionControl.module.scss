@@ -40,23 +40,8 @@
     margin-bottom: .5rem;
 }
 
-.submit {
-    grid-column: app-start / app-end;
-    width: 90%;
-    justify-self: center;
-
-    outline: none;
-    border: none;
-    border-radius: 5000px;
-    padding: 1rem 6rem;
-    background-color: $color-hops-green-light;
-    
-    color: $color-font-dark;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.6rem;
+.minutesSpan {
     text-transform: uppercase;
-    letter-spacing: .1rem;
-    font-weight: 400;
-
-    margin-top: 2rem;
+    font-size: 1.4rem;
+    color: $color-font-dark-2;
 }

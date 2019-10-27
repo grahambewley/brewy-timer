@@ -10,8 +10,8 @@ const modal = (props) => {
             <div className={classes.Modal} style={{}}>
                 <h1 className={classes.Modal__header}>{ props.modalHeader }</h1>
                 <p className={classes.Modal__content}>{ props.modalContent }</p>
-                <button className={classes.Modal__affirmative} onClick={props.modalConfirm}>OK</button>
-                <button className={classes.Modal__negative} onClick={props.modalCancel}>Cancel</button>
+                <button className={classes.Modal__affirmative} onClick={props.modalConfirm}>{props.modalConfirmButtonText}</button>
+                <button className={classes.Modal__negative} onClick={props.modalCancel}>{props.modalCancelButtonText}</button>
             </div>
         </Aux>
     );

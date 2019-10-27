@@ -37,7 +37,7 @@ const addition = (props) => {
     });
 
     return (
-        <div style={additionStyle} className='addition'>
+        <div style={additionStyle} className='addition' onClick={props.clicked}>
             <div style={additionSymbolStyle} className='symbol'></div>
             <div className='items'>
                 {items}

@@ -22,8 +22,9 @@ class App extends Component {
       amount: null,
       time: null
     },
-    isAdditionControlOpen: false,
-    isBoilControlOpen: false
+    isNewAdditionControlOpen: false,
+    isBoilControlOpen: false,
+    isEditAdditionControlOpen: false
   }
 
   // CLOCK TICK HANDLERS
@@ -60,9 +61,12 @@ class App extends Component {
         if((currentEpoch - startEpoch) < boilMinutes*60) {
           // If so, restore this brew to it's appropriate state
           // Bring up modal, set the affirmative and negative actions for this modal
-          this.modalConfirm = this.modalCancel;
+          this.modalConfirm = this.modalDismiss;
+          this.modalCancel = this.restartButtonHandler;
+          this.modalConfirmButtonText = "OK";
+          this.modalCancelButtonText = "Restart";
           this.modalHeader = "Brew In Progress";
-          this.modalContent = "Returning you to a brew in progress. If you'd rather start over, tap the restart button in the upper right corner.";
+          this.modalContent = "Returning you to a brew in progress. Tap OK to continue or Restart to begin a new brew.";
 
           const additions = JSON.parse(localStorage.getItem('additions'));
           this.setState({
@@ -108,7 +112,7 @@ class App extends Component {
       clearInterval(this.interval);
   }
 
-  modalCancel = () => {
+  modalDismiss = () => {
     this.setState({
       showModal: false
     });
@@ -149,8 +153,11 @@ class App extends Component {
 
     // Bring up modal, set the affirmative and negative actions for this modal
     this.modalConfirm = this.restartConfirmHandler;
+    this.modalCancel = this.modalDismiss;
+    this.modalConfirmButtonText = "OK";
+    this.modalCancelButtonText = "Cancel";
     this.modalHeader = "Restart Brew?";
-    this.modalContent = "Restarting your brew will remove all ingredients and revert your timer to the beginning.";
+    this.modalContent = "Are you sure? Restarting your brew will remove all ingredients and revert your timer to the beginning.";
     this.setState({showModal: true});
   }
 
@@ -174,8 +181,9 @@ class App extends Component {
         amount: null,
         time: null
       },
-      isAdditionControlOpen: false,
-      isBoilControlOpen: false
+      isNewAdditionControlOpen: false,
+      isBoilControlOpen: false,
+      isEditAdditionControlOpen: false
     });
   }
 
@@ -248,15 +256,15 @@ class App extends Component {
   //   })
   // }
 
-  openAdditionControlHandler = () => {
+  openNewAdditionControlHandler = () => {
     this.setState({
-      isAdditionControlOpen: true,
+      isNewAdditionControlOpen: true,
     })
   }
 
   closeAdditionControlHandler = () => {
     this.setState({
-      isAdditionControlOpen: false,
+      isNewAdditionControlOpen: false,
       newAddition: {
         name: null,
         type: null,
@@ -308,6 +316,14 @@ class App extends Component {
     });
   }
 
+  openEditAdditionControlHandler = (time) => {
+    console.log("Clicked on addition: " + this.state.additions[time]);
+    
+    this.setState({
+      isEditAdditionControlOpen: true,
+    });
+}
+
   render () {
     return (
       <BrowserRouter>
@@ -316,6 +332,8 @@ class App extends Component {
           render={() => <Brew 
             showModal={this.state.showModal}
             modalConfirm={this.modalConfirm}
+            modalConfirmButtonText={this.modalConfirmButtonText}
+            modalCancelButtonText={this.modalCancelButtonText}
             modalCancel={this.modalCancel}
             modalHeader={this.modalHeader}
             modalContent={this.modalContent}
@@ -328,13 +346,14 @@ class App extends Component {
             optRestart={this.restartButtonHandler}
             
             // Control-related
-            additionCtrlOpen={this.state.isAdditionControlOpen}
-            openAdditionControl={this.openAdditionControlHandler}
+            additionCtrlOpen={this.state.isNewAdditionControlOpen}
+            openNewAdditionControl={this.openNewAdditionControlHandler}
             closeAdditionControl={this.closeAdditionControlHandler}
             newAddition={this.state.newAddition}
             newAdditionUpdate={this.newAdditionUpdateHandler}
             addNewAddition={this.addNewAdditionHandler}
-            
+            openEditAdditionControl={this.openEditAdditionControlHandler}
+
             boilCtrlOpen={this.state.isBoilControlOpen}
             openBoilControl={this.openBoilControlHandler}
             closeBoilControl={this.closeBoilControlHandler}
@@ -347,11 +366,6 @@ class App extends Component {
             currentAdditionIndex={this.state.currentAdditionIndex}
             instructionMinutesDone={this.state.instructionMinutesDone}
             additions={this.state.additions}
-            
-            // (Deprecated) Functions
-
-            additionAdd={this.additionAddHandler}
-            additionDelete={this.additionDeleteHandler}
 
             // Instruction-related
             instructDone={this.instructionDoneButtonHandler}

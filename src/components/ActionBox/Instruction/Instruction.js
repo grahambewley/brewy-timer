@@ -19,7 +19,7 @@ const Instruction = (props) => {
     if(totalAdditionCount === 0) {
         // Big Button should be an addition-add button
         bigButton = (
-            <button onClick={props.openAdditionControl} className='instructionButton instructionButton--main' ><i className="fas fa-plus"></i></button>
+            <button onClick={props.openNewAdditionControl} className='instructionButton instructionButton--main' ><i className="fas fa-plus"></i></button>
         )
         // Find the amount of seconds until brew ends
         let secondsUntil = props.boilMinutes*60 - props.elapsedSeconds;
@@ -46,7 +46,7 @@ const Instruction = (props) => {
     else if(props.currentAdditionIndex >= totalAdditionCount) {
         // Big Button should be the "next" button
         bigButton = (
-            <button className='instructionButton instructionButton--main' onClick={props.instructRewind}><i className="fas fa-undo option-icon"></i></button>
+            <button className='instructionButton instructionButton--main' onClick={props.instructRewind}><i className="fas fa-backward"></i></button>
         )
         // Find the amount of seconds until brew ends
         let secondsUntil = props.boilMinutes*60 - props.elapsedSeconds;
@@ -79,7 +79,7 @@ const Instruction = (props) => {
             // If this isn't the first addition, display the instruction-rewind button
             if(props.currentAdditionIndex > 0) {
                 smallButton = (
-                    <button className='instructionButton' onClick={props.instructRewind}><i className="fas fa-undo option-icon"></i></button>
+                    <button className='instructionButton' onClick={props.instructRewind}><i className="fas fa-backward"></i></button>
                 );
             }
             
