@@ -32,7 +32,7 @@ class Brew extends Component {
                         additions={this.props.additions} 
                         elapsedSeconds={this.props.elapsedSeconds} 
                         instructionMinutesDone={this.props.instructionMinutesDone}
-                        openEditAdditionControl={this.props.openEditAdditionControl}/>
+                        additionTap={this.props.additionTap}/>
                     <ActionBox 
                         instructDone={this.props.instructDone} 
                         instructRewind={this.props.instructRewind}

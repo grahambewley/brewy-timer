@@ -246,16 +246,6 @@ class App extends Component {
     });
   }
 
-  // additionDeleteHandler = (index) => {
-  //   console.log('Addition index to delete: ' + index);
-  //   let additionsCopy = [...this.state.additions];
-  //   additionsCopy.splice(index);
-
-  //   this.setState({
-  //     additions: additionsCopy
-  //   })
-  // }
-
   openNewAdditionControlHandler = () => {
     this.setState({
       isNewAdditionControlOpen: true,
@@ -316,13 +306,31 @@ class App extends Component {
     });
   }
 
-  openEditAdditionControlHandler = (time) => {
-    console.log("Clicked on addition: " + this.state.additions[time]);
-    
+  additionTapHandler = (additionTime) => {
+    console.log("Clicked on addition: " + this.state.additions[additionTime]);
+    // Bring up modal, set the affirmative and negative actions for this modal
+    this.modalConfirm = () => this.deleteAddition(additionTime);
+    this.modalCancel = this.modalDismiss;
+    this.modalConfirmButtonText = "Delete";
+    this.modalCancelButtonText = "Cancel";
+    this.modalHeader = "Delete?";
+    this.modalContent = "Are you sure you want to delete this addition?";
+    this.setState({showModal: true});
+  }
+
+  deleteAddition = (additionTime) => {
+    console.log("Okay, deleting addition at " + additionTime + " minutes");
+
+    let additionsCopy = {...this.state.additions};
+
+    delete additionsCopy[additionTime];
+
     this.setState({
-      isEditAdditionControlOpen: true,
+      showModal: false,
+      additions: additionsCopy
     });
-}
+  }
+
 
   render () {
     return (
@@ -352,7 +360,7 @@ class App extends Component {
             newAddition={this.state.newAddition}
             newAdditionUpdate={this.newAdditionUpdateHandler}
             addNewAddition={this.addNewAdditionHandler}
-            openEditAdditionControl={this.openEditAdditionControlHandler}
+            additionTap={this.additionTapHandler}
 
             boilCtrlOpen={this.state.isBoilControlOpen}
             openBoilControl={this.openBoilControlHandler}

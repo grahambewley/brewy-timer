@@ -14,7 +14,7 @@ const Timeline = (props) => {
     const additionComponents = Object.keys(props.additions).map((additionTime, index) => {
         return (
             <Addition 
-                clicked={() => props.openEditAdditionControl(additionTime)}
+                clicked={() => props.additionTap(additionTime)}
                 key={index}
                 elapsedSeconds={props.elapsedSeconds} 
                 boilMinutes={props.boilMinutes}  
