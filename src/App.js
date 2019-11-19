@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import './App.scss';
 import Brew from './containers/Brew/Brew';
-
-import { BrowserRouter, Route } from 'react-router-dom';
 
 class App extends Component {
   
@@ -389,4 +390,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    adds: state.additions
+  };
+}
+
+export default connect(mapStateToProps)(App);
