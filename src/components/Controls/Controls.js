@@ -2,9 +2,7 @@ import React from 'react';
 import classes from './Controls.module.scss';
 
 const Controls = (props) => {
-
     const totalAdditionCount = Object.keys(props.additions).length;
-    console.log(totalAdditionCount);
 
     let buttons;
     if(props.additionCtrlOpen) {
