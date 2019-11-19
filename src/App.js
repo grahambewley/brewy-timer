@@ -72,7 +72,7 @@ class App extends Component {
           const additions = JSON.parse(localStorage.getItem('additions'));
           this.setState({
             showModal: true,
-            additions: additions,
+            additions: additions, //TODO dispatch action for redux instead
             startEpoch: +startEpoch,
             play: localStorage.getItem('play') === 'true',
             instructionMinutesDone: +localStorage.getItem('instructionMinutesDone'),
@@ -91,7 +91,7 @@ class App extends Component {
         const boilMinutes = +localStorage.getItem('boilMinutes');
 
         this.setState({
-          additions: additions,
+          additions: additions, //TODO dispatch action for redux instead
           boilMinutes: boilMinutes
         });
       }
@@ -192,11 +192,11 @@ class App extends Component {
 
   instructionDoneButtonHandler = () => {
     // Make sure we're not at the last addition...
-    if(this.state.currentAdditionIndex < Object.keys(this.state.additions).length) {
+    if(this.state.currentAdditionIndex < Object.keys(this.state.additions).length) {  //TODO access redux store additions here instead
       this.setState(prevState => ({
         // Move the currentAdditionIndex up 1 -- used for the Instruction component
         currentAdditionIndex: prevState.currentAdditionIndex + 1,
-        instructionMinutesDone: +Object.keys(this.state.additions).reverse()[this.state.currentAdditionIndex]
+        instructionMinutesDone: +Object.keys(this.state.additions).reverse()[this.state.currentAdditionIndex]   //TODO access redux store additions here instead
       }))
     } 
   }
@@ -208,7 +208,7 @@ class App extends Component {
       if(this.state.currentAdditionIndex === 1) {
         doneMins = null;
       } else {
-        doneMins = +Object.keys(this.state.additions).reverse()[this.state.currentAdditionIndex-2];
+        doneMins = +Object.keys(this.state.additions).reverse()[this.state.currentAdditionIndex-2];   //TODO access redux store additions here instead
       } 
       this.setState(prevState => ({
         currentAdditionIndex: prevState.currentAdditionIndex - 1,
@@ -308,7 +308,6 @@ class App extends Component {
   }
 
   additionTapHandler = (additionTime) => {
-    console.log("Clicked on addition: " + this.state.additions[additionTime]);
     // Bring up modal, set the affirmative and negative actions for this modal
     this.modalConfirm = () => this.deleteAddition(additionTime);
     this.modalCancel = this.modalDismiss;
@@ -328,7 +327,7 @@ class App extends Component {
 
     this.setState({
       showModal: false,
-      additions: additionsCopy
+      additions: additionsCopy  //TODO dispatch redux action here instead
     });
   }
 
