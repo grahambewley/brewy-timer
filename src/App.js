@@ -281,6 +281,10 @@ class App extends Component {
     this.closeAdditionControlHandler();
 
     const add = this.state.newAddition;
+
+    //TODO dispatch a new redux action -- sending in add
+    this.props.onAddNewAddition(add);
+
     let additionsCopy = {...this.state.additions};
 
     if(additionsCopy[add.time] !== undefined) {
@@ -395,4 +399,10 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddNewAddition: (newAdd) => dispatch({type: 'ADD_NEW_ADDITION', newAddition: newAdd})
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
