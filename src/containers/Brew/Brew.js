@@ -26,7 +26,6 @@ class Brew extends Component {
                     totalSeconds={this.props.boilMinutes*60} />
                 <Timeline 
                     boilMinutes={this.props.boilMinutes} 
-                    additions={this.props.additions} 
                     elapsedSeconds={this.props.elapsedSeconds} 
                     instructionMinutesDone={this.props.instructionMinutesDone}
                     additionTap={this.props.additionTap}/>
