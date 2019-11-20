@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './CurrentTime.scss';
 
 const timer = (props) => {
@@ -8,7 +9,8 @@ const timer = (props) => {
     var displaySeconds = props.elapsedSeconds - displayMinutes * 60;
     displaySeconds = ('0' + displaySeconds).slice(-2);
 
-    let percentage = 100 - ((props.totalSeconds - props.elapsedSeconds) / props.totalSeconds) * 100 + '%';
+    const totalSeconds = props.boilMins*60;
+    let percentage = 100 - ((totalSeconds - props.elapsedSeconds) / totalSeconds) * 100 + '%';
 
     const topPositioning = {
         top: percentage
@@ -24,4 +26,10 @@ const timer = (props) => {
     )
 }   
 
-export default timer;
+const mapStateToProps = state => {
+    return {
+        boilMins: state.boilMinutes
+    }
+}
+
+export default connect(mapStateToProps)(timer);

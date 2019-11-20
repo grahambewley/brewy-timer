@@ -10,12 +10,11 @@ class App extends Component {
   state = {
     showModal: false,
     fullscreen: false,
-    boilMinutes: 60,
-    startEpoch: null,
-    elapsedSeconds: 0,
-    instructionMinutesDone: null,
-    play: false,
-    currentAdditionIndex: 0,
+    startEpoch: null,                 // REDUX
+    elapsedSeconds: 0,                // REDUX
+    instructionMinutesDone: null,     // REDUX
+    play: false,                      // REDUX
+    currentAdditionIndex: 0,          // REDUX
     isNewAdditionControlOpen: false,
     isBoilControlOpen: false,
     isEditAdditionControlOpen: false
@@ -24,7 +23,7 @@ class App extends Component {
   // CLOCK TICK HANDLERS
 
   tick() {
-    if(this.state.elapsedSeconds >= this.state.boilMinutes*60) {
+    if(this.state.elapsedSeconds >= this.props.boilMins*60) {
       clearInterval(this.interval);
     } else if(this.state.play){
       const startEpoch = this.state.startEpoch;
@@ -44,9 +43,11 @@ class App extends Component {
     if(startEpoch !== null) {
       // 'null' is starting value of startEpoch
       // If not null, then brew has been started
+      
+      // Get the stored boilMinutes
+      const boilMinutes = localStorage.getItem('boilMinutes');
+
       if(startEpoch !== 'null') {
-        // Get the stored boilMinutes
-        const boilMinutes = localStorage.getItem('boilMinutes');
         // Get current epoch date in seconds
         let currentEpoch = new Date() / 1000;
         currentEpoch = currentEpoch.toFixed(0);
@@ -63,15 +64,13 @@ class App extends Component {
           this.modalContent = "Returning you to a brew in progress. Tap OK to continue or Restart to begin a new brew.";
 
           const additions = JSON.parse(localStorage.getItem('additions'));
-          
-          this.props.onRestoreFromStorage(additions);
+          this.props.onRestoreFromStorage(additions, boilMinutes);
           
           this.setState({
             showModal: true,
             startEpoch: +startEpoch,
             play: localStorage.getItem('play') === 'true',
             instructionMinutesDone: +localStorage.getItem('instructionMinutesDone'),
-            boilMinutes: +boilMinutes,
             currentAdditionIndex: +localStorage.getItem('currentAdditionIndex')
           });
         } else {
@@ -83,13 +82,7 @@ class App extends Component {
         console.log("Brew has not started but we're going to restore stuff anyway!");
 
         const additions = JSON.parse(localStorage.getItem('additions'));
-        const boilMinutes = +localStorage.getItem('boilMinutes');
-
-        this.props.onRestoreFromStorage(additions);
-
-        this.setState({
-          boilMinutes: boilMinutes
-        });
+        this.props.onRestoreFromStorage(additions, boilMinutes);
       }
     }
 
@@ -105,6 +98,7 @@ class App extends Component {
     });
 
     localStorage.setItem('additions', JSON.stringify(this.props.adds));
+    localStorage.setItem('boilMinutes', JSON.stringify(this.props.boilMins));
   }
   
   componentWillUnmount() {
@@ -169,7 +163,6 @@ class App extends Component {
     this.setState({
       showModal: false,
       fullscreen: false,
-      boilMinutes: 60,
       startEpoch: null,
       elapsedSeconds: 0,
       play: false,
@@ -222,23 +215,6 @@ class App extends Component {
   }
 
   // RECIPE EDITOR HANDLERS
-  boilMinutesMinusHandler = () => {
-    let mins = this.state.boilMinutes;
-    mins -= 10;
-
-    this.setState({
-      boilMinutes: mins
-    });
-  }
-
-  boilMinutesPlusHandler = () => {
-    let mins = this.state.boilMinutes;
-    mins += 10;
-
-    this.setState({
-      boilMinutes: mins
-    });
-  }
 
   openNewAdditionControlHandler = () => {
     this.setState({isNewAdditionControlOpen: true});
@@ -314,11 +290,8 @@ class App extends Component {
             boilCtrlOpen={this.state.isBoilControlOpen}
             openBoilControl={this.openBoilControlHandler}
             closeBoilControl={this.closeBoilControlHandler}
-            boilMinus={this.boilMinutesMinusHandler}
-            boilPlus={this.boilMinutesPlusHandler}
 
             // Boil-related
-            boilMinutes={this.state.boilMinutes}
             elapsedSeconds={this.state.elapsedSeconds}
             currentAdditionIndex={this.state.currentAdditionIndex}
             instructionMinutesDone={this.state.instructionMinutesDone}
@@ -337,7 +310,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    adds: state.additions
+    adds: state.additions,
+    boilMins: state.boilMinutes
   };
 }
 
@@ -346,7 +320,7 @@ const mapDispatchToProps = dispatch => {
     onAddNewAddition: () => dispatch({type: 'ADD_NEW_ADDITION'}),
     onDeleteAddition: (additionTime) => dispatch({type: 'DELETE_ADDITION', additionTime: additionTime}),
     onRestart: () => dispatch({type: 'RESTART_BREW'}),
-    onRestoreFromStorage: (additions) => dispatch({type: 'RESTORE_FROM_STORAGE', additions: additions}),
+    onRestoreFromStorage: (additions, boilMinutes) => dispatch({type: 'RESTORE_FROM_STORAGE', additions: additions, boilMinutes: boilMinutes}),
     onClearNewAddition: () => dispatch({type:'CLEAR_NEW_ADDITION'})
   };
 };

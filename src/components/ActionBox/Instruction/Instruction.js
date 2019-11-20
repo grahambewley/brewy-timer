@@ -23,7 +23,7 @@ const Instruction = (props) => {
             <button onClick={props.openNewAdditionControl} className='instructionButton instructionButton--main' ><i className="fas fa-plus"></i></button>
         )
         // Find the amount of seconds until brew ends
-        let secondsUntil = props.boilMinutes*60 - props.elapsedSeconds;
+        let secondsUntil = props.boilMins*60 - props.elapsedSeconds;
         
         // Split the secondsUntil into minutes and seconds -- for the timer
         let absoluteSecondsUntil = Math.abs(secondsUntil);
@@ -50,7 +50,7 @@ const Instruction = (props) => {
             <button className='instructionButton instructionButton--main' onClick={props.instructRewind}><i className="fas fa-backward"></i></button>
         )
         // Find the amount of seconds until brew ends
-        let secondsUntil = props.boilMinutes*60 - props.elapsedSeconds;
+        let secondsUntil = props.boilMins*60 - props.elapsedSeconds;
         
         // Split the secondsUntil into minutes and seconds -- for the timer
         let absoluteSecondsUntil = Math.abs(secondsUntil);
@@ -91,7 +91,7 @@ const Instruction = (props) => {
         }
 
         // Get the amount of seconds that the next addition is required at    
-        let additionSeconds = props.boilMinutes*60 - currentAdditionTime*60;
+        let additionSeconds = props.boilMins*60 - currentAdditionTime*60;
         // Find the amount of seconds until that next addition -- could be positive or negative
         let secondsUntil = additionSeconds - props.elapsedSeconds;
         
@@ -127,16 +127,6 @@ const Instruction = (props) => {
                 backgroundColor:'#ff9898'   // light red
             }
         } 
-
-        //If secondsUntil next instruction equals 30 then vibrate
-        if(secondsUntil === 120){
-            window.navigator.vibrate(800);
-        } else if(secondsUntil === 30) { 
-            window.navigator.vibrate([400,200,400]);            
-        } else if (secondsUntil === 15) {
-            window.navigator.vibrate([200,200,200,200,200]);
-        }
-
     }
 
     return (
@@ -164,7 +154,8 @@ const Instruction = (props) => {
 }
 const mapStateToProps = state => {
     return {
-        adds: state.additions
+        adds: state.additions,
+        boilMins: state.boilMinutes
     };
 }
 export default connect(mapStateToProps)(Instruction); 

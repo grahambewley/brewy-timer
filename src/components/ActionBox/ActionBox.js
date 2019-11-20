@@ -17,10 +17,7 @@ const ActionBox = (props) => {
     } 
     else if(props.boilCtrlOpen) {
         component = (
-            <ChangeBoilControl 
-                boilMins={props.boilMinutes}
-                boilMinus={props.boilMinus}
-                boilPlus={props.boilPlus}/>
+            <ChangeBoilControl />
         )
     }
     else {
@@ -32,8 +29,6 @@ const ActionBox = (props) => {
                 timerStart={props.timerStart}
                 play={props.play} 
                 currentAdditionIndex={props.currentAdditionIndex} 
-                doneTHroughMinutes={props.doneThroughMinutes}
-                boilMinutes={props.boilMinutes} 
                 elapsedSeconds={props.elapsedSeconds} />
         )
     }

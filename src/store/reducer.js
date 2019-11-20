@@ -1,5 +1,6 @@
 const initialState = {
     additions: {},
+    boilMinutes: 60,
     newAddition: {
         name: null,
         type: null,
@@ -9,6 +10,7 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
+    
     if(action.type === 'ADD_NEW_ADDITION') {
         console.log('[reducer.js] action = ', action);
 
@@ -63,6 +65,7 @@ const reducer = (state = initialState, action) => {
             additions: {
                 ...action.additions
             },
+            boilMinutes: +action.boilMinutes,
             newAddition: {
                 ...state.newAddition
             }
@@ -83,7 +86,6 @@ const reducer = (state = initialState, action) => {
         }
     }
     if(action.type === 'NEW_ADDITION_UPDATE') {
-        console.log('[reducer] Before updating, newAddition is: ', state.newAddition);
         return {
             ...state,
             additions: {
@@ -94,6 +96,22 @@ const reducer = (state = initialState, action) => {
                 type: action.new.type,
                 amount: action.new.amount,
                 time: parseInt(action.new.time)
+            }
+        }
+    }
+    if(action.type === 'BOIL_MINS_ADJUST') {
+        console.log('[reducer] Boil Minutes Adjustment of ', action.adjustment);
+        let mins = state.boilMinutes;
+        mins += action.adjustment;
+
+        return {
+            ...state,
+            additions: {
+                ...state.additions
+            },
+            boilMinutes: mins,
+            newAddition: {
+                ...state.newAddition
             }
         }
     }

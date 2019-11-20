@@ -22,10 +22,8 @@ class Brew extends Component {
                     </Modal> : 
                 null}
                 <CurrentTime 
-                    elapsedSeconds={this.props.elapsedSeconds}
-                    totalSeconds={this.props.boilMinutes*60} />
+                    elapsedSeconds={this.props.elapsedSeconds}/>
                 <Timeline 
-                    boilMinutes={this.props.boilMinutes} 
                     elapsedSeconds={this.props.elapsedSeconds} 
                     instructionMinutesDone={this.props.instructionMinutesDone}
                     additionTap={this.props.additionTap}/>
@@ -35,13 +33,10 @@ class Brew extends Component {
                     timerStart={this.props.timerStart}
                     play={this.props.play} 
                     currentAdditionIndex={this.props.currentAdditionIndex} 
-                    boilMinutes={this.props.boilMinutes} 
                     elapsedSeconds={this.props.elapsedSeconds} 
                     openNewAdditionControl={this.props.openNewAdditionControl}
                     additionCtrlOpen={this.props.additionCtrlOpen}
                     boilCtrlOpen={this.props.boilCtrlOpen}
-                    boilMinus={this.props.boilMinus}
-                    boilPlus={this.props.boilPlus}
                     />
                 <Options 
                     optFullscreen={this.props.optFullscreen} 

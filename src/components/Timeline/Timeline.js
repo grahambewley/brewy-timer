@@ -5,7 +5,7 @@ import Addition from './Addition/Addition';
 
 const Timeline = (props) => {
 
-    const boilSeconds = props.boilMinutes*60;
+    const boilSeconds = props.boilMins*60;
     const percentage = 100 - ((boilSeconds - props.elapsedSeconds) / boilSeconds) * 100 + '%';
     const linearGradientString = 'linear-gradient(to bottom, #a9d1c1 '+percentage+', #eee '+percentage+' 100%)';
     const timelineStyle = {
@@ -18,7 +18,6 @@ const Timeline = (props) => {
                 clicked={() => props.additionTap(additionTime)}
                 key={index}
                 elapsedSeconds={props.elapsedSeconds} 
-                boilMinutes={props.boilMinutes}  
                 time={additionTime}
                 items={props.adds[additionTime]} 
                 instructionMinutesDone={props.instructionMinutesDone}/>
@@ -36,7 +35,8 @@ const Timeline = (props) => {
 
 const mapStateToProps = state => {
     return {
-        adds: state.additions
+        adds: state.additions,
+        boilMins: state.boilMinutes
     };
 }
 

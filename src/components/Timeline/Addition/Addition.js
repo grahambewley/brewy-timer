@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './Addition.scss';
 
 const addition = (props) => {
 
     // Get a percentage based on this Addition's time vs. total boil minutes...
-    let percentage = ((props.boilMinutes - props.time) / props.boilMinutes) * 100 + '%';
+    let percentage = ((props.boilMins - props.time) / props.boilMins) * 100 + '%';
     // Position this Addition accordingly
     let additionStyle = {
         top: percentage
@@ -48,4 +49,10 @@ const addition = (props) => {
     )
 }
 
-export default addition;
+const mapStateToProps = state => {
+    return {
+        boilMins: state.boilMinutes
+    }
+}
+
+export default connect(mapStateToProps)(addition);
