@@ -16,7 +16,6 @@ class App extends Component {
     instructionMinutesDone: null,
     play: false,
     currentAdditionIndex: 0,
-    //additions: {},
     newAddition: {
       name: null,
       type: null,
@@ -70,12 +69,11 @@ class App extends Component {
           this.modalContent = "Returning you to a brew in progress. Tap OK to continue or Restart to begin a new brew.";
 
           const additions = JSON.parse(localStorage.getItem('additions'));
-          //TODO dispatch action for redux instead
+          
           this.props.onRestoreFromStorage(additions);
           
           this.setState({
             showModal: true,
-            //additions: additions, //TODO dispatch action for redux instead
             startEpoch: +startEpoch,
             play: localStorage.getItem('play') === 'true',
             instructionMinutesDone: +localStorage.getItem('instructionMinutesDone'),
@@ -92,11 +90,10 @@ class App extends Component {
 
         const additions = JSON.parse(localStorage.getItem('additions'));
         const boilMinutes = +localStorage.getItem('boilMinutes');
-        //TODO dispatch action for redux instead
+
         this.props.onRestoreFromStorage(additions);
 
         this.setState({
-          //additions: additions, //TODO dispatch action for redux instead
           boilMinutes: boilMinutes
         });
       }
@@ -112,7 +109,7 @@ class App extends Component {
     Object.keys(this.state).map((key) => {
       return localStorage.setItem(key, JSON.stringify(this.state[key]));
     });
-    // TODO Store redux store in localStorage
+
     localStorage.setItem('additions', JSON.stringify(this.props.adds));
   }
   
@@ -185,7 +182,6 @@ class App extends Component {
       play: false,
       instructionMinutesDone: null,
       currentAdditionIndex: 0,
-      //additions: {},
       newAddition: {
         name: null,
         type: null,
