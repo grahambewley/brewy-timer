@@ -39,6 +39,17 @@ const reducer = (state = initialState, action) => {
             }
         }
     }
+    if(action.type === 'RESTART_BREW'){
+        return initialState;
+    }
+    if(action.type === 'RESTORE_FROM_STORAGE') {
+        return {
+            ...state,
+            additions: {
+                ...action.additions
+            }
+        } 
+    }
     
     return state;
 };

@@ -70,9 +70,12 @@ class App extends Component {
           this.modalContent = "Returning you to a brew in progress. Tap OK to continue or Restart to begin a new brew.";
 
           const additions = JSON.parse(localStorage.getItem('additions'));
+          //TODO dispatch action for redux instead
+          this.props.onRestoreFromStorage(additions);
+          
           this.setState({
             showModal: true,
-            additions: additions, //TODO dispatch action for redux instead
+            //additions: additions, //TODO dispatch action for redux instead
             startEpoch: +startEpoch,
             play: localStorage.getItem('play') === 'true',
             instructionMinutesDone: +localStorage.getItem('instructionMinutesDone'),
@@ -89,9 +92,11 @@ class App extends Component {
 
         const additions = JSON.parse(localStorage.getItem('additions'));
         const boilMinutes = +localStorage.getItem('boilMinutes');
+        //TODO dispatch action for redux instead
+        this.props.onRestoreFromStorage(additions);
 
         this.setState({
-          additions: additions, //TODO dispatch action for redux instead
+          //additions: additions, //TODO dispatch action for redux instead
           boilMinutes: boilMinutes
         });
       }
@@ -108,7 +113,7 @@ class App extends Component {
       return localStorage.setItem(key, JSON.stringify(this.state[key]));
     });
     // TODO Store redux store in localStorage
-
+    localStorage.setItem('additions', JSON.stringify(this.props.adds));
   }
   
   componentWillUnmount() {
@@ -167,6 +172,9 @@ class App extends Component {
   restartConfirmHandler = () => {
     localStorage.clear();
 
+    // Clear Redux store
+    this.props.onRestart();
+    
     //Set state back to initial state
     this.setState({
       showModal: false,
@@ -279,27 +287,9 @@ class App extends Component {
   }
 
   addNewAdditionHandler = () => {
-
     this.closeAdditionControlHandler();
-
     const add = this.state.newAddition;
-
     this.props.onAddNewAddition(add);
-
-    /*
-    let additionsCopy = {...this.state.additions};
-
-    if(additionsCopy[add.time] !== undefined) {
-      additionsCopy[add.time].push(add);
-    } else {
-      additionsCopy[add.time] = [];
-      additionsCopy[add.time].push(add);
-    }
-
-    this.setState({
-      additions: additionsCopy
-    });
-    */
   }
 
   openBoilControlHandler = () => {
@@ -326,19 +316,8 @@ class App extends Component {
   }
 
   deleteAddition = (additionTime) => {
-    console.log("Okay, deleting addition at " + additionTime + " minutes");
     this.props.onDeleteAddition(additionTime);
     this.setState({showModal: false});
-    /*
-    let additionsCopy = {...this.props.adds};
-
-    delete additionsCopy[additionTime];
-
-    this.setState({
-      showModal: false,
-      additions: additionsCopy  //TODO dispatch redux action here instead
-    });
-    */
   }
 
 
@@ -390,10 +369,8 @@ class App extends Component {
             instructRewind={this.rewindButtonHandler}
             timerStart={this.startTimerHandler}
           />}
-        />
-
-        
-        </BrowserRouter>
+        />  
+      </BrowserRouter>
 
     );  
   }
@@ -408,7 +385,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onAddNewAddition: (newAdd) => dispatch({type: 'ADD_NEW_ADDITION', newAddition: newAdd}),
-    onDeleteAddition: (additionTime) => dispatch({type: 'DELETE_ADDITION', additionTime})
+    onDeleteAddition: (additionTime) => dispatch({type: 'DELETE_ADDITION', additionTime: additionTime}),
+    onRestart: () => dispatch({type: 'RESTART_BREW'}),
+    onRestoreFromStorage: (additions) => dispatch({type: 'RESTORE_FROM_STORAGE', additions: additions})
   };
 };
 
