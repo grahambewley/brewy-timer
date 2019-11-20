@@ -1,5 +1,11 @@
 const initialState = {
-    additions: {}
+    additions: {},
+    newAddition: {
+        name: null,
+        type: null,
+        amount: null,
+        time: null
+    }
 }
 
 const reducer = (state = initialState, action) => {
@@ -9,19 +15,25 @@ const reducer = (state = initialState, action) => {
         // Immutably copy the current state.additions
         let additionsCopy = Object.assign({}, state.additions);
 
-        if(additionsCopy[action.newAddition.time] !== undefined) {
-            additionsCopy[action.newAddition.time].push(action.newAddition);
+        if(additionsCopy[state.newAddition.time] !== undefined) {
+            additionsCopy[state.newAddition.time].push(state.newAddition);
         } else {
-            additionsCopy[action.newAddition.time] = [];
-            additionsCopy[action.newAddition.time].push(action.newAddition);
+            additionsCopy[state.newAddition.time] = [];
+            additionsCopy[state.newAddition.time].push(state.newAddition);
         }
-        console.log('[reducer.js] new additions = ',additionsCopy);
+        console.log('[reducer.js] new additions = ', additionsCopy);
 
         return {
             ...state,
             additions: {
                 ...state.additions,
                 ...additionsCopy
+            },
+            newAddition: {
+                name: null,
+                type: null,
+                amount: null,
+                time: null
             }
         }
     }
@@ -36,6 +48,9 @@ const reducer = (state = initialState, action) => {
             ...state,
             additions: {
                 ...additionsCopy
+            },
+            newAddition: {
+                ...state.newAddition
             }
         }
     }
@@ -47,10 +62,41 @@ const reducer = (state = initialState, action) => {
             ...state,
             additions: {
                 ...action.additions
+            },
+            newAddition: {
+                ...state.newAddition
             }
         } 
     }
-    
+    if(action.type === 'CLEAR_NEW_ADDITION') {
+        return {
+            ...state,
+            additions: {
+                ...state.additions
+            },
+            newAddition: {
+                name: null,
+                type: null,
+                amount: null,
+                time: null
+            }
+        }
+    }
+    if(action.type === 'NEW_ADDITION_UPDATE') {
+        console.log('[reducer] Before updating, newAddition is: ', state.newAddition);
+        return {
+            ...state,
+            additions: {
+                ...state.additions
+            },
+            newAddition: {
+                name: action.new.name,
+                type: action.new.type,
+                amount: action.new.amount,
+                time: parseInt(action.new.time)
+            }
+        }
+    }
     return state;
 };
 

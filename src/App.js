@@ -16,12 +16,6 @@ class App extends Component {
     instructionMinutesDone: null,
     play: false,
     currentAdditionIndex: 0,
-    newAddition: {
-      name: null,
-      type: null,
-      amount: null,
-      time: null
-    },
     isNewAdditionControlOpen: false,
     isBoilControlOpen: false,
     isEditAdditionControlOpen: false
@@ -139,7 +133,6 @@ class App extends Component {
         fullscreen: false
       });
       
-      
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.msExitFullscreen) {
@@ -182,12 +175,6 @@ class App extends Component {
       play: false,
       instructionMinutesDone: null,
       currentAdditionIndex: 0,
-      newAddition: {
-        name: null,
-        type: null,
-        amount: null,
-        time: null
-      },
       isNewAdditionControlOpen: false,
       isBoilControlOpen: false,
       isEditAdditionControlOpen: false
@@ -254,38 +241,17 @@ class App extends Component {
   }
 
   openNewAdditionControlHandler = () => {
-    this.setState({
-      isNewAdditionControlOpen: true,
-    })
+    this.setState({isNewAdditionControlOpen: true});
   }
 
   closeAdditionControlHandler = () => {
-    this.setState({
-      isNewAdditionControlOpen: false,
-      newAddition: {
-        name: null,
-        type: null,
-        amount: null,
-        time: null
-      }
-    })
-  }
-
-  newAdditionUpdateHandler = (newAddition) => {
-    this.setState({
-      newAddition: {
-        name: newAddition.name,
-        type: newAddition.type,
-        amount: newAddition.amount,
-        time: parseInt(newAddition.time),
-      }
-    });
+    this.props.onClearNewAddition();
+    this.setState({isNewAdditionControlOpen: false});
   }
 
   addNewAdditionHandler = () => {
-    this.closeAdditionControlHandler();
-    const add = this.state.newAddition;
-    this.props.onAddNewAddition(add);
+    this.props.onAddNewAddition();
+    this.setState({isNewAdditionControlOpen: false});
   }
 
   openBoilControlHandler = () => {
@@ -342,8 +308,6 @@ class App extends Component {
             additionCtrlOpen={this.state.isNewAdditionControlOpen}
             openNewAdditionControl={this.openNewAdditionControlHandler}
             closeAdditionControl={this.closeAdditionControlHandler}
-            newAddition={this.state.newAddition}
-            newAdditionUpdate={this.newAdditionUpdateHandler}
             addNewAddition={this.addNewAdditionHandler}
             additionTap={this.additionTapHandler}
 
@@ -379,10 +343,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddNewAddition: (newAdd) => dispatch({type: 'ADD_NEW_ADDITION', newAddition: newAdd}),
+    onAddNewAddition: () => dispatch({type: 'ADD_NEW_ADDITION'}),
     onDeleteAddition: (additionTime) => dispatch({type: 'DELETE_ADDITION', additionTime: additionTime}),
     onRestart: () => dispatch({type: 'RESTART_BREW'}),
-    onRestoreFromStorage: (additions) => dispatch({type: 'RESTORE_FROM_STORAGE', additions: additions})
+    onRestoreFromStorage: (additions) => dispatch({type: 'RESTORE_FROM_STORAGE', additions: additions}),
+    onClearNewAddition: () => dispatch({type:'CLEAR_NEW_ADDITION'})
   };
 };
 

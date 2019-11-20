@@ -38,11 +38,7 @@ class Brew extends Component {
                     boilMinutes={this.props.boilMinutes} 
                     elapsedSeconds={this.props.elapsedSeconds} 
                     openNewAdditionControl={this.props.openNewAdditionControl}
-                    
                     additionCtrlOpen={this.props.additionCtrlOpen}
-                    newAddition={this.props.newAddition}
-                    newAdditionUpdate={this.props.newAdditionUpdate}
-                    
                     boilCtrlOpen={this.props.boilCtrlOpen}
                     boilMinus={this.props.boilMinus}
                     boilPlus={this.props.boilPlus}

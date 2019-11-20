@@ -11,8 +11,6 @@ const ActionBox = (props) => {
     if(props.additionCtrlOpen) {
         component = (
             <AddAdditionControl 
-                newAddition={props.newAddition}
-                newAdditionUpdate={props.newAdditionUpdate}
                 additionAdd={props.additionAdd}
                 additionDelete={props.additionDelete} /> 
         )

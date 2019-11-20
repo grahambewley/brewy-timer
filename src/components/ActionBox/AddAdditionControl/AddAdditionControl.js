@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import classes from './AddAdditionControl.module.scss';
 
 class AddAdditionControl extends Component {
@@ -13,7 +14,7 @@ class AddAdditionControl extends Component {
     handleChange = (e) => {
         this.setState(
             {[e.target.id]: e.target.value}, 
-            () => this.props.newAdditionUpdate(this.state)
+            () => this.props.onNewAdditionUpdate(this.state)
         );
     }
 
@@ -43,4 +44,9 @@ class AddAdditionControl extends Component {
     }
 }
 
-export default AddAdditionControl;
+const mapDispatchToProps = dispatch => {
+    return {
+      onNewAdditionUpdate: (newAdd) => dispatch({type:'NEW_ADDITION_UPDATE', new: newAdd})
+    }
+}
+export default connect(null, mapDispatchToProps)(AddAdditionControl);
