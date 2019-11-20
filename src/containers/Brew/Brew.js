@@ -36,7 +36,6 @@ class Brew extends Component {
                     play={this.props.play} 
                     currentAdditionIndex={this.props.currentAdditionIndex} 
                     boilMinutes={this.props.boilMinutes} 
-                    additions={this.props.additions} 
                     elapsedSeconds={this.props.elapsedSeconds} 
                     openNewAdditionControl={this.props.openNewAdditionControl}
                     
@@ -56,7 +55,6 @@ class Brew extends Component {
                     openBoilControl={this.props.openBoilControl}
                     closeBoilControl={this.props.closeBoilControl}/>
                 <Controls 
-                    additions={this.props.additions}
                     additionCtrlOpen={this.props.additionCtrlOpen}
                     openNewAdditionControl={this.props.openNewAdditionControl}
                     closeAdditionControl={this.props.closeAdditionControl}

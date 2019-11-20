@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './Instruction.scss';
 
 const Instruction = (props) => {
@@ -10,8 +11,8 @@ const Instruction = (props) => {
     let bigButton = null;
     let smallButton = null;
 
-    const totalAdditionCount = Object.keys(props.additions).length;
-    const additionsInOrder = Object.keys(props.additions).sort((a,b) => { return b-a });
+    const totalAdditionCount = Object.keys(props.adds).length;
+    const additionsInOrder = Object.keys(props.adds).sort((a,b) => { return b-a });
     
     const currentAdditionTime = additionsInOrder[props.currentAdditionIndex];
 
@@ -101,14 +102,14 @@ const Instruction = (props) => {
         displaySeconds = absoluteSecondsUntil - displayMinutes * 60;
         displaySeconds = ('0' + displaySeconds).slice(-2);
 
-        nextInstruction = props.additions[currentAdditionTime].map((item) => {
+        nextInstruction = props.adds[currentAdditionTime].map((item) => {
             return <p key={item.name}>{item.amount} {item.name}</p>;
         })
 
         // If secondsUntil is positive, this addition hasn't happened yet -- style based on the type of addition incoming
         if(secondsUntil >= 0) {
             // Use the first instruction in this addition to style the thing
-            const additionType = props.additions[Object.keys(props.additions)[props.currentAdditionIndex]][0].type;
+            const additionType = props.adds[Object.keys(props.adds)[props.currentAdditionIndex]][0].type;
 
             switch(additionType) {
                 case 'hops':
@@ -154,13 +155,6 @@ const Instruction = (props) => {
             <div className='instructionTimerContainer'>
                 <p className='instructionTimer'>{displayMinutes}:{displaySeconds}</p>
                 <div className='instructionButtonContainer'>
-                    {/*<button className='instructionButton' onClick={props.instructRewind}><i className="fas fa-undo option-icon"></i></button>*/}
-                    {/* If recipe is 'playing' then display the DONE button, otherwise display the START button */}
-                    {/*
-                    {props.play ? 
-                        <button onClick={props.instructDone} className='instructionButton instructionButton--main' id='instructionButton'><i className="fas fa-check"></i></button> :
-                        <button onClick={props.timerStart} className="instructionButton instructionButton--main"><i className="fas fa-play"></i></button>}
-                    */}
                     {smallButton}
                     {bigButton}
                 </div>
@@ -168,5 +162,9 @@ const Instruction = (props) => {
         </div>
     )
 }
-
-export default Instruction; 
+const mapStateToProps = state => {
+    return {
+        adds: state.additions
+    };
+}
+export default connect(mapStateToProps)(Instruction); 

@@ -358,7 +358,6 @@ class App extends Component {
             elapsedSeconds={this.state.elapsedSeconds}
             currentAdditionIndex={this.state.currentAdditionIndex}
             instructionMinutesDone={this.state.instructionMinutesDone}
-            additions={this.props.adds}
 
             // Instruction-related
             instructDone={this.instructionDoneButtonHandler}

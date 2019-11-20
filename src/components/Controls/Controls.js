@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import classes from './Controls.module.scss';
 
 const Controls = (props) => {
-    const totalAdditionCount = Object.keys(props.additions).length;
+    const totalAdditionCount = Object.keys(props.adds).length;
 
     let buttons;
     if(props.additionCtrlOpen) {
@@ -31,5 +32,9 @@ const Controls = (props) => {
         </div>
     );
 } 
-
-export default Controls;
+const mapStateToProps = state => {
+    return {
+        adds: state.additions
+    };
+}
+export default connect(mapStateToProps)(Controls);

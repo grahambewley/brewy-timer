@@ -36,7 +36,6 @@ const ActionBox = (props) => {
                 currentAdditionIndex={props.currentAdditionIndex} 
                 doneTHroughMinutes={props.doneThroughMinutes}
                 boilMinutes={props.boilMinutes} 
-                additions={props.additions} 
                 elapsedSeconds={props.elapsedSeconds} />
         )
     }
