@@ -10,75 +10,62 @@ class Brew extends Component {
 
     render() {
         return (
-            
-            //this.props.additions.length > 0 ? 
-
-                <div className='container'>
-                    {this.props.showModal ? 
-                        <Modal 
-                            modalConfirm={this.props.modalConfirm} 
-                            modalCancel={this.props.modalCancel}
-                            modalConfirmButtonText={this.props.modalConfirmButtonText}
-                            modalCancelButtonText={this.props.modalCancelButtonText}
-                            modalHeader={this.props.modalHeader}
-                            modalContent={this.props.modalContent}>
-                        </Modal> : 
-                    null}
-                    <CurrentTime 
-                        elapsedSeconds={this.props.elapsedSeconds}
-                        totalSeconds={this.props.boilMinutes*60} />
-                    <Timeline 
-                        boilMinutes={this.props.boilMinutes} 
-                        additions={this.props.additions} 
-                        elapsedSeconds={this.props.elapsedSeconds} 
-                        instructionMinutesDone={this.props.instructionMinutesDone}
-                        additionTap={this.props.additionTap}/>
-                    <ActionBox 
-                        instructDone={this.props.instructDone} 
-                        instructRewind={this.props.instructRewind}
-                        timerStart={this.props.timerStart}
-                        play={this.props.play} 
-                        currentAdditionIndex={this.props.currentAdditionIndex} 
-                        boilMinutes={this.props.boilMinutes} 
-                        additions={this.props.additions} 
-                        elapsedSeconds={this.props.elapsedSeconds} 
-                        openNewAdditionControl={this.props.openNewAdditionControl}
-                        
-                        additionCtrlOpen={this.props.additionCtrlOpen}
-                        newAddition={this.props.newAddition}
-                        newAdditionUpdate={this.props.newAdditionUpdate}
-                        
-                        boilCtrlOpen={this.props.boilCtrlOpen}
-                        boilMinus={this.props.boilMinus}
-                        boilPlus={this.props.boilPlus}
-                        />
-                    <Options 
-                        optFullscreen={this.props.optFullscreen} 
-                        optRestart={this.props.optRestart}
-                        full={this.props.fullscreen} 
-                        boilCtrlOpen={this.props.boilCtrlOpen}
-                        openBoilControl={this.props.openBoilControl}
-                        closeBoilControl={this.props.closeBoilControl}/>
-                    <Controls 
-                        additions={this.props.additions}
-                        additionCtrlOpen={this.props.additionCtrlOpen}
-                        openNewAdditionControl={this.props.openNewAdditionControl}
-                        closeAdditionControl={this.props.closeAdditionControl}
-                        addNewAddition={this.props.addNewAddition}
-                        boilCtrlOpen={this.props.boilCtrlOpen}
-                        closeBoilControl={this.props.closeBoilControl}/>
+            <div className='container'>
+                {this.props.showModal ? 
+                    <Modal 
+                        modalConfirm={this.props.modalConfirm} 
+                        modalCancel={this.props.modalCancel}
+                        modalConfirmButtonText={this.props.modalConfirmButtonText}
+                        modalCancelButtonText={this.props.modalCancelButtonText}
+                        modalHeader={this.props.modalHeader}
+                        modalContent={this.props.modalContent}>
+                    </Modal> : 
+                null}
+                <CurrentTime 
+                    elapsedSeconds={this.props.elapsedSeconds}
+                    totalSeconds={this.props.boilMinutes*60} />
+                <Timeline 
+                    boilMinutes={this.props.boilMinutes} 
+                    additions={this.props.additions} 
+                    elapsedSeconds={this.props.elapsedSeconds} 
+                    instructionMinutesDone={this.props.instructionMinutesDone}
+                    additionTap={this.props.additionTap}/>
+                <ActionBox 
+                    instructDone={this.props.instructDone} 
+                    instructRewind={this.props.instructRewind}
+                    timerStart={this.props.timerStart}
+                    play={this.props.play} 
+                    currentAdditionIndex={this.props.currentAdditionIndex} 
+                    boilMinutes={this.props.boilMinutes} 
+                    additions={this.props.additions} 
+                    elapsedSeconds={this.props.elapsedSeconds} 
+                    openNewAdditionControl={this.props.openNewAdditionControl}
                     
-                </div> // :
-
-                /*
-                <div className={classes.startContainer}>
-                    <h1 className={classes.startHeader}>Welcome to Brewy</h1>
-                    <img className={classes.startImage} src={require('../../images/cheers.png')} alt='cheers'></img>
-                    <Link to='/recipe'>
-                        <button className={classes.startButton}>Get Started</button>
-                    </Link>
-                </div>
-                */
+                    additionCtrlOpen={this.props.additionCtrlOpen}
+                    newAddition={this.props.newAddition}
+                    newAdditionUpdate={this.props.newAdditionUpdate}
+                    
+                    boilCtrlOpen={this.props.boilCtrlOpen}
+                    boilMinus={this.props.boilMinus}
+                    boilPlus={this.props.boilPlus}
+                    />
+                <Options 
+                    optFullscreen={this.props.optFullscreen} 
+                    optRestart={this.props.optRestart}
+                    full={this.props.fullscreen} 
+                    boilCtrlOpen={this.props.boilCtrlOpen}
+                    openBoilControl={this.props.openBoilControl}
+                    closeBoilControl={this.props.closeBoilControl}/>
+                <Controls 
+                    additions={this.props.additions}
+                    additionCtrlOpen={this.props.additionCtrlOpen}
+                    openNewAdditionControl={this.props.openNewAdditionControl}
+                    closeAdditionControl={this.props.closeAdditionControl}
+                    addNewAddition={this.props.addNewAddition}
+                    boilCtrlOpen={this.props.boilCtrlOpen}
+                    closeBoilControl={this.props.closeBoilControl}/>
+                
+            </div>
         );
     };
 }

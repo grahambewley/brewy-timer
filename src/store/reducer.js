@@ -25,6 +25,20 @@ const reducer = (state = initialState, action) => {
             }
         }
     }
+    if(action.type === 'DELETE_ADDITION') {
+        console.log('[reducer.js] action = ', action);
+        let additionsCopy = Object.assign({}, state.additions);
+
+        delete additionsCopy[action.additionTime];
+        console.log('[reducer.js] new additions = ',additionsCopy);
+
+        return {
+            ...state,
+            additions: {
+                ...additionsCopy
+            }
+        }
+    }
     
     return state;
 };

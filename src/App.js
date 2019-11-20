@@ -16,7 +16,7 @@ class App extends Component {
     instructionMinutesDone: null,
     play: false,
     currentAdditionIndex: 0,
-    additions: {},
+    //additions: {},
     newAddition: {
       name: null,
       type: null,
@@ -107,6 +107,8 @@ class App extends Component {
     Object.keys(this.state).map((key) => {
       return localStorage.setItem(key, JSON.stringify(this.state[key]));
     });
+    // TODO Store redux store in localStorage
+
   }
   
   componentWillUnmount() {
@@ -175,7 +177,7 @@ class App extends Component {
       play: false,
       instructionMinutesDone: null,
       currentAdditionIndex: 0,
-      additions: {},
+      //additions: {},
       newAddition: {
         name: null,
         type: null,
@@ -192,11 +194,11 @@ class App extends Component {
 
   instructionDoneButtonHandler = () => {
     // Make sure we're not at the last addition...
-    if(this.state.currentAdditionIndex < Object.keys(this.state.additions).length) {  //TODO access redux store additions here instead
+    if(this.state.currentAdditionIndex < Object.keys(this.props.adds).length) {
       this.setState(prevState => ({
         // Move the currentAdditionIndex up 1 -- used for the Instruction component
         currentAdditionIndex: prevState.currentAdditionIndex + 1,
-        instructionMinutesDone: +Object.keys(this.state.additions).reverse()[this.state.currentAdditionIndex]   //TODO access redux store additions here instead
+        instructionMinutesDone: +Object.keys(this.props.adds).reverse()[this.state.currentAdditionIndex]
       }))
     } 
   }
@@ -208,7 +210,7 @@ class App extends Component {
       if(this.state.currentAdditionIndex === 1) {
         doneMins = null;
       } else {
-        doneMins = +Object.keys(this.state.additions).reverse()[this.state.currentAdditionIndex-2];   //TODO access redux store additions here instead
+        doneMins = +Object.keys(this.props.adds).reverse()[this.state.currentAdditionIndex-2];
       } 
       this.setState(prevState => ({
         currentAdditionIndex: prevState.currentAdditionIndex - 1,
@@ -282,9 +284,9 @@ class App extends Component {
 
     const add = this.state.newAddition;
 
-    //TODO dispatch a new redux action -- sending in add
     this.props.onAddNewAddition(add);
 
+    /*
     let additionsCopy = {...this.state.additions};
 
     if(additionsCopy[add.time] !== undefined) {
@@ -296,7 +298,8 @@ class App extends Component {
 
     this.setState({
       additions: additionsCopy
-    })
+    });
+    */
   }
 
   openBoilControlHandler = () => {
@@ -324,8 +327,10 @@ class App extends Component {
 
   deleteAddition = (additionTime) => {
     console.log("Okay, deleting addition at " + additionTime + " minutes");
-
-    let additionsCopy = {...this.state.additions};
+    this.props.onDeleteAddition(additionTime);
+    this.setState({showModal: false});
+    /*
+    let additionsCopy = {...this.props.adds};
 
     delete additionsCopy[additionTime];
 
@@ -333,6 +338,7 @@ class App extends Component {
       showModal: false,
       additions: additionsCopy  //TODO dispatch redux action here instead
     });
+    */
   }
 
 
@@ -377,7 +383,7 @@ class App extends Component {
             elapsedSeconds={this.state.elapsedSeconds}
             currentAdditionIndex={this.state.currentAdditionIndex}
             instructionMinutesDone={this.state.instructionMinutesDone}
-            additions={this.state.additions}
+            additions={this.props.adds}
 
             // Instruction-related
             instructDone={this.instructionDoneButtonHandler}
@@ -401,7 +407,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddNewAddition: (newAdd) => dispatch({type: 'ADD_NEW_ADDITION', newAddition: newAdd})
+    onAddNewAddition: (newAdd) => dispatch({type: 'ADD_NEW_ADDITION', newAddition: newAdd}),
+    onDeleteAddition: (additionTime) => dispatch({type: 'DELETE_ADDITION', additionTime})
   };
 };
 
