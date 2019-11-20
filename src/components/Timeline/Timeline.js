@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './Timeline.scss';
 import Addition from './Addition/Addition';
 
@@ -11,7 +12,7 @@ const Timeline = (props) => {
         background: linearGradientString
     }
 
-    const additionComponents = Object.keys(props.additions).map((additionTime, index) => {
+    const additionComponents = Object.keys(props.adds).map((additionTime, index) => {
         return (
             <Addition 
                 clicked={() => props.additionTap(additionTime)}
@@ -19,7 +20,7 @@ const Timeline = (props) => {
                 elapsedSeconds={props.elapsedSeconds} 
                 boilMinutes={props.boilMinutes}  
                 time={additionTime}
-                items={props.additions[additionTime]} 
+                items={props.adds[additionTime]} 
                 instructionMinutesDone={props.instructionMinutesDone}/>
         );
     });
@@ -33,4 +34,10 @@ const Timeline = (props) => {
     )
 }
 
-export default Timeline;
+const mapStateToProps = state => {
+    return {
+        adds: state.additions
+    };
+}
+
+export default connect(mapStateToProps)(Timeline);
