@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import './Instruction.scss';
 
 const Instruction = (props) => {
+
+    useEffect(() => {
+        console.log('[Instruction.js] useEffect triggered!');
+    });
 
     let nextInstruction;
     let displaySeconds;
@@ -132,7 +136,7 @@ const Instruction = (props) => {
     return (
         <div style={instructionBoxStyle} className='instructionBox'>
             <div className='instructionDetailsContainer'>
-                <div className='instructionDetails'>
+                <div key={props.currentAdditionIndex} className='instructionDetails'>
                     {props.play ? 
                         <p className='nextAddition'>Next Addition:</p> :
                         <p className='nextAddition'>First Addition:</p> }
@@ -140,7 +144,6 @@ const Instruction = (props) => {
                         {nextInstruction}
                     </div>
                 </div>
-                
             </div>
             <div className='instructionTimerContainer'>
                 <p className='instructionTimer'>{displayMinutes}:{displaySeconds}</p>

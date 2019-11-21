@@ -3,12 +3,14 @@
 .instructionBox {
     height: 100%;
     padding: 1.5rem;
+    overflow: hidden;
     display: flex;
     justify-content: space-between;
     border-radius: .5rem;
     background-color: $color-background-white;
     box-shadow: 0 .5rem 1rem rgba(#000, .2);
     transition: all .2s;
+    animation: actionBoxSlide .3s ease-out;
 }
 
 .nextAddition {
@@ -17,6 +19,7 @@
     color: $color-font-dark;
     font-size: 1.4rem;
     font-weight: 400;
+    animation: fadeInInstruction .4s ease-out;
 }
 
 .instructionDetailsContainer {
@@ -31,6 +34,18 @@
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 1rem;
+
+    animation: fadeInInstruction .4s ease-out; 
+}
+
+@keyframes fadeInInstruction {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .instructionTimerContainer {
@@ -69,6 +84,7 @@
         height: 7.5rem;
         font-size: 3rem;
         margin-left: 1.2rem;
+        
     }
 }
 

@@ -206,7 +206,6 @@ class App extends Component {
   startTimerHandler = () => {
     // Get current epoch seconds
     const seconds = new Date() / 1000;
-    console.log(seconds);
     this.interval = setInterval(() => this.tick(), 100);
     this.setState({
       startEpoch: +seconds.toFixed(0),

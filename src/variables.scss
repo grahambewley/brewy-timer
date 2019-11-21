@@ -15,3 +15,13 @@ $color-delete-red: #ff9898;
 $color-accent-default: #BFDAEA;
 
 $bp-tablet: 48em;
+
+@keyframes actionBoxSlide {
+    from {
+        transform: translateY(12rem);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
