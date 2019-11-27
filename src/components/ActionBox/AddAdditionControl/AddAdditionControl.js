@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classes from './AddAdditionControl.module.scss';
-import * as actionTypes from '../../../store/actions';
+import * as actionTypes from '../../../store/actions/actions';
 
 class AddAdditionControl extends Component {
 
