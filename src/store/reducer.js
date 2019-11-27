@@ -1,3 +1,5 @@
+import * as actionTypes from './actions';
+
 const initialState = {
     additions: {},
     boilMinutes: 60,
@@ -11,7 +13,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'ADD_NEW_ADDITION':
+        case actionTypes.ADD_NEW_ADDITION:
             console.log('[reducer.js] action = ', action);
 
             // Immutably copy the current state.additions
@@ -39,7 +41,7 @@ const reducer = (state = initialState, action) => {
                 }
             }
 
-        case 'DELETE_ADDITION':
+        case actionTypes.DELETE_ADDITION:
             console.log('[reducer.js] action = ', action);
             let delAdditionsCopy = Object.assign({}, state.additions);
 
@@ -55,10 +57,10 @@ const reducer = (state = initialState, action) => {
                     ...state.newAddition
                 }
             }
-        case 'RESTART_BREW':
+        case actionTypes.RESTART_BREW:
             return initialState;
         
-        case 'RESTORE_FROM_STORAGE':
+        case actionTypes.RESTORE_FROM_STORAGE:
             return {
                 ...state,
                 additions: {
@@ -69,7 +71,7 @@ const reducer = (state = initialState, action) => {
                     ...state.newAddition
                 }
             } 
-        case 'CLEAR_NEW_ADDITION':
+        case actionTypes.CLEAR_NEW_ADDITION:
             return {
                 ...state,
                 additions: {
@@ -83,7 +85,7 @@ const reducer = (state = initialState, action) => {
                 }
             }
 
-        case 'NEW_ADDITION_UPDATE':
+        case actionTypes.NEW_ADDITION_UPDATE:
             return {
                 ...state,
                 additions: {
@@ -97,7 +99,7 @@ const reducer = (state = initialState, action) => {
                 }
             }
 
-        case 'BOIL_MINS_ADJUST':
+        case actionTypes.BOIL_MINS_ADJUST:
             console.log('[reducer] Boil Minutes Adjustment of ', action.adjustment);
             let mins = state.boilMinutes;
             mins += action.adjustment;
