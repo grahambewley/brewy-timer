@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import reducer from './store/reducer';
+import brewReducer from './store/reducers/brew';
+
+const rootReducer = combineReducers({
+    brew: brewReducer,
+});
 
 const store = createStore(
-    reducer, 
+    rootReducer, 
     // Allow Redux DevTools access
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );

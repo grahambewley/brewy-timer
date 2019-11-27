@@ -157,8 +157,8 @@ const Instruction = (props) => {
 }
 const mapStateToProps = state => {
     return {
-        adds: state.additions,
-        boilMins: state.boilMinutes
+        adds: state.brew.additions,
+        boilMins: state.brew.boilMinutes
     };
 }
 export default connect(mapStateToProps)(Instruction); 

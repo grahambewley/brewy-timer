@@ -34,7 +34,7 @@ const Controls = (props) => {
 } 
 const mapStateToProps = state => {
     return {
-        adds: state.additions
+        adds: state.brew.additions
     };
 }
 export default connect(mapStateToProps)(Controls);

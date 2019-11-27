@@ -18,7 +18,7 @@ const ChangeBoilControl = (props) => {
 
 const mapStateToProps = state => {
   return {
-    boilMins: state.boilMinutes
+    boilMins: state.brew.boilMinutes
   };
 }
   

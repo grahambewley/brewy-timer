@@ -309,8 +309,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    adds: state.additions,
-    boilMins: state.boilMinutes
+    adds: state.brew.additions,
+    boilMins: state.brew.boilMinutes
   };
 }
 
