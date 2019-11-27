@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import * as actionTypes from './store/actions';
 import './App.scss';
 import Brew from './containers/Brew/Brew';
 
@@ -316,11 +316,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddNewAddition: () => dispatch({type: 'ADD_NEW_ADDITION'}),
-    onDeleteAddition: (additionTime) => dispatch({type: 'DELETE_ADDITION', additionTime: additionTime}),
-    onRestart: () => dispatch({type: 'RESTART_BREW'}),
-    onRestoreFromStorage: (additions, boilMinutes) => dispatch({type: 'RESTORE_FROM_STORAGE', additions: additions, boilMinutes: boilMinutes}),
-    onClearNewAddition: () => dispatch({type:'CLEAR_NEW_ADDITION'})
+    onAddNewAddition: () => dispatch({type: actionTypes.ADD_NEW_ADDITION}),
+    onDeleteAddition: (additionTime) => dispatch({type: actionTypes.DELETE_ADDITION, additionTime: additionTime}),
+    onRestart: () => dispatch({type: actionTypes.RESTART_BREW}),
+    onRestoreFromStorage: (additions, boilMinutes) => dispatch({type: actionTypes.RESTORE_FROM_STORAGE, additions: additions, boilMinutes: boilMinutes}),
+    onClearNewAddition: () => dispatch({type: actionTypes.CLEAR_NEW_ADDITION})
   };
 };
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classes from './AddAdditionControl.module.scss';
+import * as actionTypes from '../../../store/actions';
 
 class AddAdditionControl extends Component {
 
@@ -46,7 +47,7 @@ class AddAdditionControl extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-      onNewAdditionUpdate: (newAdd) => dispatch({type:'NEW_ADDITION_UPDATE', new: newAdd})
+      onNewAdditionUpdate: (newAdd) => dispatch({type: actionTypes.NEW_ADDITION_UPDATE, new: newAdd})
     }
 }
 export default connect(null, mapDispatchToProps)(AddAdditionControl);

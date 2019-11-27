@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classes from './ChangeBoilControl.module.scss';
+import * as actionTypes from '../../../store/actions';
 
 const ChangeBoilControl = (props) => {
   return (
@@ -23,7 +24,7 @@ const mapStateToProps = state => {
   
 const mapDispatchToProps = dispatch => {
   return {
-    onBoilMinutesAdjust: (adjustment) => dispatch({type: 'BOIL_MINS_ADJUST', adjustment: adjustment})
+    onBoilMinutesAdjust: (adjustment) => dispatch({type: actionTypes.BOIL_MINS_ADJUST, adjustment: adjustment})
   };
 };
 
