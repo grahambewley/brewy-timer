@@ -14,7 +14,7 @@ export const addNewAddition = () => {
 
 export const deleteAddition = (additionTime) => {
     return {
-        type: ADD_NEW_ADDITION,
+        type: DELETE_ADDITION,
         additionTime: additionTime
     }
 }
@@ -22,5 +22,33 @@ export const deleteAddition = (additionTime) => {
 export const restartBrew = () => {
     return {
         type: RESTART_BREW
+    }
+}
+
+export const restoreFromStorage = (additions, boilMinutes) => {
+    return {
+        type: RESTORE_FROM_STORAGE,
+        additions: additions,
+        boilMinutes: boilMinutes
+    }
+}
+
+export const clearNewAddition = () => {
+    return {
+        type: CLEAR_NEW_ADDITION
+    }
+}
+
+export const newAdditionUpdate = (newAdd) => {
+    return {
+        type: NEW_ADDITION_UPDATE,
+        new: newAdd
+    }
+}
+
+export const boilMinsAdjust = (adjustment) => {
+    return {
+        type: BOIL_MINS_ADJUST,
+        adjustment: adjustment
     }
 }
