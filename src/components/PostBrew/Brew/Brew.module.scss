@@ -1,0 +1,15 @@
+@import '../../../variables.scss';
+
+.container {
+    width: 100%;
+    padding: 1rem;
+    background-color: $color-background-white;
+    margin-bottom: 1rem;
+    border-radius: .5rem;
+    box-shadow: 0 2px 4px rgba(#000,.15);
+}
+
+.brewName {
+    font-size: 1.4rem;
+    font-weight: 400;
+}

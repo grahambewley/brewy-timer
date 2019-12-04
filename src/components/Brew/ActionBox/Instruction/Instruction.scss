@@ -8,7 +8,7 @@
     justify-content: space-between;
     border-radius: .5rem;
     background-color: $color-background-white;
-    box-shadow: 0 .5rem 1rem rgba(#000, .2);
+    box-shadow: $box-shadow-md;
     transition: all .2s;
     animation: actionBoxSlide .3s ease-out;
 }

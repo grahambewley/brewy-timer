@@ -31,6 +31,10 @@ $color-green: #20BF55;
 $color-green-light: #63d288;
 $color-green-dark: #16863b;
 
+// BOX SHADOWS 
+$box-shadow-sm: 0 2px 4px rgba(#000,.15);
+$box-shadow-md: 0 3px 6px rgba(#000, .15);
+
 $bp-tablet: 48em;
 
 @keyframes actionBoxSlide {

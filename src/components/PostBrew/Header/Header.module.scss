@@ -1,5 +1,9 @@
+@import '../../../variables.scss';
+
 .container {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
     width: 100%;
-    padding: 1rem;
-    background-color: #fff;
+    margin-bottom: 2rem;
+    color: $color-font-dark;
 }
