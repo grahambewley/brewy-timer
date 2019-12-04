@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actionCreators from './store/actions/actions';
 import './App.scss';
 import Brew from './containers/Brew/Brew';
-
+import PostBrew from './containers/PostBrew/PostBrew';
 class App extends Component {
   
   state = {
@@ -260,7 +260,7 @@ class App extends Component {
 
   render () {
     return (
-      <BrowserRouter>
+      <Switch>
         <Route 
           exact path='/' 
           render={() => <Brew 
@@ -300,8 +300,9 @@ class App extends Component {
             instructRewind={this.rewindButtonHandler}
             timerStart={this.startTimerHandler}
           />}
-        />  
-      </BrowserRouter>
+        /> 
+        <Route path='/postbrew' component={PostBrew}/> 
+      </Switch>
 
     );  
   }

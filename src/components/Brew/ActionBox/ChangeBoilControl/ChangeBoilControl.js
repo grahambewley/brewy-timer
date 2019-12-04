@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classes from './ChangeBoilControl.module.scss';
-import * as actionCreators from '../../../store/actions/actions';
+import * as actionCreators from '../../../../store/actions/actions';
 
 const ChangeBoilControl = (props) => {
   return (

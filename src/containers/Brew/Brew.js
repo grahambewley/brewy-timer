@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Options from '../../components/Options/Options';
-import CurrentTime from '../../components/Timeline/CurrentTime/CurrentTime';
-import Timeline from '../../components/Timeline/Timeline';
-import ActionBox from '../../components/ActionBox/ActionBox';
-import Controls from '../../components/Controls/Controls';
+import Options from '../../components/Brew/Options/Options';
+import CurrentTime from '../../components/Brew/Timeline/CurrentTime/CurrentTime';
+import Timeline from '../../components/Brew/Timeline/Timeline';
+import ActionBox from '../../components/Brew/ActionBox/ActionBox';
+import Controls from '../../components/Brew/Controls/Controls';
 import Modal from '../../components/Modal/Modal';
 
 class Brew extends Component {
