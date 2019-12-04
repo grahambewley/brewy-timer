@@ -4,7 +4,7 @@ import CurrentTime from '../../components/Brew/Timeline/CurrentTime/CurrentTime'
 import Timeline from '../../components/Brew/Timeline/Timeline';
 import ActionBox from '../../components/Brew/ActionBox/ActionBox';
 import Controls from '../../components/Brew/Controls/Controls';
-import Modal from '../../components/Modal/Modal';
+import Modal from '../../components/Brew/Modal/Modal';
 
 class Brew extends Component {
 

@@ -14,6 +14,23 @@ $color-delete-red: #ff9898;
 
 $color-accent-default: #BFDAEA;
 
+// COLORS USED FOR POST-BREW STAGES
+$color-blue: #1B98E0;
+$color-blue-light: #5fb7e9; // 3 shades lighter
+$color-blue-dark: #136a9d;  // 3 shades darker
+
+$color-teal: #03B5AA;
+$color-teal-light: #4fcbc4;
+$color-teal-dark: #027f77;
+
+$color-orange: #FF9F1C;
+$color-orange-light: #ffbc60;
+$color-orange-dark: #b36f14;
+
+$color-green: #20BF55;
+$color-green-light: #63d288;
+$color-green-dark: #16863b;
+
 $bp-tablet: 48em;
 
 @keyframes actionBoxSlide {
