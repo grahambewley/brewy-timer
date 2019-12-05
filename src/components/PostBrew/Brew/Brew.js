@@ -9,8 +9,18 @@ const brew = (props) => {
 
     return (
         <div className={classes.container}>
-            <h2 className={classes.brewName}>{thisBrew.name}</h2>
-            {thisBrew.origGravity !== null ? <p className={classes.brewOG}>OG: {thisBrew.origGravity}</p> : null}
+            <div className={classes.brewLeftSide}>
+                <h2 className={classes.brewName}>{thisBrew.name}</h2>
+                {thisBrew.origGravity !== null ? 
+                    <>
+                        <span className={classes.label}>OG: </span>
+                        <span className={classes.brewOG}>{thisBrew.origGravity}</span> 
+                    </> : null}
+            </div>
+            <div className={classes.brewRightSide}>
+                <span className={classes.label}>Brewed On: </span>
+                <p></p>
+            </div>
         </div>
     );
 }

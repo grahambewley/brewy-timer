@@ -4,12 +4,26 @@
     width: 100%;
     padding: 1rem;
     background-color: $color-background-white;
+    color: $color-font-dark;
     margin-bottom: 1rem;
     border-radius: .5rem;
     box-shadow: 0 2px 4px rgba(#000,.15);
+    display: flex;
+    justify-content: space-between;
+}
+
+.label {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
 }
 
 .brewName {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     font-weight: 400;
+}
+
+.brewOG {
+    font-size: 1.4rem;
 }
