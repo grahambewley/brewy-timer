@@ -3,8 +3,10 @@ import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actionCreators from './store/actions/actions';
 import './App.scss';
+import Layout from './hoc/Layout/Layout';
 import Brew from './containers/Brew/Brew';
 import PostBrew from './containers/PostBrew/PostBrew';
+
 class App extends Component {
   
   state = {
@@ -260,50 +262,51 @@ class App extends Component {
 
   render () {
     return (
-      <Switch>
-        <Route 
-          exact path='/' 
-          render={() => <Brew 
-            showModal={this.state.showModal}
-            modalConfirm={this.modalConfirm}
-            modalConfirmButtonText={this.modalConfirmButtonText}
-            modalCancelButtonText={this.modalCancelButtonText}
-            modalCancel={this.modalCancel}
-            modalHeader={this.modalHeader}
-            modalContent={this.modalContent}
+      <Layout>
+        <Switch>
+          <Route 
+            exact path='/' 
+            render={() => <Brew 
+              showModal={this.state.showModal}
+              modalConfirm={this.modalConfirm}
+              modalConfirmButtonText={this.modalConfirmButtonText}
+              modalCancelButtonText={this.modalCancelButtonText}
+              modalCancel={this.modalCancel}
+              modalHeader={this.modalHeader}
+              modalContent={this.modalContent}
 
-            // Options Related            
-            fullscreen={this.state.fullscreen}
-            play={this.state.play}
+              // Options Related            
+              fullscreen={this.state.fullscreen}
+              play={this.state.play}
 
-            optFullscreen={this.fullscreenButtonHandler}
-            optRestart={this.restartButtonHandler}
-            
-            // Control-related
-            additionCtrlOpen={this.state.isNewAdditionControlOpen}
-            openNewAdditionControl={this.openNewAdditionControlHandler}
-            closeAdditionControl={this.closeAdditionControlHandler}
-            addNewAddition={this.addNewAdditionHandler}
-            additionTap={this.additionTapHandler}
+              optFullscreen={this.fullscreenButtonHandler}
+              optRestart={this.restartButtonHandler}
+              
+              // Control-related
+              additionCtrlOpen={this.state.isNewAdditionControlOpen}
+              openNewAdditionControl={this.openNewAdditionControlHandler}
+              closeAdditionControl={this.closeAdditionControlHandler}
+              addNewAddition={this.addNewAdditionHandler}
+              additionTap={this.additionTapHandler}
 
-            boilCtrlOpen={this.state.isBoilControlOpen}
-            openBoilControl={this.openBoilControlHandler}
-            closeBoilControl={this.closeBoilControlHandler}
+              boilCtrlOpen={this.state.isBoilControlOpen}
+              openBoilControl={this.openBoilControlHandler}
+              closeBoilControl={this.closeBoilControlHandler}
 
-            // Boil-related
-            elapsedSeconds={this.state.elapsedSeconds}
-            currentAdditionIndex={this.state.currentAdditionIndex}
-            instructionMinutesDone={this.state.instructionMinutesDone}
+              // Boil-related
+              elapsedSeconds={this.state.elapsedSeconds}
+              currentAdditionIndex={this.state.currentAdditionIndex}
+              instructionMinutesDone={this.state.instructionMinutesDone}
 
-            // Instruction-related
-            instructDone={this.instructionDoneButtonHandler}
-            instructRewind={this.rewindButtonHandler}
-            timerStart={this.startTimerHandler}
-          />}
-        /> 
-        <Route path='/postbrew' component={PostBrew}/> 
-      </Switch>
-
+              // Instruction-related
+              instructDone={this.instructionDoneButtonHandler}
+              instructRewind={this.rewindButtonHandler}
+              timerStart={this.startTimerHandler}
+            />}
+          /> 
+          <Route path='/postbrew' component={PostBrew}/> 
+        </Switch>
+      </Layout>
     );  
   }
 }

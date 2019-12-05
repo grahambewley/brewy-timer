@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from '../../components/PostBrew/Header/Header';
 import Brew from '../../components/PostBrew/Brew/Brew';
 import classes from './PostBrew.module.scss';
 class PostBrew extends Component {
@@ -20,7 +19,6 @@ class PostBrew extends Component {
         return (
             
             <div className={classes.container}> 
-                <Header />
                 {brewComponents}
             </div>
             

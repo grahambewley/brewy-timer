@@ -20,8 +20,9 @@ body {
 }
 
 .container {
-  background-color: $color-background-grey;
-  height: 100vh;
+  //height: 100vh;
+  position: relative;
+  flex-grow: 1;
   display: grid;
   grid-template-columns: [app-start timeline-start] 7rem [timeline-end] 1fr [app-end];
   grid-template-rows: 1fr min-content minmax(25vh, min-content);
