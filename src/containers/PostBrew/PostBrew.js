@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import Brew from '../../components/PostBrew/Brew/Brew';
 import classes from './PostBrew.module.scss';
 class PostBrew extends Component {
-    render() {
-        console.log("Brews from redux ", this.props.brews);
-        
+    render() {        
         const brewComponents = this.props.brews.map((brew, index) => {
             
             return (

@@ -8,22 +8,43 @@
     margin-bottom: 1rem;
     border-radius: .5rem;
     box-shadow: 0 2px 4px rgba(#000,.15);
+}
+
+.brewMain {
     display: flex;
     justify-content: space-between;
 }
 
-.label {
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.brewName {
+    margin-bottom: .5rem;
+}
 
+.brewDetails {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.brewDetail {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+
+    &:not(:last-child) {
+        margin-right: 3rem;
+    }
+
+    &__label {
+        text-transform: uppercase;
+        font-weight: bold;
+        color: $color-font-dark-2;
+    }
+
+    &__detail {
+
+    }
 }
 
 .brewName {
     font-size: 1.8rem;
     font-weight: 400;
-}
-
-.brewOG {
-    font-size: 1.4rem;
 }

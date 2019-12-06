@@ -7,7 +7,7 @@ const Timeline = (props) => {
 
     const boilSeconds = props.boilMins*60;
     const percentage = 100 - ((boilSeconds - props.elapsedSeconds) / boilSeconds) * 100 + '%';
-    const linearGradientString = 'linear-gradient(to bottom, #a9d1c1 '+percentage+', #eee '+percentage+' 100%)';
+    const linearGradientString = 'linear-gradient(to bottom, #a9d1c1 '+percentage+', #fbfbfb '+percentage+' 100%)';
     const timelineStyle = {
         background: linearGradientString
     }
