@@ -5,4 +5,26 @@
     height: 4px;
     border-radius: 50px;
     margin-bottom: 1rem;
+    position: relative;
+}
+
+.timelineTick {
+    position: absolute;
+
+    //background-color: pink;
+    width: 50px;
+    height: calc(4px + 1.4rem);
+    top: -1rem;
+
+    &__name {
+        position: absolute;
+        font-size: .7rem;
+        text-transform: uppercase;
+        top: calc(8px + .7rem);
+    }
+
+    &__duration {
+        position: absolute;
+        font-size: .7rem;
+    }
 }

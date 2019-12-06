@@ -4,30 +4,36 @@ const initialState = {
     defaultStages: [
         {
             name: 'Primary Fermentation',
+            shortname: 'Primary',
             duration: 21,
             color: 'orange'
         },
         {
             name: 'Secondary Fermentation',
+            shortname: 'Secondary',
             duration: 7,
             color: 'light-orange'
         },
         {   name: 'Barrel Aging',
+            shortname: 'Age',
             duration: 30,
             color: 'dark-orange'
         },
         {
             name: 'Cold Crash',
+            shortname: 'Crash',
             duration: 3,
             color: 'blue'
         },
         {
             name: 'Bottle Conditioning',
+            shortname: 'Condition',
             duration: 14,
             color: 'green'
         },
         {
             name: 'Carbonation',
+            shortname: 'Carb',
             duration: 7,
             color: 'light-green'
         }
@@ -41,18 +47,21 @@ const initialState = {
                 {
                     order: 1,
                     name: 'Primary Fermentation',
+                    shortname: 'Primary',
                     duration: 21,
                     color: 'orange'
                 },
                 { 
                     order: 2,
                     name: 'Secondary Fermentation',
+                    shortname: 'Secondary',
                     duration: 7,
                     color: 'light-orange'
                 },
                 {
                     order: 3,
                     name: 'Carbonation',
+                    shortname: 'Carb',
                     duration: 2,
                     color: 'light-green'
                 }
@@ -66,18 +75,21 @@ const initialState = {
                 {
                     order: 1,
                     name: 'Primary Fermentation',
+                    shortname: 'Primary',
                     duration: 21,
                     color: 'orange'
                 },
                 { 
                     order: 2,
                     name: 'Secondary Fermentation',
+                    shortname: 'Secondary',
                     duration: 7,
                     color: 'light-orange'
                 },
                 {
                     order: 3,
                     name: 'Carbonation',
+                    shortname: 'Carb',
                     duration: 2,
                     color: 'light-green'
                 }
@@ -91,18 +103,21 @@ const initialState = {
                 {
                     order: 1,
                     name: 'Primary Fermentation',
+                    shortname: 'Primary',
                     duration: 14,
                     color: 'orange'
                 },
                 { 
                     order: 14,
                     name: 'Secondary Fermentation',
+                    shortname: 'Secondary',
                     duration: 7,
                     color: 'light-orange'
                 },
                 {
                     order: 3,
                     name: 'Carbonation',
+                    shortname: 'Carb',
                     duration: 2,
                     color: 'light-green'
                 }

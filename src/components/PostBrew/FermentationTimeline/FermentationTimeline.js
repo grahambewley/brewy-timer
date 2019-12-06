@@ -40,10 +40,23 @@ const fermentationTimeline = (props) => {
         background: linearGradientString
     }
 
+    currentPercent = 0;
+    const tickmarks = props.stages.map((stage,index) => {
+        let tickStyle = {
+            left: currentPercent+'%'
+        }
+        currentPercent += parseFloat(((stage.duration/totalDays)*100));
+        return (
+            <div key={index} style={tickStyle} className={classes.timelineTick}>
+                <span className={classes.timelineTick__name}>{stage.shortname}</span>
+                <span className={classes.timelineTick__duration}>{stage.duration}d</span>
+            </div>
+        );
+    })
+
     return (
         <div style={timelineStyle} className={classes.container}>
-
-
+            {tickmarks}
         </div>
     );
 }
