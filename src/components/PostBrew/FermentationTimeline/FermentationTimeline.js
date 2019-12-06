@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './FermentationTimeline.module.scss';
 
 const fermentationTimeline = (props) => {
-
     const colors = {
         'blue': '#1B98E0',
         'light-blue': '#5fb7e9',
