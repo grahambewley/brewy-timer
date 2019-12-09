@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Brew from '../../components/PostBrew/Brew/Brew';
+import AddButton from '../../components/PostBrew/AddButton/AddButton';
+import NewFermentationOverlay from '../../components/PostBrew/NewFermentationOverlay/NewFermentationOverlay.js';
 import classes from './PostBrew.module.scss';
+
 class PostBrew extends Component {
+
+    state = {
+        isNewFermentationOpen: false,
+    }
+
+    openNewFermentationHandler = () => {
+        console.log("Clicked button");
+        this.setState({isNewFermentationOpen: true});
+    }
+
     render() {        
         const brewComponents = this.props.brews.map((brew, index) => {
             
@@ -17,7 +30,9 @@ class PostBrew extends Component {
         return (
             
             <div className={classes.container}> 
+                {this.state.isNewFermentationOpen ? <NewFermentationOverlay /> : null}
                 {brewComponents}
+                <AddButton clicked={this.openNewFermentationHandler}/>
             </div>
             
         );
