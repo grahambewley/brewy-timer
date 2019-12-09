@@ -9,6 +9,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
+import Firebase, { FirebaseContext } from './components/Firebase';
+
 import brewReducer from './store/reducers/brew';
 import postBrewReducer from './store/reducers/postbrew';
 
@@ -37,7 +39,9 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <App />
+            <FirebaseContext.Provider value={new Firebase()}>
+                <App />
+            </FirebaseContext.Provider>
         </BrowserRouter>
     </Provider>
     , document.getElementById('root')
