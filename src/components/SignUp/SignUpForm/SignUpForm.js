@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import * as actionCreators from '../../../store/actions/actions';
 import InputField from '../../UI/InputField/InputField';
 import WordButton from '../../UI/WordButton/WordButton';
 import classes from './SignUpForm.module.scss';
@@ -23,9 +26,10 @@ class SignUpFormBase extends Component {
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
+                
                 this.setState({ ...INITIAL_STATE });
-                
-                
+                console.log(authUser);
+                this.props.history.push('/');
             })
             .catch(error => {
                 this.setState({ error });
@@ -92,8 +96,18 @@ class SignUpFormBase extends Component {
     }
 }
 
-const SignUpForm = withFirebase(SignUpFormBase);
+const SignUpForm = withRouter(withFirebase(SignUpFormBase));
 
+const mapStateToProps = state => {
+    return {
+        auth: state.auth
+    }
+}
 
+const mapDispatchToProps = dispatch => {
+    return {
+      onSignUp: (newAdd) => dispatch(actionCreators.newAdditionUpdate(newAdd))
+    }
+}
 
-export default SignUpForm;
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);

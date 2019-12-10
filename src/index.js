@@ -13,6 +13,7 @@ import Firebase, { FirebaseContext } from './components/Firebase';
 
 import brewReducer from './store/reducers/brew';
 import postBrewReducer from './store/reducers/postbrew';
+import settingsReducer from './store/reducers/settings';
 
 // Get the actual viewport height and multiply it by 1% to get a value for a vh unit
 let vh = window.innerHeight * 0.01;
@@ -27,7 +28,8 @@ window.addEventListener('resize', () => {
 
 const rootReducer = combineReducers({
     brew: brewReducer,
-    postBrew: postBrewReducer
+    postBrew: postBrewReducer,
+    settings: settingsReducer
 });
 
 const store = createStore(

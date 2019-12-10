@@ -1,0 +1,18 @@
+@import '../../variables.scss';
+
+.container {
+    padding: 2rem;
+}
+
+.header {
+    font-size: 3rem;
+    font-weight: 300;
+    color: $color-font-dark;
+    margin-bottom: 2rem;
+}
+
+.link {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.4rem;
+}

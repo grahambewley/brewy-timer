@@ -1,6 +1,12 @@
 .Input {
     font-size: 1.6rem;
     outline: none;
-    padding: .8rem;
+    padding: .8rem 1.6rem;
     border: none;
+    width: 100%;
+    border-radius: 100px;
+}
+
+.Input::placeholder {
+    font-weight: 300;
 }
