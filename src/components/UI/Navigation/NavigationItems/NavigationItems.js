@@ -2,8 +2,8 @@ import React from 'react';
 
 import classes from './NavigationItems.module.scss';
 import NavigationItem from './NavigationItem/NavigationItem';
-import brewImage from '../../../assets/kettle.svg';
-import fermentationImage from '../../../assets/fermentation.svg';
+import brewImage from '../../../../assets/kettle.svg';
+import fermentationImage from '../../../../assets/fermentation.svg';
 
 const navigationItems = () => (
     <ul className={classes.NavigationItems}>

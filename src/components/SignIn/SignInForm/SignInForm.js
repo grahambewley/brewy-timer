@@ -4,68 +4,46 @@ import { withRouter } from 'react-router';
 import * as actionCreators from '../../../store/actions/actions';
 import InputField from '../../UI/InputField/InputField';
 import WordButton from '../../UI/WordButton/WordButton';
-import classes from './SignUpForm.module.scss';
+import classes from './SignInForm.module.scss';
 import { withFirebase } from '../../Firebase';
 import { compose } from 'recompose';
 require('dotenv').config();
 
 const INITIAL_STATE = {
-    username: '',
     email: '',
-    passwordOne: '',
-    passwordTwo: '',
+    password: '',
     error: null,
-};
+  };  
 
-class SignUpFormBase extends Component {
+class SignInFormBase extends Component {
     constructor(props) {
         super(props);
         this.state = { ...INITIAL_STATE };
     }
     onSubmit = event => {
-        const { username, email, passwordOne } = this.state;
+        const { email, password } = this.state;
         this.props.firebase
-            .doCreateUserWithEmailAndPassword(email, passwordOne)
-            .then(authUser => {
-                this.props.onSignUp(authUser);
+            .doSignInWithEmailAndPassword(email, password)
+            .then((authUser) => {
+                this.props.onSignIn(authUser);
                 this.setState({ ...INITIAL_STATE });
-                console.log(authUser);
                 this.props.history.push('/');
             })
             .catch(error => {
                 this.setState({ error });
             });
-        
-            event.preventDefault();
-    }
+        event.preventDefault();
+    };
     onChange = event => {
         this.setState({ [event.target.name]: event.target.value });
     };
     render() {
-        const {
-            username,
-            email,
-            passwordOne,
-            passwordTwo,
-            error,
-        } = this.state;
-
-        const isInvalid =
-            passwordOne !== passwordTwo ||
-            passwordOne === '' ||
-            email === '' ||
-            username === '';
+        const { email, password, error } = this.state;
+        const isInvalid = password === '' || email === '';
 
         return (
             <div className={classes.container}>
                 <form className={classes.form} onSubmit={this.onSubmit}>
-                    <InputField
-                        name="username"
-                        value={username}
-                        onChange={this.onChange}
-                        type="text"
-                        placeholder="Full Name"
-                    />
                     <InputField
                         name="email"
                         value={email}
@@ -74,22 +52,15 @@ class SignUpFormBase extends Component {
                         placeholder="Email Address"
                     />
                     <InputField
-                        name="passwordOne"
-                        value={passwordOne}
+                        name="password"
+                        value={password}
                         onChange={this.onChange}
                         type="password"
                         placeholder="Password"
                     />
-                    <InputField
-                        name="passwordTwo"
-                        value={passwordTwo}
-                        onChange={this.onChange}
-                        type="password"
-                        placeholder="Confirm Password"
-                    />
                     <WordButton 
                         disabled={isInvalid} 
-                        type="submit">Sign Up</WordButton>
+                        type="submit">Sign In</WordButton>
                     {error && <p className={classes.error}>{error.message}</p>}
                 </form>
             </div>
@@ -97,10 +68,10 @@ class SignUpFormBase extends Component {
     }
 }
 
-const SignUpForm = compose(
+const SignInForm = compose(
     withRouter,
     withFirebase,
-)(SignUpFormBase);
+)(SignInFormBase);
 
 const mapStateToProps = state => {
     return {
@@ -110,8 +81,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-      onSignUp: (authUser) => dispatch(actionCreators.authenticateUser(authUser))
+        onSignIn: (authUser) => dispatch(actionCreators.authenticateUser(authUser))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);

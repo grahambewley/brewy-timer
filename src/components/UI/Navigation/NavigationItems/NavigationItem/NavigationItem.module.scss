@@ -1,9 +1,9 @@
-@import '../../../../variables.scss';
+@import '../../../../../variables.scss';
 
 .NavigationItem {
     box-sizing: border-box;
     display: block;
-    margin: 1.5rem 2.5rem;
+    margin: 1.5rem 0;
 }
 
 .NavigationItem a {
