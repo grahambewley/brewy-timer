@@ -6,6 +6,7 @@ import './App.scss';
 import Layout from './hoc/Layout/Layout';
 import Brew from './containers/Brew/Brew';
 import PostBrew from './containers/PostBrew/PostBrew';
+import SignUp from './components/SignUp/SignUp';
 
 class App extends Component {
   
@@ -305,6 +306,7 @@ class App extends Component {
             />}
           /> 
           <Route path='/postbrew' component={PostBrew}/> 
+          <Route path='/signup' component={SignUp}/> 
         </Switch>
       </Layout>
     );  
