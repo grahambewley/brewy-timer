@@ -1,0 +1,22 @@
+@import '../../../variables.scss';
+
+.button {
+    background-color: $color-hops-green-light;
+    color: $color-font-dark;
+    font-size: 1.2rem;
+    border: none;
+    padding: 1.4rem 2.4rem;
+    border-radius: 500px;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button:hover,
+.button:active {
+    background-color: $color-grey;
+}
