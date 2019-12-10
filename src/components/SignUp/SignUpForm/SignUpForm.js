@@ -6,6 +6,7 @@ import InputField from '../../UI/InputField/InputField';
 import WordButton from '../../UI/WordButton/WordButton';
 import classes from './SignUpForm.module.scss';
 import { withFirebase } from '../../Firebase';
+import { compose } from 'recompose';
 require('dotenv').config();
 
 const INITIAL_STATE = {
@@ -96,7 +97,10 @@ class SignUpFormBase extends Component {
     }
 }
 
-const SignUpForm = withRouter(withFirebase(SignUpFormBase));
+const SignUpForm = compose(
+    withRouter,
+    withFirebase,
+)(SignUpFormBase);
 
 const mapStateToProps = state => {
     return {
