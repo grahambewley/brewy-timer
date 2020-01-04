@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withFirebase } from './components/Firebase';
 import * as actionCreators from './store/actions/actions';
 import './App.scss';
 import Layout from './hoc/Layout/Layout';
@@ -41,6 +42,16 @@ class App extends Component {
   }
 
   componentDidMount() {
+
+    // WHEN AUTHENTICATION STATE CHANGES, UPDATE authUser in Redux
+    this.props.firebase.auth.onAuthStateChanged(authUser => {
+      authUser
+        //? this.setState({ authUser })
+        ? this.props.onAuthenticateUser(authUser)
+        //: this.setState({ authUser: null });
+        : this.props.onNullAuthUser();
+    });
+
     let startEpoch = localStorage.getItem('startEpoch');
 
     // Check startEpoch as a test that there is data in localStorage at all
@@ -328,8 +339,10 @@ const mapDispatchToProps = dispatch => {
     onDeleteAddition: (additionTime) => dispatch(actionCreators.deleteAddition(additionTime)),
     onRestart: () => dispatch(actionCreators.restartBrew()),
     onRestoreFromStorage: (additions, boilMinutes) => dispatch(actionCreators.restoreFromStorage(additions, boilMinutes)),
-    onClearNewAddition: () => dispatch(actionCreators.clearNewAddition())
+    onClearNewAddition: () => dispatch(actionCreators.clearNewAddition()),
+    onAuthenticateUser: (authUser) => dispatch(actionCreators.authenticateUser(authUser)),
+    onNullAuthUser: () => dispatch(actionCreators.nullAuthUser())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(withFirebase(App));

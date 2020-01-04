@@ -15,7 +15,8 @@ const reducer = (state = initialState, action) => {
                 }
             };
 
-        case actionTypes.SIGN_OUT_USER:
+        case actionTypes.NULL_AUTH_USER:
+            console.log("[settings reducer] We're going to null the auth user now");
             return initialState;
         default:
             return state;

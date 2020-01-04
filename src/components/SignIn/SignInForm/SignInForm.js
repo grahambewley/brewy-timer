@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import * as actionCreators from '../../../store/actions/actions';
 import InputField from '../../UI/InputField/InputField';
 import WordButton from '../../UI/WordButton/WordButton';
 import classes from './SignInForm.module.scss';
@@ -24,8 +22,7 @@ class SignInFormBase extends Component {
         const { email, password } = this.state;
         this.props.firebase
             .doSignInWithEmailAndPassword(email, password)
-            .then((authUser) => {
-                this.props.onSignIn(authUser);
+            .then(() => {
                 this.setState({ ...INITIAL_STATE });
                 this.props.history.push('/');
             })
@@ -73,16 +70,4 @@ const SignInForm = compose(
     withFirebase,
 )(SignInFormBase);
 
-const mapStateToProps = state => {
-    return {
-        auth: state.auth
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onSignIn: (authUser) => dispatch(actionCreators.authenticateUser(authUser))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);
+export default SignInForm;

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import * as actionCreators from '../../../store/actions/actions';
 import InputField from '../../UI/InputField/InputField';
 import WordButton from '../../UI/WordButton/WordButton';
 import classes from './SignUpForm.module.scss';
@@ -26,10 +24,8 @@ class SignUpFormBase extends Component {
         const { username, email, passwordOne } = this.state;
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
-            .then(authUser => {
-                this.props.onSignUp(authUser);
+            .then(() => {
                 this.setState({ ...INITIAL_STATE });
-                console.log(authUser);
                 this.props.history.push('/');
             })
             .catch(error => {
@@ -102,16 +98,4 @@ const SignUpForm = compose(
     withFirebase,
 )(SignUpFormBase);
 
-const mapStateToProps = state => {
-    return {
-        auth: state.auth
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-      onSignUp: (authUser) => dispatch(actionCreators.authenticateUser(authUser))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
+export default SignUpForm;
