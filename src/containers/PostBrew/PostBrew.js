@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ProtectedPagePrompt from '../../components/ProtectedPagePrompt/ProtectedPagePrompt';
 import Brew from '../../components/PostBrew/Brew/Brew';
 import AddButton from '../../components/PostBrew/AddButton/AddButton';
 import NewFermentationOverlay from '../../components/PostBrew/NewFermentationOverlay/NewFermentationOverlay.js';
@@ -16,7 +17,9 @@ class PostBrew extends Component {
         this.setState({isNewFermentationOpen: true});
     }
 
-    render() {        
+    render() {   
+        console.log('[Post Brew] authUser from redux is: ', this.props.auth);
+
         const brewComponents = this.props.brews.map((brew, index) => {
             
             return (
@@ -28,19 +31,25 @@ class PostBrew extends Component {
         })
         
         return (
-            
+            this.props.auth 
+            ? 
             <div className={classes.container}> 
+                
                 {this.state.isNewFermentationOpen ? <NewFermentationOverlay /> : null}
                 {brewComponents}
                 <AddButton clicked={this.openNewFermentationHandler}/>
             </div>
-            
+            : 
+            <div className={classes.container}>
+                <ProtectedPagePrompt />
+            </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
     return {
+        auth: state.settings.authUser,
         brews: state.postBrew.brews
     }
 }
