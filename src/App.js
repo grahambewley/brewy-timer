@@ -44,13 +44,14 @@ class App extends Component {
   componentDidMount() {
 
     // WHEN AUTHENTICATION STATE CHANGES, UPDATE authUser in Redux
-    this.props.firebase.auth.onAuthStateChanged(authUser => {
-      authUser
-        //? this.setState({ authUser })
-        ? this.props.onAuthenticateUser(authUser)
-        //: this.setState({ authUser: null });
-        : this.props.onNullAuthUser();
-    });
+    //
+    this.listener = this.props.firebase.auth.onAuthStateChanged(
+      authUser => {
+        authUser
+          ? this.props.onAuthenticateUser(authUser)
+          : this.props.onNullAuthUser();
+      }
+    );
 
     let startEpoch = localStorage.getItem('startEpoch');
 
@@ -117,7 +118,10 @@ class App extends Component {
   }
   
   componentWillUnmount() {
-      clearInterval(this.interval);
+    // Clear listener for Firebase authentication change to avoid memory leaks
+    this.listener();
+    
+    clearInterval(this.interval);
   }
 
   modalDismiss = () => {

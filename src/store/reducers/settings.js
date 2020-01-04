@@ -11,12 +11,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 authUser: {
                     ...state.authUser,
-                    ...action.authUser.user    
+                    ...action.authUser    
                 }
             };
 
         case actionTypes.NULL_AUTH_USER:
-            console.log("[settings reducer] We're going to null the auth user now");
             return initialState;
         default:
             return state;
